@@ -1,0 +1,555 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\serialCommunication.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\serialCommunication.ico"
+
+IDI_ICON1               ICON                    "res\\serial2.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 332, 258
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "配置"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,275,237,50,14,WS_GROUP
+    CONTROL         "7键按键板",IDC_RADIO_7KEY,"Button",BS_AUTORADIOBUTTON,15,46,38,17
+    CONTROL         "5键按键板",IDC_RADIO_5KAY,"Button",BS_AUTORADIOBUTTON,76,46,38,17
+    GROUPBOX        "按键板配置",IDC_STATIC,7,37,310,32
+    EDITTEXT        IDC_EDIT_SETUP_VERSION,67,10,251,22,ES_AUTOHSCROLL
+    LTEXT           "版本号配置",IDC_STATIC,16,15,44,10
+    CONTROL         "DTV1",IDC_CHECK_DTV1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,77,33,14
+    CONTROL         "DTV2",IDC_CHECK_DTV2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,94,33,14
+    CONTROL         "DTV3",IDC_CHECK_DTV3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,111,33,14
+    CONTROL         "ATV1",IDC_CHECK_ATV1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,128,33,14
+    CONTROL         "ATV2",IDC_CHECK_ATV2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,145,33,14
+    CONTROL         "DVBS",IDC_CHECK_DVBS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,162,33,14
+    CONTROL         " AV1",IDC_CHECK_AV1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,179,33,14
+    CONTROL         "AV2",IDC_CHECK_AV2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,196,33,14
+    CONTROL         "HDMI1",IDC_CHECK_HDMI1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,81,39,14
+    CONTROL         "HDMI2",IDC_CHECK_HDMI2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,101,39,14
+    CONTROL         "HDMI3",IDC_CHECK_HDMI3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,121,39,14
+    CONTROL         "HDMI4",IDC_CHECK1_HDMI4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,141,39,14
+    CONTROL         "SCART",IDC_CHECK_SCART,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,161,39,14
+    CONTROL         "YPBPR",IDC_CHECK_YPBPR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,213,33,14
+    CONTROL         "PC",IDC_CHECK_PC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,181,39,14
+    CONTROL         "USB",IDC_CHECK_USB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,180,201,39,14
+    EDITTEXT        IDC_EDIT_SETTIME_DTV1,103,79,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,80,31,10
+    EDITTEXT        IDC_EDIT_SETTIME_DTV2,103,95,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,96,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_DTV3,103,113,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,114,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_ATV1,103,129,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,130,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_ATV2,103,145,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,146,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_DVBS,103,162,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,163,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_AV1,103,179,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,180,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_AV2,103,196,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,197,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_YPBPR,103,213,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,62,214,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_HDMI1,255,80,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,223,81,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_HDMI2,255,101,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,223,102,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_HDMI3,255,123,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,223,124,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_HDMI4,255,142,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,223,143,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_SCART,255,163,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,223,164,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_PC,255,184,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,223,185,28,10
+    EDITTEXT        IDC_EDIT_SETTIME_USB,255,200,21,13,ES_AUTOHSCROLL
+    LTEXT           "设置时间",IDC_STATIC,223,201,28,10
+    GROUPBOX        "设置端子",IDC_STATIC,8,69,310,160
+    COMBOBOX        IDC_COMBO_LAST_SOURCE,73,233,48,68,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "测试完成跳转",IDC_STATIC,22,234,45,10
+END
+
+IDD_SERIALCOMMUNICATION_DIALOG DIALOGEX 0, 0, 671, 401
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "MTC海尔版_9.0.1"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    LTEXT           "串口选择",IDC_STATIC_chuankou,14,17,28,8
+    LTEXT           "波特率",IDC_STATIC_botelv,14,30,22,8
+    LTEXT           "数据位",IDC_STATIC_shujuwei,14,47,22,8
+    LTEXT           "停止位",IDC_STATIC_tingzhiwei,14,63,22,8
+    LTEXT           "校验位",IDC_STATIC_xiaoyanwei,14,76,22,8
+    LTEXT           "串口控制",IDC_STATIC_ckkongzhi,14,93,28,8
+    COMBOBOX        IDC_COMBO_PORT_SELECT,45,15,48,75,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_BAUD_SELECT,45,30,48,78,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DATA_BIT_SELECT,45,45,48,81,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_STOP_SELECT,45,61,48,71,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_CHECK_SELECT,45,76,48,67,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_RECEIVE,327,87,161,294,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+    PUSHBUTTON      "接收保存为文件",IDC_BUTTON_RECEIVE_SAVE_FILE,340,381,59,20
+    PUSHBUTTON      "清除接收",IDC_BUTTON_RECEIVE_CLEAR,415,381,59,20
+    EDITTEXT        IDC_EDIT_SEND,493,333,172,25,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_VSCROLL
+    PUSHBUTTON      "发送文件",IDC_BUTTON_SEND_FILE,499,363,46,14
+    PUSHBUTTON      "清除发送数据",IDC_BUTTON_SEND_CLEAR,557,363,46,14
+    PUSHBUTTON      "发送数据",IDC_BUTTON_SEND,615,363,46,14
+    GROUPBOX        "数据发送",IDC_STATIC_DATA,488,322,182,79
+    PUSHBUTTON      "载入配置文件",IDC_BUTTON_LOAD_CONFIG_FILE,7,150,70,22
+    GROUPBOX        "通讯配置",IDC_STATIC_tongxunpeizhi,9,6,93,103
+    COMBOBOX        IDC_COMBO_SEND_STRING_CONFIG,499,380,74,54,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "打开串口",IDC_BUTTON_SERIAL_CONTROL,44,90,50,14,WS_DISABLED
+    PUSHBUTTON      "自动测试开始",IDC_BUTTON3,131,143,138,55,0,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE
+    PUSHBUTTON      "自动测试停止",IDC_BUTTON_TEST_STOP,6,174,120,29
+    CONTROL         "IDB_BITMAP1",IDC_STATIC_PICTURE,"Static",SS_BITMAP | SS_CENTERIMAGE | WS_BORDER,481,400,1,1
+    EDITTEXT        IDC_EDIT_VERSION,160,109,148,25,ES_AUTOHSCROLL
+    LTEXT           "电视版本号：",IDC_STATIC_VERSION,117,119,43,11
+    PUSHBUTTON      "载入色温文件",IDC_BUTTON_LOAD_CONFIG_FILE2,7,126,70,22
+    EDITTEXT        IDC_EDIT_COLORTMP,3,205,96,123,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_VSCROLL
+    LTEXT           "MTC海尔版_9.0.1",IDC_STATIC_MAIN_VER,580,381,85,11
+    CONTROL         "预置白平衡数据",IDC_CHECK_WB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,20,114,64,10
+    EDITTEXT        IDC_EDIT_FAILED,489,202,182,117,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_OK,489,86,182,117,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_TEST_ITEM,100,205,104,124,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_VSCROLL
+    GROUPBOX        "按键结果",IDC_STATIC_KEYPAD,3,368,322,31
+    CONTROL         "信源",IDC_MFCBUTTON_SOURCE,"MfcButton",WS_TABSTOP,11,377,35,18
+    CONTROL         "频道+",IDC_MFCBUTTON_CHP,"MfcButton",WS_TABSTOP,236,377,35,18
+    CONTROL         "声音+",IDC_MFCBUTTON_VOLP,"MfcButton",WS_TABSTOP,146,377,35,18
+    CONTROL         "声音-",IDC_MFCBUTTON_VOLM,"MfcButton",WS_TABSTOP,101,377,35,18
+    CONTROL         "频道-",IDC_MFCBUTTON_CHM,"MfcButton",WS_TABSTOP,191,377,35,18
+    CONTROL         "电源",IDC_MFCBUTTON_POWER,"MfcButton",WS_TABSTOP,281,377,35,18
+    CONTROL         "菜单",IDC_MFCBUTTON_MENU,"MfcButton",WS_TABSTOP,56,377,35,18
+    COMBOBOX        IDC_COMBO_DELAY,85,150,39,68,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+    GROUPBOX        "默认延时",IDC_STATIC_DELAY,83,138,42,31
+    LTEXT           "工号：",IDC_STATIC_gonghao,113,21,39,12
+    LTEXT           "订单号：",IDC_STATIC_dingdanhao,113,39,39,12
+    EDITTEXT        IDC_EDIT_JNUMBER,154,17,62,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ORDER,154,36,62,14,ES_AUTOHSCROLL
+    LTEXT           "线体号：",IDC_STATIC_xianti,221,87,37,15
+    COMBOBOX        IDC_COMBO_LINE,259,88,48,72,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "获取数据：",IDC_STATIC_huoqushuju,221,53,37,15
+    COMBOBOX        IDC_COMBO_DATA_READ,259,52,48,75,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "检验数据：",IDC_STATIC_jianyanshuju,221,70,37,15
+    COMBOBOX        IDC_COMBO_DATA_SECCLE,259,70,48,71,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "测试方案：",IDC_STATIC_ceshifangan,221,36,37,15
+    COMBOBOX        IDC_COMBO_TestProject,259,34,48,69,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "主键名：",IDC_STATIC_zhujianming,221,19,37,15
+    COMBOBOX        IDC_COMBO_MAINKEY,259,16,48,72,CBS_DROPDOWNLIST | CBS_SORT | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "主键：",IDC_CHECK_SN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,113,57,39,12
+    EDITTEXT        IDC_EDIT_SN_DATA,154,55,62,14,ES_AUTOHSCROLL
+    CONTROL         "MAC校验:",IDC_CHECK_MAC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,113,76,39,12
+    EDITTEXT        IDC_EDIT_MAC_DATA,154,74,62,14,ES_AUTOHSCROLL
+    GROUPBOX        "USB扫描",IDC_STATIC_USBscan,3,329,322,38
+    EDITTEXT        IDC_EDIT_INTO_MESSAGE,8,340,311,24,ES_AUTOHSCROLL
+    LTEXT           "",IDC_STATIC_SHOW_TIMER,274,148,48,45,WS_BORDER
+    LTEXT           "",IDC_STATIC_SHOW_MESSAGE,207,205,119,124,WS_BORDER
+    CONTROL         "",IDC_LIST_DATA,"SysListView32",LVS_REPORT | WS_BORDER | WS_TABSTOP,327,7,344,78
+    LTEXT           "公共：",IDC_STATIC_gonggong,114,96,39,12
+    EDITTEXT        IDC_EDIT_MAINKEY,154,93,62,14,ES_AUTOHSCROLL
+    GROUPBOX        "数据配置",IDC_STATIC_shujupeizhi,104,7,215,131
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,0,4,1
+ PRODUCTVERSION 0,0,4,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x9L
+#else
+ FILEFLAGS 0x8L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "Comments", "高上超"
+            VALUE "CompanyName", "MTC"
+            VALUE "FileDescription", "串口自动测试"
+            VALUE "FileVersion", "0.0.4.1"
+            VALUE "InternalName", "串口自动测试.exe"
+            VALUE "LegalCopyright", "MTC"
+            VALUE "LegalTrademarks", "版权保护,翻版必究"
+            VALUE "OriginalFilename", "serialCommunication.exe"
+            VALUE "PrivateBuild", "内部升级号码8374"
+            VALUE "ProductName", "串口自动测试"
+            VALUE "ProductVersion", "0.0.4.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 325
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 251
+    END
+
+    IDD_SERIALCOMMUNICATION_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        TOPMARGIN, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SERIALCOMMUNICATION_DIALOG DLGINIT
+BEGIN
+    IDC_COMBO_BAUD_SELECT, 0x403, 5, 0
+0x3834, 0x3030, "\000" 
+    IDC_COMBO_BAUD_SELECT, 0x403, 5, 0
+0x3639, 0x3030, "\000" 
+    IDC_COMBO_BAUD_SELECT, 0x403, 6, 0
+0x3931, 0x3032, 0x0030, 
+    IDC_COMBO_BAUD_SELECT, 0x403, 6, 0
+0x3833, 0x3034, 0x0030, 
+    IDC_COMBO_BAUD_SELECT, 0x403, 6, 0
+0x3735, 0x3036, 0x0030, 
+    IDC_COMBO_BAUD_SELECT, 0x403, 7, 0
+0x3131, 0x3235, 0x3030, "\000" 
+    IDC_COMBO_BAUD_SELECT, 0x403, 7, 0
+0x3332, 0x3430, 0x3030, "\000" 
+    IDC_COMBO_BAUD_SELECT, 0x403, 7, 0
+0x3634, 0x3830, 0x3030, "\000" 
+    IDC_COMBO_DATA_BIT_SELECT, 0x403, 2, 0
+0x0036, 
+    IDC_COMBO_DATA_BIT_SELECT, 0x403, 2, 0
+0x0037, 
+    IDC_COMBO_DATA_BIT_SELECT, 0x403, 2, 0
+0x0038, 
+    IDC_COMBO_STOP_SELECT, 0x403, 2, 0
+0x0031, 
+    IDC_COMBO_STOP_SELECT, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO_CHECK_SELECT, 0x403, 7, 0
+0xdece, 0xa3d0, 0xe9d1, "\000" 
+    IDC_COMBO_CHECK_SELECT, 0x403, 7, 0
+0xe6c6, 0xa3d0, 0xe9d1, "\000" 
+    IDC_COMBO_CHECK_SELECT, 0x403, 7, 0
+0xbcc5, 0xa3d0, 0xe9d1, "\000" 
+    IDC_COMBO_SEND_STRING_CONFIG, 0x403, 17, 0
+0xa2b7, 0xcdcb, 0xd4d7, 0xf8b4, 0xd8bb, 0xb5b3, 0xbbbb, 0xd0d0, "\000" 
+    IDC_COMBO_SEND_STRING_CONFIG, 0x403, 17, 0
+0xa2b7, 0xcdcb, 0xbbb2, 0xf8b4, 0xd8bb, 0xb5b3, 0xbbbb, 0xd0d0, "\000" 
+    IDC_MFCBUTTON_SOURCE, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    IDC_MFCBUTTON_CHP, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    IDC_MFCBUTTON_VOLP, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    IDC_MFCBUTTON_VOLM, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    IDC_MFCBUTTON_CHM, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    IDC_MFCBUTTON_POWER, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    IDC_MFCBUTTON_MENU, 0x37c, 369, 0
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x535f, 0x7974, 0x656c, 0x343e, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7453, 0x6c79, 0x3e65, 
+0x4d3c, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x415f, 0x7475, 0x736f, 0x7a69, 
+0x3e65, 0x4146, 0x534c, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 
+0x415f, 0x7475, 0x736f, 0x7a69, 0x3e65, 0x4d3c, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x4d2f, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x545f, 0x6f6f, 0x746c, 0x7069, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x7546, 0x6c6c, 0x6554, 0x7478, 0x6f54, 0x6c6f, 
+0x543e, 0x5552, 0x3c45, 0x4d2f, 0x4346, 0x7542, 0x7474, 0x6e6f, 0x465f, 
+0x6c75, 0x546c, 0x7865, 0x5474, 0x6f6f, 0x3e6c, 0x4d3c, 0x4346, 0x7542, 
+0x7474, 0x6e6f, 0x435f, 0x7275, 0x6f73, 0x5472, 0x7079, 0x3e65, 0x3131, 
+0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x7543, 0x7372, 0x726f, 
+0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x5465, 0x7079, 0x3e65, 0x3c38, 0x4d2f, 0x4346, 0x7542, 0x7474, 
+0x6e6f, 0x495f, 0x616d, 0x6567, 0x7954, 0x6570, 0x3c3e, 0x464d, 0x4243, 
+0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x546e, 0x706f, 0x463e, 
+0x4c41, 0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 
+0x6761, 0x4f65, 0x546e, 0x706f, 0x3c3e, 0x464d, 0x4243, 0x7475, 0x6f74, 
+0x5f6e, 0x6d49, 0x6761, 0x4f65, 0x526e, 0x6769, 0x7468, 0x463e, 0x4c41, 
+0x4553, 0x2f3c, 0x464d, 0x4243, 0x7475, 0x6f74, 0x5f6e, 0x6d49, 0x6761, 
+0x4f65, 0x526e, 0x6769, 0x7468, "\076" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_SERIALCOMMUNICATION_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP_LOGO         BITMAP                  "res\\serial2.bmp"
+
+IDB_BITMAP_NG           BITMAP                  "res\\testNG.bmp"
+
+IDB_BITMAP_OK           BITMAP                  "res\\testOK.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "关于 serialCommunication(&A)..."
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\serialCommunication.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

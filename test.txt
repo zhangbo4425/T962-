@@ -1,0 +1,313 @@
+
+ MTC_UART_TEST:VER(Mar  2 2017, 15:03:40)[30;43m >> MApp_InputSource_SwitchSource(6[ATV]) 
+ OldUiSrc=13(DMP), eOldInputSrc=34
+[0m 
+Disable Aeon
+Disable Aeon Done
+ eNewInputSrc=1
+msAPI_DrvInit_ExitDemux()
+[MAPI DMX][MApi_DMX_Close][002140] Demux has been close, close Demux Id 29 fail
+[MAPI DMX][MApi_DMX_Close][002140] Demux has been close, close Demux Id 30 fail
+[MAPI DMX][MApi_DMX_Close][002140] Demux has been close, close Demux Id 31 fail
+msAPI_DrvInit_InitDemux(eInitDemuxCase=1)
+[HAL_TSP_CPU_SetBase][2258] load firmware (address, size) = (0x031C0000, 0x00003000)
+firmware 111 0x031C0000 0x00000003 0x00001C00
+
+ ===========************============
+ ====>>>>InputSource[1]
+ ===========************============
+
+ enInputSourceType = 1 
+MApi_XC_SetupFrameBuffer(src=1)
+=> XC-Main = SCALER_FB_NO_VDEC
+ u32MainAddr=0x1B20000, u32MainSize=0x1800000
+ ==> XC-VIP addr=0x1B20000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+Cur Ch is DTV
+[30;43m >> MApp_InputSource_SwitchSource(1[ATSC]) 
+ OldUiSrc=6(ATV), eOldInputSrc=1
+[0m 
+ eNewInputSrc=28
+msAPI_DrvInit_ExitDemux()
+msAPI_DrvInit_InitDemux(eInitDemuxCase=1)
+[HAL_TSP_CPU_SetBase][2258] load firmware (address, size) = (0x031C0000, 0x00003000)
+firmware 111 0x031C0000 0x00000003 0x00001C00
+ msAPI_Demod_Set_Power(7(DEMOD_ATSC), 1)
+Power On/Off Demod-ATSC TODO!
+ msAPI_Demod_Init(2,7-DEMOD_ATSC)
+ Demod: DEMOD_NONE -> DEMOD_ATSC
+--------------DMD_ATSC_CHIP_WHISKY--------------
+
+ ===========************============
+ ====>>>>InputSource[28]
+ ===========************============
+
+ enInputSourceType = 28 
+MApi_XC_SetupFrameBuffer(src=28)
+=> XC-Main = SCALER_DNR_BUF_DTV
+ u32MainAddr=0x2C40000, u32MainSize=0xC00000
+ ==> XC-VIP addr=0x2C40000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+msAPI_VID_Init(bEnableDropErrFrame=0, enSrcMode=0)
+ eCodecType=1
+msAPI_VID_Get_VdecBinId(eCodecType=1)
+ => u16BinId=0x906
+msAPI_AUD_Set_CurDspSystem(eAudioDSPSystem=1)
+ReInit CC for DTV
+
+Set_ProgramChange
+...[MApp_ClosedCaption_GetUserCmd, 376] 0...
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+
+...[MApp_CC_CtrlParser, 1115] selector=0x20E, val=0x0...
+
+...[MApp_CC_CtrlParser, 1115] selector=0x211, val=0x30...
+ Sel CH Now ==>>>>
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !! Sel CH Now ==>>>>
+--- [1]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [3-0], OnePart=0, PhyIdx=3
+--- [2]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [35-0], OnePart=0, PhyIdx=35
+--- [3]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [38-0], OnePart=0, PhyIdx=38
+--- [4]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [50-1], OnePart=0, PhyIdx=28
+find DTV[4]
+--- [5]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [50-2], OnePart=0, PhyIdx=28
+--- [6]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [50-3], OnePart=0, PhyIdx=28
+--- [7]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [60-0], OnePart=0, PhyIdx=60
+--- [8]:  SrvNum=8 >>>  CurVir[28-32768], DbVir [61-0], OnePart=0, PhyIdx=61
+find TV[4] 4, 0
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !!g_SysSetting changed!
+[30;43m >> MApp_InputSource_SwitchSource(9[HDMI1]) 
+ OldUiSrc=1(ATSC), eOldInputSrc=28
+[0m 
+ eNewInputSrc=23
+>> ATSC Exit Ok!
+ msAPI_Demod_Set_Power(7(DEMOD_ATSC), 0)
+Power On/Off Demod-ATSC TODO!
+MApp_PCMode_Reset()
+MApp_PCMODE_Reset_TimingMonitor()
+
+ ===========************============
+ ====>>>>InputSource[23]
+ ===========************============
+
+ enInputSourceType = 23 
+>> MDrv_DVI_Software_Reset(eInputPort=80, BIT5)
+MApi_XC_SetupFrameBuffer(src=23)
+=> XC-Main = SCALER_FB_NO_VDEC
+ u32MainAddr=0x1B20000, u32MainSize=0x1800000
+ ==> XC-VIP addr=0x1B20000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+ Can't find any empty unit, need to erase
+
+ g_bIsDolbyType(0)
+Erase flash bank=0x7E
+_msAPI_DB_GEN_EraseFlash(u8Bank=0x7E, wait=0)
+GEN: Flash busy
+
+ 0x1d unused !! DB_GEN: Write flash done~ => UnitIdx=0, wt=20336, use 10ms
+
+ 0x1d unused !!
+ 0x1d unused !![30;43m >> MApp_InputSource_SwitchSource(10[HDMI2]) 
+ OldUiSrc=9(HDMI1), eOldInputSrc=23
+[0m 
+ eNewInputSrc=24
+MApp_PCMode_Reset()
+MApp_PCMODE_Reset_TimingMonitor()
+
+ ===========************============
+ ====>>>>InputSource[24]
+ ===========************============
+
+ FAE 5548 msAPI_CEC_PostMsg_ActiveSource [core/api/scaler_front/msAPI_CEC_New.c,msAPI_CEC_RoutingControl_SourceChange,964]
+
+ enInputSourceType = 24 
+>> MDrv_DVI_Software_Reset(eInputPort=81, BIT5)
+[HPD] Task is not finish, Set HPD = 1 at 1329278
+MApi_XC_SetupFrameBuffer(src=24)
+=> XC-Main = SCALER_FB_NO_VDEC
+ u32MainAddr=0x1B20000, u32MainSize=0x1800000
+ ==> XC-VIP addr=0x1B20000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+
+ 0x1d unused !!g_SysSetting changed!
+
+ 0x1d unused !!
+ 0x1d unused !! DB_GEN: Write flash done~ => UnitIdx=1, wt=20337, use 10ms
+[30;43m >> MApp_InputSource_SwitchSource(11[HDMI3]) 
+ OldUiSrc=10(HDMI2), eOldInputSrc=24
+[0m 
+ eNewInputSrc=25
+MApp_PCMode_Reset()
+MApp_PCMODE_Reset_TimingMonitor()
+
+ ===========************============
+ ====>>>>InputSource[25]
+ ===========************============
+
+ FAE 5548 msAPI_CEC_PostMsg_ActiveSource [core/api/scaler_front/msAPI_CEC_New.c,msAPI_CEC_RoutingControl_SourceChange,964]
+
+ enInputSourceType = 25 
+>> MDrv_DVI_Software_Reset(eInputPort=83, BIT5)
+[HPD] Task is not finish, Set HPD = 1 at 1330604
+MApi_XC_SetupFrameBuffer(src=25)
+=> XC-Main = SCALER_FB_NO_VDEC
+ u32MainAddr=0x1B20000, u32MainSize=0x1800000
+ ==> XC-VIP addr=0x1B20000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !!
+ TEST_KEYPAD:MENU
+ TEST_KEYPAD:MENUg_SysSetting changed!
+ DB_GEN: Write flash done~ => UnitIdx=2, wt=20338, use 10ms
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !![30;43m >> MApp_InputSource_SwitchSource(12[CVBS]) 
+ OldUiSrc=11(HDMI3), eOldInputSrc=25
+[0m 
+ eNewInputSrc=2
+
+ ===========************============
+ ====>>>>InputSource[2]
+ ===========************============
+
+...[MApp_CC_CtrlParser, 1115] selector=0x20E, val=0x0...
+
+...[MApp_CC_CtrlParser, 1115] selector=0x211, val=0x30...
+
+...[MApp_ClosedCaption_GetUserCmd, 376] 0...
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+
+ enInputSourceType = 2 
+MApi_XC_SetupFrameBuffer(src=2)
+=> XC-Main = SCALER_FB_NO_VDEC
+ u32MainAddr=0x1B20000, u32MainSize=0x1800000
+ ==> XC-VIP addr=0x1B20000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+
+...[MApp_ClosedCaption_GetUserCmd, 376] 0...
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+
+ TEST_KEYPAD:VOL-[VD] stable => NO SYNC(7) at 8414
+[31;1m VD: SetStd: No sync, 50Hz=1 => Use Std=NTSC [m 
+VD-SetStd: eVideoStandardCorrect=PAL
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !!g_SysSetting changed!
+ DB_GEN: Write flash done~ => UnitIdx=3, wt=20339, use 10ms
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !![30;43m >> MApp_InputSource_SwitchSource(7[YPbPr]) 
+ OldUiSrc=12(CVBS), eOldInputSrc=2
+[0m 
+ eNewInputSrc=16
+MApp_PCMode_Reset()
+MApp_PCMODE_Reset_TimingMonitor()
+
+ ===========************============
+ ====>>>>InputSource[16]
+ ===========************============
+
+...[MApp_CC_CtrlParser, 1115] selector=0x20E, val=0x0...
+
+...[MApp_CC_CtrlParser, 1115] selector=0x211, val=0x30...
+
+...[MApp_ClosedCaption_GetUserCmd, 376] 0...
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+
+ enInputSourceType = 16 
+MApi_XC_SetupFrameBuffer(src=16)
+=> XC-Main = SCALER_FB_NO_VDEC
+ u32MainAddr=0x1B20000, u32MainSize=0x1800000
+ ==> XC-VIP addr=0x1B20000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+g_SysSetting changed!
+ DB_GEN: Write flash done~ => UnitIdx=4, wt=20340, use 10ms
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !![30;43m >> MApp_InputSource_SwitchSource(13[DMP]) 
+ OldUiSrc=7(YPbPr), eOldInputSrc=16
+[0m 
+ eNewInputSrc=34
+
+ ===========************============
+ ====>>>>InputSource[34]
+ ===========************============
+
+ enInputSourceType = 34 
+MApi_XC_SetupFrameBuffer(src=34)
+=> XC-Main = SCALER_DNR_BUF_PREV
+ u32MainAddr=0x16C0000, u32MainSize=0x200000
+ ==> XC-VIP addr=0x16C0000
+
+===>PictureMode[1]SetBacklight=====>
+
+...[MApp_ClosedCaption_Stop, 703] stop -> ...
+
+...[MApp_ClosedCaption_Stop, 726] stop < - ...
+unsupport N51 FS compress 
+
+ 0x1d unused !!
+ 0x1d unused !!
+ 0x1d unused !!g_SysSetting changed!
+ DB_GEN: Write flash done~ => UnitIdx=5, wt=20341, use 10ms
+
+***************Receive Message At Time :17_55_33**************************

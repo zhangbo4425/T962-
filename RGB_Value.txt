@@ -1,0 +1,12 @@
+[normal]
+RDrv=160
+GDrv=160
+BDrv=160
+[cool]
+RDrv=160
+GDrv=160
+BDrv=160
+[warm]
+RDrv=160
+GDrv=160
+BDrv=160

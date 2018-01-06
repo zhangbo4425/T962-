@@ -1,0 +1,3 @@
+提交SOAP消息出错
+[ADCCheckLotSN]web service Reruen Values:
+error

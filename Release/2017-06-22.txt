@@ -1,0 +1,42 @@
+mtcxml:
+<ADCCheckLotSNResult xmlns="http://tempuri.org/">&lt;?xml version="1.0"?&gt;&lt;DBSET&gt;&lt;RESULT&gt;&lt;ReturnResult&gt;0&lt;/ReturnResult&gt;&lt;ReturnMessage&gt;批号当前节点为 [附件采集] ，当前用户 [TESTUser] 不允许操作此节点! &lt;/ReturnMessage&gt;&lt;SpecificationName&gt;附件采集&lt;/SpecificationName&gt;&lt;ProductName&gt;745725605552WC31&lt;/ProductName&gt;&lt;MOName&gt;001010119035&lt;/MOName&gt;&lt;/RESULT&gt;&lt;/DBSET&gt;</ADCCheckLotSNResult>
+mtctext:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>0</ReturnResult><ReturnMessage>批号当前节点为 [附件采集] ，当前用户 [TESTUser] 不允许操作此节点! </ReturnMessage><SpecificationName>附件采集</SpecificationName><ProductName>745725605552WC31</ProductName><MOName>001010119035</MOName></RESULT></DBSET>
+mtcend:
+[ADCCheckLotSN]web service Reruen Values:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>0</ReturnResult><ReturnMessage>批号当前节点为 [附件采集] ，当前用户 [TESTUser] 不允许操作此节点! </ReturnMessage><SpecificationName>附件采集</SpecificationName><ProductName>745725605552WC31</ProductName><MOName>001010119035</MOName></RESULT></DBSET>
+mtcxml:
+<ADCCheckLotSNResult xmlns="http://tempuri.org/">&lt;?xml version="1.0"?&gt;&lt;DBSET&gt;&lt;RESULT&gt;&lt;ReturnResult&gt;1&lt;/ReturnResult&gt;&lt;ReturnMessage&gt;MES OK&lt;/ReturnMessage&gt;&lt;SpecificationName&gt;写号&lt;/SpecificationName&gt;&lt;ProductName&gt;745725605552WC31&lt;/ProductName&gt;&lt;MOName&gt;001010119035&lt;/MOName&gt;&lt;/RESULT&gt;&lt;/DBSET&gt;</ADCCheckLotSNResult>
+mtctext:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage>MES OK</ReturnMessage><SpecificationName>写号</SpecificationName><ProductName>745725605552WC31</ProductName><MOName>001010119035</MOName></RESULT></DBSET>
+mtcend:
+[ADCCheckLotSN]web service Reruen Values:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage>MES OK</ReturnMessage><SpecificationName>写号</SpecificationName><ProductName>745725605552WC31</ProductName><MOName>001010119035</MOName></RESULT></DBSET>
+mtcxml:
+<ADCGetInterfaceParameterResult xmlns="http://tempuri.org/">&lt;?xml version="1.0"?&gt;&lt;DBSET&gt;&lt;RESULT&gt;&lt;ReturnResult&gt;1&lt;/ReturnResult&gt;&lt;ReturnMessage&gt;&lt;/ReturnMessage&gt;&lt;DBModel&gt;&lt;/DBModel&gt;&lt;/RESULT&gt;&lt;RECORD&gt;&lt;DATE&gt;20170622161321&lt;/DATE&gt;&lt;/RECORD&gt;&lt;/DBSET&gt;</ADCGetInterfaceParameterResult>
+mtctext:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage></ReturnMessage><DBModel></DBModel></RESULT><RECORD><DATE>20170622161321</DATE></RECORD></DBSET>
+mtcend:
+[ADCCheckLotSN]web service Reruen Values:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage></ReturnMessage><DBModel></DBModel></RESULT><RECORD><DATE>20170622161321</DATE></RECORD></DBSET>
+mtcxml:
+<ADCGetInterfaceParameterResult xmlns="http://tempuri.org/">&lt;?xml version="1.0"?&gt;&lt;DBSET&gt;&lt;RESULT&gt;&lt;ReturnResult&gt;1&lt;/ReturnResult&gt;&lt;ReturnMessage&gt;&lt;/ReturnMessage&gt;&lt;DBModel&gt;&lt;/DBModel&gt;&lt;/RESULT&gt;&lt;RECORD&gt;&lt;SN&gt;55JX810170400001&lt;/SN&gt;&lt;MAC&gt;b0:a3:7e:8d:ce:25&lt;/MAC&gt;&lt;/RECORD&gt;&lt;/DBSET&gt;</ADCGetInterfaceParameterResult>
+mtctext:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage></ReturnMessage><DBModel></DBModel></RESULT><RECORD><SN>55JX810170400001</SN><MAC>b0:a3:7e:8d:ce:25</MAC></RECORD></DBSET>
+mtcend:
+[ADCCheckLotSN]web service Reruen Values:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage></ReturnMessage><DBModel></DBModel></RESULT><RECORD><SN>55JX810170400001</SN><MAC>b0:a3:7e:8d:ce:25</MAC></RECORD></DBSET>
+mtcxml:
+<ADCGetInterfaceParameterResult xmlns="http://tempuri.org/">&lt;?xml version="1.0"?&gt;&lt;DBSET&gt;&lt;RESULT&gt;&lt;ReturnResult&gt;1&lt;/ReturnResult&gt;&lt;ReturnMessage&gt;&lt;/ReturnMessage&gt;&lt;DBModel&gt;&lt;/DBModel&gt;&lt;/RESULT&gt;&lt;RECORD&gt;&lt;DATE&gt;20170622161322&lt;/DATE&gt;&lt;/RECORD&gt;&lt;/DBSET&gt;</ADCGetInterfaceParameterResult>
+mtctext:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage></ReturnMessage><DBModel></DBModel></RESULT><RECORD><DATE>20170622161322</DATE></RECORD></DBSET>
+mtcend:
+[ADCCheckLotSN]web service Reruen Values:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1</ReturnResult><ReturnMessage></ReturnMessage><DBModel></DBModel></RESULT><RECORD><DATE>20170622161322</DATE></RECORD></DBSET>
+mtcxml:
+<ADCSubmitTestDataResult xmlns="http://tempuri.org/">&lt;?xml version="1.0"?&gt;&lt;DBSET&gt;&lt;RESULT&gt;&lt;ReturnResult&gt;1           &lt;/ReturnResult&gt;&lt;ReturnMessage&gt;MES OK&lt;/ReturnMessage&gt;&lt;/RESULT&gt;&lt;/DBSET&gt;</ADCSubmitTestDataResult>
+mtctext:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1           </ReturnResult><ReturnMessage>MES OK</ReturnMessage></RESULT></DBSET>
+mtcend:
+[ADCCheckLotSN]web service Reruen Values:
+<?xml version="1.0"?><DBSET><RESULT><ReturnResult>1           </ReturnResult><ReturnMessage>MES OK</ReturnMessage></RESULT></DBSET>
