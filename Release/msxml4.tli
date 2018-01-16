@@ -1,9 +1,9 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (0d312d9a).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (5ad99a4b).
 //
-// f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\release\msxml4.tli
+// f:\localproject\amtc海尔串口自动化测试\release\msxml4.tli
 //
 // Wrapper implementations for Win32 type library msxml4.dll
-// compiler-generated file created 01/06/18 at 14:18:17 - DO NOT EDIT!
+// compiler-generated file created 01/15/18 at 16:19:07 - DO NOT EDIT!
 
 #pragma once
 

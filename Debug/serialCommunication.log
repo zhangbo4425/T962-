@@ -1,51 +1,38 @@
-﻿  stdafx.cpp
-c:\program files (x86)\microsoft visual studio 14.0\vc\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
-  c:\program files (x86)\microsoft visual studio 14.0\vc\atlmfc\include\afx.h(33): note: 参见“MBCS_Support_Deprecated_In_MFC”的声明
-  serialCommunicationDlg.cpp
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(104): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(122): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(143): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(146): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(350): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(362): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(1403): warning C4838: 从“int”转换到“const char”需要收缩转换
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(1403): warning C4309: “初始化”: 截断常量值
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3147): warning C4477: “sprintf”: 格式字符串“%S”需要类型“wchar_t *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3179): warning C4477: “sprintf”: 格式字符串“%S”需要类型“wchar_t *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3240): warning C4018: “>”: 有符号/无符号不匹配
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3280): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3281): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3366): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3436): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3438): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3456): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3458): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3480): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3481): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(3482): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(4025): warning C4101: “util”: 未引用的局部变量
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(4675): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(4678): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(4680): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-  serialCommunication.cpp
+﻿  serialCommunicationDlg.cpp
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(104): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(122): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(143): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(146): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(350): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(362): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(1403): warning C4838: 从“int”转换到“const char”需要收缩转换
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(1403): warning C4309: “初始化”: 截断常量值
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3163): warning C4477: “sprintf”: 格式字符串“%S”需要类型“wchar_t *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3195): warning C4477: “sprintf”: 格式字符串“%S”需要类型“wchar_t *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3256): warning C4018: “>”: 有符号/无符号不匹配
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3296): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3297): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3382): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3452): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3454): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3472): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3474): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3496): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3497): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(3498): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(4041): warning C4101: “util”: 未引用的局部变量
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(4691): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(4694): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(4696): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
   WebService.cpp
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\res\webservice\webservice.cpp(50): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+f:\localproject\amtc海尔串口自动化测试\res\webservice\webservice.cpp(50): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\res\webservice\webservice.cpp(166): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+f:\localproject\amtc海尔串口自动化测试\res\webservice\webservice.cpp(166): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\res\webservice\webservice.cpp(171): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+f:\localproject\amtc海尔串口自动化测试\res\webservice\webservice.cpp(171): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
-  tinyxml2.cpp
-  Markup.cpp
-  Note: MBCS build (not UTF-8)
-  PPTooltip.cpp
-c:\program files (x86)\windows kits\8.1\include\um\multimon.h(185): warning C4996: 'GetVersionExA': 被声明为已否决
-  c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h(433): note: 参见“GetVersionExA”的声明
-  PPHtmlDrawer.cpp
-  PPDrawManager.cpp
-  CeXDib.cpp
   正在生成代码...
-f:\项目专用\amtc海尔串口自动化测试\工厂测试串口调试\serialcommunicationdlg.cpp(4322): warning C4715: “CserialCommunicationDlg::String2Hex”: 不是所有的控件路径都返回值
+f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(4338): warning C4715: “CserialCommunicationDlg::String2Hex”: 不是所有的控件路径都返回值
 CeXDib.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)
-  serialCommunication.vcxproj -> F:\项目专用\AMTC海尔串口自动化测试\工厂测试串口调试\Debug\serialCommunication.exe
-  serialCommunication.vcxproj -> F:\项目专用\AMTC海尔串口自动化测试\工厂测试串口调试\Debug\serialCommunication.pdb (Full PDB)
+  serialCommunication.vcxproj -> F:\localproject\AMTC海尔串口自动化测试\Debug\serialCommunication.exe
+  serialCommunication.vcxproj -> F:\localproject\AMTC海尔串口自动化测试\Debug\serialCommunication.pdb (Full PDB)

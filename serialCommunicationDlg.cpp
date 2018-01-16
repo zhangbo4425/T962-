@@ -1,4 +1,4 @@
-// serialCommunicationDlg.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// serialCommunicationDlg.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -12,36 +12,36 @@
 #define new DEBUG_NEW
 #endif
 
-#define TIME_SHOW_MESSAGE_SERIAL	5000	//´®¿ÚÊı¾İÏÔÊ¾¶¨Ê±Æ÷ID
-#define TIME_SHOW_MESSAGE_TEST_DELAY	3000	//×Ô¶¯²âÊÔÍ¨µÀÑÓÊ±
-#define TIME_SHOW_MESSAGE_TEST_DELAY_OTHER	7000	//×Ô¶¯²âÊÔÍ¨µÀÑÓÊ±ÆäËûÓÃ
-#define TIME_SHOW_MESSAGE_KEYPAY_TEST_OTHER  8000  //°´¼ü²âÊÔ¼°ÆäËû¸½¼Ó²âÊÔ
-#define TIME_SHOW_MESSAGE_TEST_MAC  9000   //MACÉÏ´«MES ×¨ÓÃ
+#define TIME_SHOW_MESSAGE_SERIAL	5000	//ä¸²å£æ•°æ®æ˜¾ç¤ºå®šæ—¶å™¨ID
+#define TIME_SHOW_MESSAGE_TEST_DELAY	3000	//è‡ªåŠ¨æµ‹è¯•é€šé“å»¶æ—¶
+#define TIME_SHOW_MESSAGE_TEST_DELAY_OTHER	7000	//è‡ªåŠ¨æµ‹è¯•é€šé“å»¶æ—¶å…¶ä»–ç”¨
+#define TIME_SHOW_MESSAGE_KEYPAY_TEST_OTHER  8000  //æŒ‰é”®æµ‹è¯•åŠå…¶ä»–é™„åŠ æµ‹è¯•
+#define TIME_SHOW_MESSAGE_TEST_MAC  9000   //MACä¸Šä¼ MES ä¸“ç”¨
 #define TIME_SHOW_MESSAGE_KEYPAD_TIME   5678
 #define CONFIGMEG			_T("ConfigMessage")
 WebService  m_WebService;
-//ÏÂÃæÊÇMES Ïà¹Ø±äÁ¿
-// ÓÃÓÚÓ¦ÓÃ³ÌĞò¡°¹ØÓÚ¡±²Ëµ¥ÏîµÄ CAboutDlg ¶Ô»°¿ò
+//ä¸‹é¢æ˜¯MES ç›¸å…³å˜é‡
+// ç”¨äºåº”ç”¨ç¨‹åºâ€œå…³äºâ€èœå•é¡¹çš„ CAboutDlg å¯¹è¯æ¡†
 //////////////////////////////////////////////////////////////////////
-CString Done;//ÓÃÀ´ÅĞ¶ÏÖ´ĞĞµÄ¶¯×÷£¬Ö÷ÒªÊÇÅĞ¶Ï¶ÁMAC					//
+CString Done;//ç”¨æ¥åˆ¤æ–­æ‰§è¡Œçš„åŠ¨ä½œï¼Œä¸»è¦æ˜¯åˆ¤æ–­è¯»MAC					//
 char FieldName[10]={0};												//
-char OrderID[16]={0};//LotSN ¶ÔÓ¦µÄ¶©µ¥ºÅ							//
-char LotSN[32]={0};//ÎªµçÊÓÉÏµÄSNÖµ	
-char MacEth[32];//µçÊÓMACµØÖ·	//
-//char* LotSN="FUN484000084416230102996";//ÎªµçÊÓÉÏµÄSNÖµ			//
+char OrderID[16]={0};//LotSN å¯¹åº”çš„è®¢å•å·							//
+char LotSN[32]={0};//ä¸ºç”µè§†ä¸Šçš„SNå€¼	
+char MacEth[32];//ç”µè§†MACåœ°å€	//
+//char* LotSN="FUN484000084416230102996";//ä¸ºç”µè§†ä¸Šçš„SNå€¼			//
 //
-char* TestDevice="Ğ´ºÅ" ;//²âÊÔÕ¾µã  ¸Ã¹¤¾ß¾ÍÓÃÔÚĞ´ºÅÕ¾µã			//
-char UserName[32]  ;//ÓÃ»§Ãû										//
-char* ResourceName;//×ÊÔ´Ãû³Æ£¨µçÄÔÃû³Æ£© --µçÄÔÃû³Æ				//
-char WorkcenterName[8];//ÏßÌåÃû										//
+char* TestDevice="å†™å·" ;//æµ‹è¯•ç«™ç‚¹  è¯¥å·¥å…·å°±ç”¨åœ¨å†™å·ç«™ç‚¹			//
+char UserName[32]  ;//ç”¨æˆ·å										//
+char* ResourceName;//èµ„æºåç§°ï¼ˆç”µè„‘åç§°ï¼‰ --ç”µè„‘åç§°				//
+char WorkcenterName[8];//çº¿ä½“å										//
 //
-std::map<CString, vector<CString> > mesSettingMap; //mes±í¸ñÉèÖÃ	//
-std::map<CString, CString> mesDataMap;//mes¶©µ¥Êı¾İ					//
-std::map<CString, CString> mesGetDataMap;//mes¶©µ¥ÅäÖÃÊı¾İ			//
-std::map<CString, CString> mesGetWordMap;//mes¶©µ¥Ô¤ÖÃÊı¾İ			//
-std::map<CString, CString> mesGetTimeMap;//»ñÈ¡·şÎñÆ÷Ê±¼ä			//
+std::map<CString, vector<CString> > mesSettingMap; //mesè¡¨æ ¼è®¾ç½®	//
+std::map<CString, CString> mesDataMap;//mesè®¢å•æ•°æ®					//
+std::map<CString, CString> mesGetDataMap;//mesè®¢å•é…ç½®æ•°æ®			//
+std::map<CString, CString> mesGetWordMap;//mesè®¢å•é¢„ç½®æ•°æ®			//
+std::map<CString, CString> mesGetTimeMap;//è·å–æœåŠ¡å™¨æ—¶é—´			//
 //
-std::map<CString, CString> mesCheckorSubmitMap;//mes¼ì²éÊı¾İ		//
+std::map<CString, CString> mesCheckorSubmitMap;//mesæ£€æŸ¥æ•°æ®		//
 //
 //
 multimap<string, vector<pair<string, string> > >multiMapTestData;	//
@@ -95,7 +95,7 @@ CString CserialCommunicationDlg::ADCGetResourceName()
 	//strTest.Format(_T("A4008956N"));
 	//return strTest;
 }
-BOOL CserialCommunicationDlg::ADCCheckLotSN(char* PostCode, char* LotSN, char* FieldName)//LotSN¾ÍÊÇ»úÉíSN£¬FieldNameÎªSNÔÚMESÖĞ¶ÔÓ¦µÄ×Ö¶ÎÃû£¬PostCodeÖ»ÄÜÎª¡°TEST¡±
+BOOL CserialCommunicationDlg::ADCCheckLotSN(char* PostCode, char* LotSN, char* FieldName)//LotSNå°±æ˜¯æœºèº«SNï¼ŒFieldNameä¸ºSNåœ¨MESä¸­å¯¹åº”çš„å­—æ®µåï¼ŒPostCodeåªèƒ½ä¸ºâ€œTESTâ€
 {
 
 	char * codefile = NULL;
@@ -108,14 +108,14 @@ BOOL CserialCommunicationDlg::ADCCheckLotSN(char* PostCode, char* LotSN, char* F
 	{
 		//AfxMessageBox(codefile);
 		parserADCCheckorSubmitXML(codefile);
-		delete[] codefile;//webservice new,Ê¹ÓÃÍê±ÏºóÒªÇåÀíÄÚ´æ
+		delete[] codefile;//webservice new,ä½¿ç”¨å®Œæ¯•åè¦æ¸…ç†å†…å­˜
 		return true;
 	}
 	return false;
 }
 BOOL CserialCommunicationDlg::ADCGetInterfaceParameter(char* PostCode, char* LotSN, char* FieldName)
 {
-	//CDApp  *papp = (CDApp*)AfxGetApp();                   // ***** Éú³ÉÖ¸ÏòÔËÓÃ³ÌĞòÀàµÄÖ¸Õë*****
+	//CDApp  *papp = (CDApp*)AfxGetApp();                   // ***** ç”ŸæˆæŒ‡å‘è¿ç”¨ç¨‹åºç±»çš„æŒ‡é’ˆ*****
 	char * codefile;
 	char computername[100];
 	memset(computername,0,100);
@@ -125,16 +125,16 @@ BOOL CserialCommunicationDlg::ADCGetInterfaceParameter(char* PostCode, char* Lot
 	{
 		//AfxMessageBox(codefile);
 		parserADCGetInterfaceParameterXML(PostCode, codefile);
-		delete[] codefile;//webservice new,Ê¹ÓÃÍê±ÏºóÒªÇåÀíÄÚ´æ
+		delete[] codefile;//webservice new,ä½¿ç”¨å®Œæ¯•åè¦æ¸…ç†å†…å­˜
 		return true;
 	}
 	return false;
 }
 BOOL CserialCommunicationDlg::ADCSubmitTestData(char* PostCode, char* LotSN, char* FieldName,int MacInput)
 {
-	//CDApp  *papp = (CDApp*)AfxGetApp();                   // ***** Éú³ÉÖ¸ÏòÔËÓÃ³ÌĞòÀàµÄÖ¸Õë*****
+	//CDApp  *papp = (CDApp*)AfxGetApp();                   // ***** ç”ŸæˆæŒ‡å‘è¿ç”¨ç¨‹åºç±»çš„æŒ‡é’ˆ*****
 	char * codefile;
-	GenTestDate(MacInput);//Éú³ÉĞèÒª²âÊÔÊı¾İºÍĞèÒª²åÈëÊı¾İ¿âÖĞµÄÊı¾İ
+	GenTestDate(MacInput);//ç”Ÿæˆéœ€è¦æµ‹è¯•æ•°æ®å’Œéœ€è¦æ’å…¥æ•°æ®åº“ä¸­çš„æ•°æ®
 	CMarkup xml;
 	xml.Load(_T("./mestestdata.xml"));
 	MCD_STR strXML = xml.GetDoc();
@@ -145,12 +145,12 @@ BOOL CserialCommunicationDlg::ADCSubmitTestData(char* PostCode, char* LotSN, cha
 	memset(computername,0,100);
 	sprintf(computername,"%s",ADCGetResourceName());
 	codefile = m_WebService.ADCSubmitTestData(PostCode, LotSN, FieldName, OrderID, TestDevice, WorkcenterName, computername, UserName,strTestData);
-	//delete[] strTestData;//Ê¹ÓÃÍê±ÏºóÒªÇåÀíÄÚ´æ
+	//delete[] strTestData;//ä½¿ç”¨å®Œæ¯•åè¦æ¸…ç†å†…å­˜
 
 	if (strcmp(codefile, "error") != 0)
 	{
 		parserADCCheckorSubmitXML(codefile);
-		delete[] codefile;//webservice new,Ê¹ÓÃÍê±ÏºóÒªÇåÀíÄÚ´æ
+		delete[] codefile;//webservice new,ä½¿ç”¨å®Œæ¯•åè¦æ¸…ç†å†…å­˜
 		return true;
 	}
 	return false;
@@ -158,11 +158,11 @@ BOOL CserialCommunicationDlg::ADCSubmitTestData(char* PostCode, char* LotSN, cha
 void CserialCommunicationDlg::parserADCCheckorSubmitXML(char* parserxml)
 {
 	CMarkup xml;
-	mesCheckorSubmitMap.clear();////ÏÈÇåÀíÔÙÊ¹ÓÃmap£¬ÒÔÃâÖØ¸´Ê¹ÓÃÊ±ÉÏÒ»´ÎµÄÊı¾İÃ»Çåµô
-	if (!xml.SetDoc((CString)parserxml))//setdoc·µ»Ø0ËµÃ÷xml¸ñÊ½ÎŞĞ§
+	mesCheckorSubmitMap.clear();////å…ˆæ¸…ç†å†ä½¿ç”¨mapï¼Œä»¥å…é‡å¤ä½¿ç”¨æ—¶ä¸Šä¸€æ¬¡çš„æ•°æ®æ²¡æ¸…æ‰
+	if (!xml.SetDoc((CString)parserxml))//setdocè¿”å›0è¯´æ˜xmlæ ¼å¼æ— æ•ˆ
 	{
 		CString cstrMesError;
-		cstrMesError.Format(_T("[xml¸ñÊ½ÎŞĞ§]µ÷ÓÃparserADCCheckorSubmitXMLÊ±\n[MES·şÎñÆ÷]%s"), parserxml);
+		cstrMesError.Format(_T("[xmlæ ¼å¼æ— æ•ˆ]è°ƒç”¨parserADCCheckorSubmitXMLæ—¶\n[MESæœåŠ¡å™¨]%s"), parserxml);
 		AfxMessageBox(cstrMesError);
 		return;
 	}
@@ -198,18 +198,18 @@ void CserialCommunicationDlg::parserADCCheckorSubmitXML(char* parserxml)
 void CserialCommunicationDlg::parserADCGetInterfaceParameterXML(char* PostCode, char* parserxml)
 {
 	CMarkup xml;
-	if (!xml.SetDoc((CString)parserxml))//setdoc·µ»Ø0ËµÃ÷xml¸ñÊ½ÎŞĞ§
+	if (!xml.SetDoc((CString)parserxml))//setdocè¿”å›0è¯´æ˜xmlæ ¼å¼æ— æ•ˆ
 	{
 		CString cstrMesError;
-		cstrMesError.Format(_T("[xml¸ñÊ½ÎŞĞ§]µ÷ÓÃparserADCGetInterfaceParameterXMLÊ±\n[MES·şÎñÆ÷]%s"), parserxml);
+		cstrMesError.Format(_T("[xmlæ ¼å¼æ— æ•ˆ]è°ƒç”¨parserADCGetInterfaceParameterXMLæ—¶\n[MESæœåŠ¡å™¨]%s"), parserxml);
 		AfxMessageBox(cstrMesError);
 		return;
 	}
 	xml.Save(_T("./mesADCGetInterfaceParameter.xml"));
-	mesDataMap.clear();//ÏÈÇåÀíÔÙÊ¹ÓÃmap£¬ÒÔÃâÖØ¸´Ê¹ÓÃÊ±ÉÏÒ»´ÎµÄÊı¾İÃ»Çåµô
-	mesSettingMap.clear();//ÏÈÇåÀíÔÙÊ¹ÓÃmap£¬ÒÔÃâÖØ¸´Ê¹ÓÃÊ±ÉÏÒ»´ÎµÄÊı¾İÃ»Çåµô
-	mesGetDataMap.clear();//ÏÈÇåÀíÔÙÊ¹ÓÃmap£¬ÒÔÃâÖØ¸´Ê¹ÓÃÊ±ÉÏÒ»´ÎµÄÊı¾İÃ»Çåµô
-	mesGetWordMap.clear();//ÏÈÇåÀíÔÙÊ¹ÓÃmap£¬ÒÔÃâÖØ¸´Ê¹ÓÃÊ±ÉÏÒ»´ÎµÄÊı¾İÃ»Çåµô
+	mesDataMap.clear();//å…ˆæ¸…ç†å†ä½¿ç”¨mapï¼Œä»¥å…é‡å¤ä½¿ç”¨æ—¶ä¸Šä¸€æ¬¡çš„æ•°æ®æ²¡æ¸…æ‰
+	mesSettingMap.clear();//å…ˆæ¸…ç†å†ä½¿ç”¨mapï¼Œä»¥å…é‡å¤ä½¿ç”¨æ—¶ä¸Šä¸€æ¬¡çš„æ•°æ®æ²¡æ¸…æ‰
+	mesGetDataMap.clear();//å…ˆæ¸…ç†å†ä½¿ç”¨mapï¼Œä»¥å…é‡å¤ä½¿ç”¨æ—¶ä¸Šä¸€æ¬¡çš„æ•°æ®æ²¡æ¸…æ‰
+	mesGetWordMap.clear();//å…ˆæ¸…ç†å†ä½¿ç”¨mapï¼Œä»¥å…é‡å¤ä½¿ç”¨æ—¶ä¸Šä¸€æ¬¡çš„æ•°æ®æ²¡æ¸…æ‰
 	xml.FindElem(); // root DBSET element
 	xml.IntoElem(); // inside DBSET
 	while (xml.FindElem(_T("RESULT")))
@@ -339,7 +339,7 @@ BOOL CserialCommunicationDlg::GenTestDate(int MacInput)
 	CMarkup xml;
 	xml.AddElem(_T("TestData"));
 	xml.IntoElem();
-	multiMapTestData.clear();//ÏÈÇåÀíÔÙÊ¹ÓÃmap£¬ÒÔÃâÖØ¸´Ê¹ÓÃÊ±ÉÏÒ»´ÎµÄÊı¾İÃ»Çåµô
+	multiMapTestData.clear();//å…ˆæ¸…ç†å†ä½¿ç”¨mapï¼Œä»¥å…é‡å¤ä½¿ç”¨æ—¶ä¸Šä¸€æ¬¡çš„æ•°æ®æ²¡æ¸…æ‰
 	//CString timetmp = getServerTime();
 	CString timetmp;
 	ADCGetInterfaceParameter("GETDATE",LotSN,FieldName);
@@ -359,7 +359,7 @@ BOOL CserialCommunicationDlg::GenTestDate(int MacInput)
 	if(MacInput==1)
 	{
 		memset(test,0,100);
-		sprintf(test,"%s=%s",cstrMesMacEth,MacEth);//cstrMesMacEthÎªÒªĞ´½øMESµÄMAC×Ö¶ÎÃû£¬MacEthÎªMACµØÖ·
+		sprintf(test,"%s=%s",cstrMesMacEth,MacEth);//cstrMesMacEthä¸ºè¦å†™è¿›MESçš„MACå­—æ®µåï¼ŒMacEthä¸ºMACåœ°å€
 		vectorTestData.push_back(make_pair<string, string>(charMesWriteData,test));
 		multiMapTestData.insert(pair<string, vector<pair<string, string> > >(charMesWrite, vectorTestData));
 	}
@@ -384,13 +384,13 @@ class CAboutDlg : public CDialog
 public:
 	CAboutDlg();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
@@ -436,7 +436,7 @@ CAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD)
 {
 	UpdateData(true);
 	CserialCommunicationApp *pApp = (CserialCommunicationApp *)AfxGetApp();
-	//pApp->app_strSource = m_Iflow;   // m_Iflow  ÊÇa±à¼­¿ò¹ØÁªµÄ±äÁ¿
+	//pApp->app_strSource = m_Iflow;   // m_Iflow  æ˜¯aç¼–è¾‘æ¡†å…³è”çš„å˜é‡
 	//parent->GetDlgItem()->SetWindowText()
 	for (int j = 0; j < 20; j++)
 	{
@@ -506,7 +506,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CserialCommunicationDlg ¶Ô»°¿ò
+// CserialCommunicationDlg å¯¹è¯æ¡†
 
 
 
@@ -577,8 +577,8 @@ void CserialCommunicationDlg::Readconfig()
 		return;
 	}
 
-	::GetPrivateProfileString("COMM", "port", "", m_port.GetBuffer(20), 20, m_strConfigFile);			//´®¿ÚºÅ
-	::GetPrivateProfileString("COMM", "baudRate", "", m_baud.GetBuffer(20), 20, m_strConfigFile);    //²¨ÌØÂÊe);    //²¨ÌØÂÊ
+	::GetPrivateProfileString("COMM", "port", "", m_port.GetBuffer(20), 20, m_strConfigFile);			//ä¸²å£å·
+	::GetPrivateProfileString("COMM", "baudRate", "", m_baud.GetBuffer(20), 20, m_strConfigFile);    //æ³¢ç‰¹ç‡e);    //æ³¢ç‰¹ç‡
 	::GetPrivateProfileString("COMM", "otherTestDelay", "", m_strOtherTestDelay.GetBuffer(20), 20, m_strConfigFile);
 	m_port.ReleaseBuffer();
 	m_baud.ReleaseBuffer();
@@ -586,7 +586,7 @@ void CserialCommunicationDlg::Readconfig()
 	UpdateData(false);
 
 	CString strOpenBtn;
-	::GetPrivateProfileString("COMM", "openBtn", "0", strOpenBtn.GetBuffer(2), 2, m_strConfigFile);	//´®¿Ú´ò¿ª°´Å¥×´Ì¬£¬1¿ª£¬0 ¹Ø
+	::GetPrivateProfileString("COMM", "openBtn", "0", strOpenBtn.GetBuffer(2), 2, m_strConfigFile);	//ä¸²å£æ‰“å¼€æŒ‰é’®çŠ¶æ€ï¼Œ1å¼€ï¼Œ0 å…³
 	if (strOpenBtn == "1")
 	{
 		OnBnClickedButtonSerialControl();
@@ -643,7 +643,7 @@ END_MESSAGE_MAP()
 
 void CserialCommunicationDlg::OnBnClickedCheckSn()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CString strConfigData("");
 	if (BST_UNCHECKED == IsDlgButtonChecked(IDC_CHECK_SN))
 	{
@@ -661,7 +661,7 @@ void CserialCommunicationDlg::OnBnClickedCheckSn()
 
 void CserialCommunicationDlg::OnBnClickedCheckMac()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CString strConfigData("");
 	if (BST_UNCHECKED == IsDlgButtonChecked(IDC_CHECK_MAC))
 	{
@@ -680,7 +680,7 @@ void CserialCommunicationDlg::OnBnClickedCheckMac()
 	}
 }
 
-//ÊµÏÖ¿Ø¼şËæ´°¿Ú´óĞ¡¶ø±ä»°  
+//å®ç°æ§ä»¶éšçª—å£å¤§å°è€Œå˜è¯  
 void CserialCommunicationDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
@@ -699,7 +699,7 @@ void CserialCommunicationDlg::OnSize(UINT nType, int cx, int cy)
 			tmpRight = rect.right;
 			rect.top = rect.top;
 			rect.bottom = rect.bottom*cy / m_rect.Height();
-			GetDlgItem(IDC_STATIC_PICTURE)->MoveWindow(rect);//ÉèÖÃ¿Ø¼ş´óĞ¡  ÉìËõ¿Ø¼ş  
+			GetDlgItem(IDC_STATIC_PICTURE)->MoveWindow(rect);//è®¾ç½®æ§ä»¶å¤§å°  ä¼¸ç¼©æ§ä»¶  
 		}
 		if (GetDlgItem(IDC_EDIT1))
 		{
@@ -710,7 +710,7 @@ void CserialCommunicationDlg::OnSize(UINT nType, int cx, int cy)
 			tmpRight = rect.right;
 			rect.top = rect.top;
 			rect.bottom = rect.bottom*cy / m_rect.Height();
-			GetDlgItem(IDC_EDIT1)->MoveWindow(rect);//ÉèÖÃ¿Ø¼ş´óĞ¡  ÉìËõ¿Ø¼ş
+			GetDlgItem(IDC_EDIT1)->MoveWindow(rect);//è®¾ç½®æ§ä»¶å¤§å°  ä¼¸ç¼©æ§ä»¶
 			GetDlgItem(IDC_EDIT_OK)->MoveWindow(rect);
 			GetDlgItem(IDC_EDIT_FAILED)->MoveWindow(rect);
 		}
@@ -723,7 +723,7 @@ void CserialCommunicationDlg::OnSize(UINT nType, int cx, int cy)
 			tmpRight = rect.right;
 			rect.top = rect.top;
 			rect.bottom = rect.bottom*cy / m_rect.Height();
-			GetDlgItem(IDC_EDIT_TEST_ITEM)->MoveWindow(rect);//ÉèÖÃ¿Ø¼ş´óĞ¡  ÉìËõ¿Ø¼ş
+			GetDlgItem(IDC_EDIT_TEST_ITEM)->MoveWindow(rect);//è®¾ç½®æ§ä»¶å¤§å°  ä¼¸ç¼©æ§ä»¶
 		}
 		if (GetDlgItem(IDC_EDIT_RECEIVE))
 		{
@@ -734,13 +734,13 @@ void CserialCommunicationDlg::OnSize(UINT nType, int cx, int cy)
 			tmpRight = rect.right;
 			rect.top = rect.top;
 			rect.bottom = rect.bottom*cy / m_rect.Height();
-			GetDlgItem(IDC_EDIT_RECEIVE)->MoveWindow(rect);//ÉèÖÃ¿Ø¼ş´óĞ¡  ÉìËõ¿Ø¼ş
-			GetDlgItem(IDC_STATIC)->MoveWindow(rect);//ÉèÖÃ¿Ø¼ş´óĞ¡  ÉìËõ¿Ø¼ş
+			GetDlgItem(IDC_EDIT_RECEIVE)->MoveWindow(rect);//è®¾ç½®æ§ä»¶å¤§å°  ä¼¸ç¼©æ§ä»¶
+			GetDlgItem(IDC_STATIC)->MoveWindow(rect);//è®¾ç½®æ§ä»¶å¤§å°  ä¼¸ç¼©æ§ä»¶
 
 		}
 
 
-		GetClientRect(&m_rect);//×îºóÒª¸üĞÂ¶Ô»°¿òµÄ´óĞ¡£¬µ±×öÏÂÒ»´Î±ä»¯µÄ¾É×ø±ê£»   
+		GetClientRect(&m_rect);//æœ€åè¦æ›´æ–°å¯¹è¯æ¡†çš„å¤§å°ï¼Œå½“åšä¸‹ä¸€æ¬¡å˜åŒ–çš„æ—§åæ ‡ï¼›   
 #endif
 	 // TODO: Add your message handler code here  
 #if 1
@@ -823,32 +823,32 @@ void CserialCommunicationDlg::OnSize(UINT nType, int cx, int cy)
 
 		for (int i = 0; i < 72; i++)
 		{
-			//»ñÈ¡¿Ø¼ş¾ä±ú   
-			if (pWnd[i])//ÅĞ¶ÏÊÇ·ñÎª¿Õ£¬ÒòÎª¶Ô»°¿ò´´½¨Ê±»áµ÷ÓÃ´Ëº¯Êı£¬¶øµ±Ê±¿Ø¼ş»¹Î´´´½¨   
+			//è·å–æ§ä»¶å¥æŸ„   
+			if (pWnd[i])//åˆ¤æ–­æ˜¯å¦ä¸ºç©ºï¼Œå› ä¸ºå¯¹è¯æ¡†åˆ›å»ºæ—¶ä¼šè°ƒç”¨æ­¤å‡½æ•°ï¼Œè€Œå½“æ—¶æ§ä»¶è¿˜æœªåˆ›å»º   
 			{
-				CRect rect; //»ñÈ¡¿Ø¼ş±ä»¯Ç°´óĞ¡   
+				CRect rect; //è·å–æ§ä»¶å˜åŒ–å‰å¤§å°   
 				pWnd[i]->GetWindowRect(&rect);
-				ScreenToClient(&rect);//½«¿Ø¼ş´óĞ¡×ª»»ÎªÔÚ¶Ô»°¿òÖĞµÄÇøÓò×ø±ê   
-				rect.left = rect.left*cx / m_rect.Width();/**//////µ÷Õû¿Ø¼ş´óĞ¡   
+				ScreenToClient(&rect);//å°†æ§ä»¶å¤§å°è½¬æ¢ä¸ºåœ¨å¯¹è¯æ¡†ä¸­çš„åŒºåŸŸåæ ‡   
+				rect.left = rect.left*cx / m_rect.Width();/**//////è°ƒæ•´æ§ä»¶å¤§å°   
 				rect.right = rect.right*cx / m_rect.Width();
 				rect.top = rect.top*cy / m_rect.Height();
 				rect.bottom = rect.bottom*cy / m_rect.Height();
-				pWnd[i]->MoveWindow(rect);//ÉèÖÃ¿Ø¼ş´óĞ¡  ÉìËõ¿Ø¼ş  
+				pWnd[i]->MoveWindow(rect);//è®¾ç½®æ§ä»¶å¤§å°  ä¼¸ç¼©æ§ä»¶  
 			}
 		}
-		GetClientRect(&m_rect);//×îºóÒª¸üĞÂ¶Ô»°¿òµÄ´óĞ¡£¬µ±×öÏÂÒ»´Î±ä»¯µÄ¾É×ø±ê£»   
+		GetClientRect(&m_rect);//æœ€åè¦æ›´æ–°å¯¹è¯æ¡†çš„å¤§å°ï¼Œå½“åšä¸‹ä¸€æ¬¡å˜åŒ–çš„æ—§åæ ‡ï¼›   
 #endif
 	}
 }
 
-// CserialCommunicationDlg ÏûÏ¢´¦Àí³ÌĞò
+// CserialCommunicationDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 BOOL CserialCommunicationDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// ½«¡°¹ØÓÚ...¡±²Ëµ¥ÏîÌí¼Óµ½ÏµÍ³²Ëµ¥ÖĞ¡£
+	// å°†â€œå…³äº...â€èœå•é¡¹æ·»åŠ åˆ°ç³»ç»Ÿèœå•ä¸­ã€‚
 
-	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£
+	// IDM_ABOUTBOX å¿…é¡»åœ¨ç³»ç»Ÿå‘½ä»¤èŒƒå›´å†…ã€‚
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -864,19 +864,19 @@ BOOL CserialCommunicationDlg::OnInitDialog()
 		}
 	}
 	//ShowWindow(SW_MAXIMIZE);
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon2, TRUE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon2, TRUE);		// è®¾ç½®å°å›¾æ ‡
 	//add for MES
 	FontSetting();
 	InitData();
 	GetConfigData();
 	///////////////////////////////
-	//»ñÈ¡¶Ô»°¿ò´´½¨Ê±µÄ´óĞ¡  
+	//è·å–å¯¹è¯æ¡†åˆ›å»ºæ—¶çš„å¤§å°  
 	GetClientRect(&m_rect);
 
-	// TODO: ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–ä»£ç 
 	((CComboBox*)GetDlgItem(IDC_COMBO_BAUD_SELECT))->SetCurSel(5);
 	((CComboBox*)GetDlgItem(IDC_COMBO_DATA_BIT_SELECT))->SetCurSel(2);
 	((CComboBox*)GetDlgItem(IDC_COMBO_STOP_SELECT))->SetCurSel(0);
@@ -928,10 +928,10 @@ BOOL CserialCommunicationDlg::OnInitDialog()
 	strPath.RemoveAll();
 	
 	m_toolstip.Create(this);
-	m_toolstip.AddTool(GetDlgItem(IDC_BUTTON_SEND_FILE),"Í¨¹ı´®¿Ú·¢ËÍÎÄ¼ş,ÎŞÍ¨Ñ¶Ğ­ÒéµÄ·¢ËÍ");
+	m_toolstip.AddTool(GetDlgItem(IDC_BUTTON_SEND_FILE),"é€šè¿‡ä¸²å£å‘é€æ–‡ä»¶,æ— é€šè®¯åè®®çš„å‘é€");
 
-	//SetTimer(TIME_SHOW_MESSAGE_SERIAL,10,NULL);	//ÓÃÓÚË¢ĞÂedit½çÃæ 10MSÒ»´Î
-	SetTimer(TIME_SHOW_MESSAGE_SERIAL,100,NULL);	//ÓÃÓÚË¢ĞÂedit½çÃæ 100MSÒ»´Î ²âÊÔ½×¶ÎÊÔÊÔĞ§¹û
+	//SetTimer(TIME_SHOW_MESSAGE_SERIAL,10,NULL);	//ç”¨äºåˆ·æ–°editç•Œé¢ 10MSä¸€æ¬¡
+	SetTimer(TIME_SHOW_MESSAGE_SERIAL,200,NULL);	//ç”¨äºåˆ·æ–°editç•Œé¢ 200MSä¸€æ¬¡ æµ‹è¯•é˜¶æ®µè¯•è¯•æ•ˆæœ
 	//GetDlgItem(IDC_BUTTON_CONTROL)->EnableWindow(true);
 	GetDlgItem(IDC_BUTTON3)->EnableWindow(FALSE);
 	GetDlgItem(IDC_BUTTON_TEST_STOP)->EnableWindow(FALSE);
@@ -966,7 +966,7 @@ BOOL CserialCommunicationDlg::OnInitDialog()
 	//GetDlgItem(IDC_EDIT1)->SetWindowText(_T(""));
 	GetDlgItem(IDC_EDIT_OK)->SetWindowText(_T(""));
 	GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(_T(""));
-	GetDlgItem(IDC_EDIT_TEST_ITEM)->SetWindowText(_T("²âÊÔÏîÄ¿"));
+	GetDlgItem(IDC_EDIT_TEST_ITEM)->SetWindowText(_T("æµ‹è¯•é¡¹ç›®"));
 
 	//GetDlgItem(IDC_EDIT1)->ShowWindow(SW_SHOW);
 	//GetDlgItem(IDC_EDIT_OK)->ShowWindow(SW_HIDE);
@@ -984,10 +984,10 @@ BOOL CserialCommunicationDlg::OnInitDialog()
 	Readconfig();
 
 	GetDlgItem(IDC_BUTTON_LOAD_CONFIG_FILE2)->EnableWindow(FALSE);
-	return FALSE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	return FALSE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
-void CserialCommunicationDlg::FontSetting()//³õÊ¼»¯×ÖÌåÉèÖÃ
+void CserialCommunicationDlg::FontSetting()//åˆå§‹åŒ–å­—ä½“è®¾ç½®
 {
 	m_ftCtrl.CreateFont( 32,
 		0,
@@ -1002,15 +1002,15 @@ void CserialCommunicationDlg::FontSetting()//³õÊ¼»¯×ÖÌåÉèÖÃ
 		CLIP_DEFAULT_PRECIS,
 		DEFAULT_QUALITY,
 		DEFAULT_PITCH | FF_SWISS,
-		_T("ºÚÌå"));
+		_T("é»‘ä½“"));
 	m_psdinfo.SetFont(&m_ftCtrl);
 	m_time.SetFont(&m_ftCtrl);
 }
 
 void CserialCommunicationDlg::InitData()
 {
-	//´´½¨³õÊ¼»¯ÅäÖÃÎÄ¼ş£¬ÓÃÓÚ±£´æÒ»Ğ©²Ù×÷ĞÅÏ¢¡£
-	GetCurrentDirectory(100,m_strConfigFile.GetBuffer(100));  //È¡µÃµ±Ç°ÔËĞĞÂ·¾¶
+	//åˆ›å»ºåˆå§‹åŒ–é…ç½®æ–‡ä»¶ï¼Œç”¨äºä¿å­˜ä¸€äº›æ“ä½œä¿¡æ¯ã€‚
+	GetCurrentDirectory(100,m_strConfigFile.GetBuffer(100));  //å–å¾—å½“å‰è¿è¡Œè·¯å¾„
 	m_strConfigFile.ReleaseBuffer();
 	m_strConfigFile += "\\config.ini";
 
@@ -1019,43 +1019,43 @@ void CserialCommunicationDlg::InitData()
 	mytimer = 0;
 
 	GetDlgItem(IDC_EDIT_JNUMBER)->SetFocus();
-	//3¸ö×éºÏ¿ò¸³³õÖµ
+	//3ä¸ªç»„åˆæ¡†èµ‹åˆå€¼
 	m_CCombox_Line.AddString(_T("1A"));
 	m_CCombox_Line.AddString(_T("2A"));
 	m_CCombox_Line.AddString(_T("3A"));
-	m_CCombox_Line.SetCurSel(0);//ÉèÖÃÁĞ±í¿òÄ¬ÈÏÖµ
+	m_CCombox_Line.SetCurSel(0);//è®¾ç½®åˆ—è¡¨æ¡†é»˜è®¤å€¼
 	m_CCombox_Line.EnableWindow(FALSE);
 	m_CCombox_testproject.AddString(_T("T962"));
 	m_CCombox_testproject.AddString(_T("V510"));
 	m_CCombox_testproject.AddString(_T("T966"));
 	m_CCombox_testproject.AddString(_T("T968"));
-	m_CCombox_testproject.SetCurSel(0);//ÉèÖÃÁĞ±í¿òÄ¬ÈÏÖµ
+	m_CCombox_testproject.SetCurSel(0);//è®¾ç½®åˆ—è¡¨æ¡†é»˜è®¤å€¼
 	m_CCombox_testproject.EnableWindow(TRUE);
 	m_CComBoMainKey.AddString(_T("SN"));
 	m_CComBoMainKey.AddString(_T("BarCode"));
-	m_CComBoMainKey.SetCurSel(0);//ÉèÖÃÁĞ±í¿òÄ¬ÈÏÖµ
-	m_CCombox_model.AddString(_T("À¶ÑÀ"));
-	m_CCombox_model.SetCurSel(0);//ÉèÖÃÁĞ±í¿òÄ¬ÈÏÖµ
+	m_CComBoMainKey.SetCurSel(0);//è®¾ç½®åˆ—è¡¨æ¡†é»˜è®¤å€¼
+	m_CCombox_model.AddString(_T("è“ç‰™"));
+	m_CCombox_model.SetCurSel(0);//è®¾ç½®åˆ—è¡¨æ¡†é»˜è®¤å€¼
 	m_CCombox_model.EnableWindow(FALSE);
 	m_Combox_Read.AddString(_T("SN"));
-	m_Combox_Read.SetCurSel(0);//ÉèÖÃ¶ÁÈ¡ÁĞ±í¿òÄ¬ÈÏĞÅÏ¢
+	m_Combox_Read.SetCurSel(0);//è®¾ç½®è¯»å–åˆ—è¡¨æ¡†é»˜è®¤ä¿¡æ¯
 	m_Combox_Read.EnableWindow(FALSE);
 	GetDlgItem(IDC_CHECK_MAC)->EnableWindow(TRUE);
-	//list controlµÄ³õÊ¼»¯
+	//list controlçš„åˆå§‹åŒ–
 	//m_list.SetImageList(&m_Image,LVSIL_SMALL); 
 	m_list.SetImageList(&m_Image, LVSIL_NORMAL);
 	m_list.ModifyStyle(LVS_TYPEMASK,LVS_REPORT);
 	m_list.SetExtendedStyle(LVS_EX_FULLROWSELECT|LVS_EX_FLATSB|LVS_EX_TWOCLICKACTIVATE |LVS_EX_GRIDLINES);
-	m_list.InsertColumn(0,_T("ÊıÁ¿"),LVCFMT_LEFT,40);
-	m_list.InsertColumn(1,_T("Ê±¼ä"),LVCFMT_LEFT,160);
-	m_list.InsertColumn(2,_T("½á¹û"),LVCFMT_LEFT,80);
+	m_list.InsertColumn(0,_T("æ•°é‡"),LVCFMT_LEFT,40);
+	m_list.InsertColumn(1,_T("æ—¶é—´"),LVCFMT_LEFT,160);
+	m_list.InsertColumn(2,_T("ç»“æœ"),LVCFMT_LEFT,80);
 	m_list.InsertColumn(3,_T("MAC"),LVCFMT_LEFT,140);
 	m_list.InsertColumn(4,_T("SN"),LVCFMT_LEFT,180);
 	m_IntoEdit.EnableWindow(FALSE);
 	//m_Button_in.EnableWindow(FALSE);
-	m_uTimerPsd=SetTimer(TIMER_ORDER,200,NULL);//ÉèÖÃÒ»¸ö¶¨Ê±Æ÷¼ì²é¶©µ¥ºÅµÄÊäÈë
-	ShowMessage(BLUE,_T("ÇëÊäÈëÓĞĞ§Ô±¹¤ºÅ£¡"),0);
-	Order_Flag=0;//ÓÃÀ´ÅĞ¶ÏµÚ´ÎÊäÈë¶©µ¥ºÅ
+	m_uTimerPsd=SetTimer(TIMER_ORDER,200,NULL);//è®¾ç½®ä¸€ä¸ªå®šæ—¶å™¨æ£€æŸ¥è®¢å•å·çš„è¾“å…¥
+	ShowMessage(BLUE,_T("è¯·è¾“å…¥æœ‰æ•ˆå‘˜å·¥å·ï¼"),0);
+	Order_Flag=0;//ç”¨æ¥åˆ¤æ–­ç¬¬æ¬¡è¾“å…¥è®¢å•å·
 	
 }
 
@@ -1072,19 +1072,19 @@ void CserialCommunicationDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 
 void CserialCommunicationDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -1092,7 +1092,7 @@ void CserialCommunicationDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -1101,8 +1101,8 @@ void CserialCommunicationDlg::OnPaint()
 	}
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±ê
-//ÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡
+//æ˜¾ç¤ºã€‚
 HCURSOR CserialCommunicationDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -1111,11 +1111,11 @@ HCURSOR CserialCommunicationDlg::OnQueryDragIcon()
 
 void CserialCommunicationDlg::OnCbnSetfocusComboPortSelect()
 {
-	//ËÑË÷ÏµÍ³µ±Ç°´®¿Ú£¬²¢ÊµÊ±ÏÔÊ¾ÔÚÑ¡Ôñ¿òÖĞ
+	//æœç´¢ç³»ç»Ÿå½“å‰ä¸²å£ï¼Œå¹¶å®æ—¶æ˜¾ç¤ºåœ¨é€‰æ‹©æ¡†ä¸­
 	BYTE i = 0;
 	CString str;
 	str.Empty();
-	((CComboBox*)GetDlgItem(IDC_COMBO_PORT_SELECT))->ResetContent();//Çå³ıÏÔÊ¾Ïî
+	((CComboBox*)GetDlgItem(IDC_COMBO_PORT_SELECT))->ResetContent();//æ¸…é™¤æ˜¾ç¤ºé¡¹
 	for(i = 0; i < 255; i++)
 	{
 		if(SIO_OK == sio_open(i))
@@ -1139,13 +1139,13 @@ void CserialCommunicationDlg::OnCbnSetfocusComboPortSelect()
 
 void CserialCommunicationDlg::OnCbnCloseupComboBaudSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int i = 0;
 	i = ((CComboBox*)GetDlgItem(IDC_COMBO_BAUD_SELECT))->GetCurSel();
 	if(-1== i)
 	{
 		baud = 0x80;
-		MessageBox("ÇëÑ¡ÔñÒ»¸ö²¨ÌØÂÊ","´íÎó",MB_OK);
+		MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªæ³¢ç‰¹ç‡","é”™è¯¯",MB_OK);
 	}
 	else
 	{
@@ -1186,7 +1186,7 @@ void CserialCommunicationDlg::OnCbnCloseupComboDataBitSelect()
 	if(-1== i)
 	{
 		data_length = 0x80;
-		MessageBox("ÇëÑ¡ÔñÒ»¸öÊı¾İ³¤¶È","´íÎó",MB_OK);
+		MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªæ•°æ®é•¿åº¦","é”™è¯¯",MB_OK);
 	}
 	else
 	{
@@ -1207,13 +1207,13 @@ void CserialCommunicationDlg::OnCbnCloseupComboDataBitSelect()
 
 void CserialCommunicationDlg::OnCbnCloseupComboStopSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int i = 0;
 	i = ((CComboBox*)GetDlgItem(IDC_COMBO_STOP_SELECT))->GetCurSel();
 	if(-1== i)
 	{
 		stop_bit = 0x80;
-		MessageBox("ÇëÑ¡ÔñÒ»¸öÍ£Ö¹Î»","´íÎó",MB_OK);
+		MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªåœæ­¢ä½","é”™è¯¯",MB_OK);
 	}
 	else
 	{
@@ -1231,13 +1231,13 @@ void CserialCommunicationDlg::OnCbnCloseupComboStopSelect()
 
 void CserialCommunicationDlg::OnCbnCloseupComboCheckSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int i = 0;
 	i = ((CComboBox*)GetDlgItem(IDC_COMBO_CHECK_SELECT))->GetCurSel();
 	if(-1== i)
 	{
 		check_mode = 0x80;
-		MessageBox("ÇëÑ¡ÔñÒ»¸öÍ£Ö¹Î»","´íÎó",MB_OK);
+		MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªåœæ­¢ä½","é”™è¯¯",MB_OK);
 	}
 	else
 	{
@@ -1266,8 +1266,8 @@ void CserialCommunicationDlg::SerialReConnect()
 		{
 			int config = data_length | stop_bit | check_mode;
 			serial_isopen = TRUE;
-			sio_flowctrl(com_port, 0x00);//¹Ø±ÕÓ²¼şÁ÷¿ØÖÆ
-			sio_lctrl(com_port, 0x00);//¹Ø±ÕRTS DTR
+			sio_flowctrl(com_port, 0x00);//å…³é—­ç¡¬ä»¶æµæ§åˆ¶
+			sio_lctrl(com_port, 0x00);//å…³é—­RTS DTR
 			sio_ioctl(com_port, baud, config);
 			sio_flush(com_port, 2);
 			break;
@@ -1275,14 +1275,14 @@ void CserialCommunicationDlg::SerialReConnect()
 	}
 	//if (!serial_isopen)
 	//{
-	//	MessageBox("´®¿ÚÖØÁ¬20´Î", "Ê§°Ü", MB_OK);
+	//	MessageBox("ä¸²å£é‡è¿20æ¬¡", "å¤±è´¥", MB_OK);
 	//}
 }
 
 void CserialCommunicationDlg::OnBnClickedButtonSerialControl()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
-	if(serial_isopen == TRUE)//´ËÊ±ĞèÒª¹Ø±Õ´®¿Ú
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
+	if(serial_isopen == TRUE)//æ­¤æ—¶éœ€è¦å…³é—­ä¸²å£
 	{
 		if(com_port > 0)
 		{
@@ -1297,11 +1297,11 @@ void CserialCommunicationDlg::OnBnClickedButtonSerialControl()
 		((CComboBox*)GetDlgItem(IDC_COMBO_CHECK_SELECT))->EnableWindow(TRUE);
 		((CComboBox*)GetDlgItem(IDC_COMBO_DATA_BIT_SELECT))->EnableWindow(TRUE);
 		((CButton*)GetDlgItem(IDC_BUTTON_SERIAL_CONTROL))->EnableWindow(TRUE);
-		((CButton*)GetDlgItem(IDC_BUTTON_SERIAL_CONTROL))->SetWindowText("´ò¿ª´®¿Ú");
+		((CButton*)GetDlgItem(IDC_BUTTON_SERIAL_CONTROL))->SetWindowText("æ‰“å¼€ä¸²å£");
 	}
 	else
 	{
-		//»ñÈ¡µ±Ç°Ñ¡ÔñµÄ´®¿ÚºÅÂë
+		//è·å–å½“å‰é€‰æ‹©çš„ä¸²å£å·ç 
 		int i = 0;
 		CString str;
 		int config;
@@ -1320,7 +1320,7 @@ void CserialCommunicationDlg::OnBnClickedButtonSerialControl()
 #endif
 		 if(-1==i)
 		 {
-			 MessageBox("ÇëÑ¡ÔñÒ»¸ö´®¿Ú","Ê§°Ü",MB_OK);
+			 MessageBox("è¯·é€‰æ‹©ä¸€ä¸ªä¸²å£","å¤±è´¥",MB_OK);
 			 return;
 		 }
 		 else
@@ -1328,41 +1328,41 @@ void CserialCommunicationDlg::OnBnClickedButtonSerialControl()
 			 ((CComboBox*)GetDlgItem(IDC_COMBO_PORT_SELECT))->GetWindowText(str);
 			 str = str.Mid(3,str.GetLength());
 			 i = atoi(str);
-			 //¼ì²âÅäÖÃĞÅÏ¢
+			 //æ£€æµ‹é…ç½®ä¿¡æ¯
 			 if(baud == 0x80)
 			 {
-				 MessageBox("²¨ÌØÂÊÎ´Ñ¡Ôñ","´íÎó",MB_OK);
+				 MessageBox("æ³¢ç‰¹ç‡æœªé€‰æ‹©","é”™è¯¯",MB_OK);
 				 return;
 			 }
 			 if(data_length == 0x80)
 			 {
-				 MessageBox("Êı¾İ³¤¶ÈÎ´Ñ¡Ôñ","´íÎó",MB_OK);
+				 MessageBox("æ•°æ®é•¿åº¦æœªé€‰æ‹©","é”™è¯¯",MB_OK);
 				 return;
 			 }
 			 if(stop_bit == 0x80)
 			 {
-				 MessageBox("Í£Ö¹Î»Î´Ñ¡Ôñ","´íÎó",MB_OK);
+				 MessageBox("åœæ­¢ä½æœªé€‰æ‹©","é”™è¯¯",MB_OK);
 				 return;
 			 }
 			 if(check_mode == 0x80)
 			 {
-				 MessageBox("Ğ£ÑéÄ£Ê½Î´Ñ¡Ôñ","´íÎó",MB_OK);
+				 MessageBox("æ ¡éªŒæ¨¡å¼æœªé€‰æ‹©","é”™è¯¯",MB_OK);
 				 return;
 			 }
 			config = data_length|stop_bit|check_mode;
-			 //¿ªÊ¼´®¿ÚÅäÖÃ
+			 //å¼€å§‹ä¸²å£é…ç½®
 			 if( sio_open(i) != SIO_OK)
 			 {
-				 MessageBox("´®¿Ú´ò¿ªÊ§°Ü","ÌáÊ¾",MB_OK);
+				 MessageBox("ä¸²å£æ‰“å¼€å¤±è´¥","æç¤º",MB_OK);
 				 this->serial_isopen = FALSE;
 				 com_port = 0;
 				 return;
 			 }
-			//ÔËĞĞµ½ÕâÀï´ú±í´ò¿ª³É¹¦
+			//è¿è¡Œåˆ°è¿™é‡Œä»£è¡¨æ‰“å¼€æˆåŠŸ
 			com_port = i;
 			serial_isopen = TRUE;
-			sio_flowctrl(com_port,0x00);//¹Ø±ÕÓ²¼şÁ÷¿ØÖÆ
-			sio_lctrl(com_port,0x00);//¹Ø±ÕRTS DTR
+			sio_flowctrl(com_port,0x00);//å…³é—­ç¡¬ä»¶æµæ§åˆ¶
+			sio_lctrl(com_port,0x00);//å…³é—­RTS DTR
 			sio_ioctl(com_port,baud,config);
 			sio_flush(com_port,2);
 
@@ -1371,7 +1371,7 @@ void CserialCommunicationDlg::OnBnClickedButtonSerialControl()
 			((CComboBox*)GetDlgItem(IDC_COMBO_STOP_SELECT))->EnableWindow(FALSE);
 			((CComboBox*)GetDlgItem(IDC_COMBO_CHECK_SELECT))->EnableWindow(FALSE);
 			((CComboBox*)GetDlgItem(IDC_COMBO_DATA_BIT_SELECT))->EnableWindow(FALSE);
-			((CButton*)GetDlgItem(IDC_BUTTON_SERIAL_CONTROL))->SetWindowText("¹Ø±Õ´®¿Ú");
+			((CButton*)GetDlgItem(IDC_BUTTON_SERIAL_CONTROL))->SetWindowText("å…³é—­ä¸²å£");
 			//GetDlgItem(IDC_BUTTON3)->EnableWindow(TRUE);
 			UpdateData();
 			::WritePrivateProfileString("COMM","port",m_port,m_strConfigFile);
@@ -1407,7 +1407,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "normal_red  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "normal_red  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
@@ -1417,7 +1417,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "normal_green  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "normal_green  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
@@ -1427,18 +1427,18 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "normal_blue  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "normal_blue  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
-		//GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("Ğ´É«ÎÂNormalÍê³É");
+		//GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("å†™è‰²æ¸©Normalå®Œæˆ");
 		bFacWriteWB_Normal_Blue = false;
 	}
 	if (bFacWriteWB_Cool_Red)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "cool_red  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "cool_red  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
@@ -1448,7 +1448,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "cool_green  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "cool_green  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
@@ -1458,18 +1458,18 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "cool_blue  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "cool_blue  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
-		//GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("Ğ´É«ÎÂCoolÍê³É");
+		//GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("å†™è‰²æ¸©Coolå®Œæˆ");
 		bFacWriteWB_Cool_Blue = false;
 	}
 	if (bFacWriteWB_Warm_Red)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "warm_red  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "warm_red  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
@@ -1479,7 +1479,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "warm_green  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "warm_green  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
@@ -1489,23 +1489,23 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	{
 		if (curretBufString.GetLength() < 3)
 		{
-			m_cEdit_value_use_NG +=  "warm_blue  Ğ´Ê§°Ü";
+			m_cEdit_value_use_NG +=  "warm_blue  å†™å¤±è´¥";
 			GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 			curretBufString_test = "";
 		}
-		GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("Ğ´É«ÎÂÍê³É");
+		GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("å†™è‰²æ¸©å®Œæˆ");
 		bFacWriteWB_Warm_Blue = false;
 	}
 	if (curretBufString.Find("55B207") != -1)			//<--VER
 	{
 		if (TestVERBegin)
-		//if (1)  //²âÊÔÓÃ
+		//if (1)  //æµ‹è¯•ç”¨
 		{
 			CheckData += curretBufString;
 			if (CheckData.GetLength() == 24)
 			{
 				curretBufString = CheckData;
-				int iStart = curretBufString.Find("55B207");  //07ÊÇ·µ»ØÊı¾İÎ»Êı
+				int iStart = curretBufString.Find("55B207");  //07æ˜¯è¿”å›æ•°æ®ä½æ•°
 				int iEnd = 0;
 				CString tmp1 = curretBufString.Mid(iStart + 6, 50);
 				iEnd = tmp1.Find("FE");
@@ -1518,7 +1518,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 				CString VMonth1 = VERSIONMonth.Left(2);
 				CString VMonth2 = VERSIONMonth.Mid(2, 2);
 				CString VMonth3 = VERSIONMonth.Right(2);
-				int xMonth1 = strtol(VMonth1, NULL, 16);//´ËÊ±£¬xMonth1=77£»
+				int xMonth1 = strtol(VMonth1, NULL, 16);//æ­¤æ—¶ï¼ŒxMonth1=77ï¼›
 				int xMonth2 = strtol(VMonth2, NULL, 16);
 				int xMonth3 = strtol(VMonth3, NULL, 16);
 				CString VERSIONTime = sVersion.Right(8);
@@ -1860,7 +1860,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 	if ((curretBufString.Find("55B206")) != -1 )  //MAC
 	{
 		if (TestMACSend)
-		//if(1) //²âÊÔÓÃ
+		//if(1) //æµ‹è¯•ç”¨
 		{	
 			CheckData += curretBufString_test;
 			if (CheckData.GetLength() == 24)
@@ -1869,7 +1869,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 				ReceiveSaveMacSuccessFile(CheckData);
 				CString m_Mac = curretBufString.Mid(6, 12);
 				m_Mac = m_Mac.MakeLower();
-				if (m_Mac.GetLength() == 12) //Mac³¤¶È¼ì²â,±£Ö¤»ñÈ¡µÄMac³¤¶ÈÎª12Î»
+				if (m_Mac.GetLength() == 12) //Macé•¿åº¦æ£€æµ‹,ä¿è¯è·å–çš„Macé•¿åº¦ä¸º12ä½
 				{
 					CString stemp;
 					int k;
@@ -1898,7 +1898,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 					}
 					else
 					{
-						ShowMessage(RED, _T("MACĞ£Ñé´íÎó,Çë¼ì²â."), 0);//MacĞ£Ñé´íÎó;
+						ShowMessage(RED, _T("MACæ ¡éªŒé”™è¯¯,è¯·æ£€æµ‹."), 0);//Macæ ¡éªŒé”™è¯¯;
 					}
 				}
 				else
@@ -1926,7 +1926,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 			else if(CheckData.GetLength() < 24)
 			{
 				ReceiveSaveMacErrorFile(CheckData);
-				//CheckData = "";
+				CheckData = "";
 				curretBufString_test = "";
 				if (countMac < 1)
 				{
@@ -2082,7 +2082,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 			 if (TestWifiSend)
 			 {
 				 CString m_Wifi = curretBufString.Mid(6,2);
-				 int mWifi = strtol(m_Wifi,NULL,16);  //<--WiFi·µ»Ø¸öÊı
+				 int mWifi = strtol(m_Wifi,NULL,16);  //<--WiFiè¿”å›ä¸ªæ•°
 				 if (mWifi > 0)
 				 {
 					 m_cEdit_value_use_OK += "WIFI	      PASS\r\n";
@@ -2112,7 +2112,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 			 if (TestBlueSend)
 			 {
 				 CString m_Blue = curretBufString.Mid(6,2);
-				 int mBlue = strtol(m_Blue,NULL,16);  //<--À¶É«·µ»Ø¸öÊı
+				 int mBlue = strtol(m_Blue,NULL,16);  //<--è“è‰²è¿”å›ä¸ªæ•°
 				 if (mBlue > 0)
 				 {
 					 m_cEdit_value_use_OK += "BLUE	      PASS\r\n";
@@ -2127,7 +2127,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 						 countBlue++;
 						 TestBlueSend = TRUE;
 						 curretBufString_test = "";
-						 OnBnClickedButtonShort_fun(39);		//<--À¶ÑÀ
+						 OnBnClickedButtonShort_fun(39);		//<--è“ç‰™
 					 }
 					 else
 					 {
@@ -2142,13 +2142,13 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 		 }
 		if (curretBufString.Find("55B201") != -1)
 		 {
-			 if (TestNetSend)   //¼ì²âÍø¿Ú--ping IPµØÖ·
+			 if (TestNetSend)   //æ£€æµ‹ç½‘å£--ping IPåœ°å€
 			 {
 				 CString m_Wifi = curretBufString.Mid(6,2);
 				 int mWifi = strtol(m_Wifi,NULL,16);  //<--
 				 if (mWifi == 1)
 				 {
-					 m_cEdit_value_use_OK += "Íø¿Ú	      PASS\r\n";
+					 m_cEdit_value_use_OK += "ç½‘å£	      PASS\r\n";
 					 GetDlgItem(IDC_EDIT_OK)->SetWindowText(m_cEdit_value_use_OK);
 					 TestNetSend = FALSE;
 					 curretBufString_test = "";
@@ -2165,7 +2165,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 					 }
 					 else
 					 {
-						 m_cEdit_value_use_NG += "Íø¿Ú	        NG\r\n";
+						 m_cEdit_value_use_NG += "ç½‘å£	        NG\r\n";
 						 GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 						 TestNetSend = FALSE;
 						 OnBnClickedButtonReceiveSaveFile();
@@ -2174,7 +2174,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 				 }
 			 }
 		 }
-		if (curretBufString.Find("55B206") != -1)   // USB+SD¿¨               T968·½°¸USB¶Ë¿Ú²âÊÔÂëÖµ»Ø¸´´íÎó
+		if (curretBufString.Find("55B206") != -1)   // USB+SDå¡               T968æ–¹æ¡ˆUSBç«¯å£æµ‹è¯•ç å€¼å›å¤é”™è¯¯
 		 {
 				if (TestUsbSend)
 				{
@@ -2184,9 +2184,9 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 						CString m_Usb1 = curretBufString.Mid(8,2);							//55 B2 06 03  00  02 00 01 00 00 42FE
 						CString m_Usb2 = curretBufString.Mid(10,2);
 						CString m_Sd =  curretBufString.Mid(16,2);
-						int mUsb1 = strtol(m_Usb1,NULL,16);   //ÉÏ·½USB
-						int mUsb2 = strtol(m_Usb2,NULL,16);   //ÏÂ·½USB
-						int mSd = strtol(m_Sd,NULL,16); //SD¿¨
+						int mUsb1 = strtol(m_Usb1,NULL,16);   //ä¸Šæ–¹USB
+						int mUsb2 = strtol(m_Usb2,NULL,16);   //ä¸‹æ–¹USB
+						int mSd = strtol(m_Sd,NULL,16); //SDå¡
 						if((mUsb1 > 0)&&(mUsb2 > 0))
 						{
 							m_cEdit_value_use_OK+= "USB	      PASS\r\n";
@@ -2219,13 +2219,13 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 								}
 						if (mSd == 1)
 						{
-							m_cEdit_value_use_OK += "SD¿¨	      PASS\r\n";
+							m_cEdit_value_use_OK += "SDå¡	      PASS\r\n";
 							Sleep(500);
 							GetDlgItem(IDC_EDIT_OK)->SetWindowText(m_cEdit_value_use_OK);
 						}
 						else
 						{
-							m_cEdit_value_use_NG += "SD¿¨	        NG\r\n";
+							m_cEdit_value_use_NG += "SDå¡	        NG\r\n";
 							Sleep(500);
 							GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 						}
@@ -2236,9 +2236,9 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 						CString m_Usb1 = curretBufString.Mid(8, 2);							//55 B2 06 03  00  02 00 01 00 00 42FE
 						CString m_Usb2 = curretBufString.Mid(10, 2);
 						CString m_Sd = curretBufString.Mid(16, 2);
-						int mUsb1 = strtol(m_Usb1, NULL, 16);   //ÉÏ·½USB
-						int mUsb2 = strtol(m_Usb2, NULL, 16);   //ÏÂ·½USB
-						int mSd = strtol(m_Sd, NULL, 16); //SD¿¨
+						int mUsb1 = strtol(m_Usb1, NULL, 16);   //ä¸Šæ–¹USB
+						int mUsb2 = strtol(m_Usb2, NULL, 16);   //ä¸‹æ–¹USB
+						int mSd = strtol(m_Sd, NULL, 16); //SDå¡
 						if ((mUsb1 > 0) && (mUsb2 > 0))
 						{
 							m_cEdit_value_use_OK += "USB	      PASS\r\n";
@@ -2271,13 +2271,13 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 						}
 						if (mSd == 1)
 						{
-							m_cEdit_value_use_OK += "SD¿¨	      PASS\r\n";
+							m_cEdit_value_use_OK += "SDå¡	      PASS\r\n";
 							Sleep(500);
 							GetDlgItem(IDC_EDIT_OK)->SetWindowText(m_cEdit_value_use_OK);
 						}
 						else
 						{
-							m_cEdit_value_use_NG += "SD¿¨	        NG\r\n";
+							m_cEdit_value_use_NG += "SDå¡	        NG\r\n";
 							Sleep(500);
 							GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 						}
@@ -2369,13 +2369,13 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 					}
 					else if (strTestProject.Find("V510") != -1)
 					{
-						MessageBox("Çë×¢Òâ,V510·½°¸ÎŞ·¨¼ì²âUSB!");
+						MessageBox("è¯·æ³¨æ„,V510æ–¹æ¡ˆæ— æ³•æ£€æµ‹USB!");
 						//CString m_Usb1 = curretBufString.Mid(8, 2);							//55 B2 06 03  00  02 00 01 00 00 42FE
 						//CString m_Usb2 = curretBufString.Mid(10, 2);
 						//CString m_Sd = curretBufString.Mid(16, 2);
-						//int mUsb1 = strtol(m_Usb1, NULL, 16);   //ÉÏ·½USB
-						//int mUsb2 = strtol(m_Usb2, NULL, 16);   //ÏÂ·½USB
-						//int mSd = strtol(m_Sd, NULL, 16); //SD¿¨
+						//int mUsb1 = strtol(m_Usb1, NULL, 16);   //ä¸Šæ–¹USB
+						//int mUsb2 = strtol(m_Usb2, NULL, 16);   //ä¸‹æ–¹USB
+						//int mSd = strtol(m_Sd, NULL, 16); //SDå¡
 						//if ((mUsb1 > 0) && (mUsb2 > 0))
 						//{
 						//	m_cEdit_value_use_OK += "USB/SD	      PASS\r\n";
@@ -2522,17 +2522,17 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 }
 void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	CString strTemp;
 	CString strShowMessage("");
 	if(TIME_SHOW_MESSAGE_SERIAL == nIDEvent)
 	{
 		if(serial_isopen == TRUE)
 		{
-			//´®¿Ú´ò¿ª,¼ì²é´®¿Ú×´Ì¬
+			//ä¸²å£æ‰“å¼€,æ£€æŸ¥ä¸²å£çŠ¶æ€
 			if(sio_lstatus(com_port) >= 0)
 			{
-				//´®¿ÚOK,¶ÁÈ¡´®¿ÚÊı¾İ
+				//ä¸²å£OK,è¯»å–ä¸²å£æ•°æ®
 				SerialsProcessBuffer();
 				if(serialReadTemp.GetLength() > 0)
 				{
@@ -2541,18 +2541,18 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					showString.Append(serialReadTemp);
 					showString.Append("\r\n");
 					GetDlgItem(IDC_EDIT_RECEIVE)->SetWindowText(showString);
-					int line = ((CEdit*)(GetDlgItem(IDC_EDIT_RECEIVE)))->GetLineCount();//Ñ¡ÖĞ×îºóÒ»ĞĞ
+					int line = ((CEdit*)(GetDlgItem(IDC_EDIT_RECEIVE)))->GetLineCount();//é€‰ä¸­æœ€åä¸€è¡Œ
 					((CEdit*)(GetDlgItem(IDC_EDIT_RECEIVE)))->LineScroll(line);
-					int line_OK = ((CEdit*)(GetDlgItem(IDC_EDIT_OK)))->GetLineCount();//Ñ¡ÖĞ×îºóÒ»ĞĞ
+					int line_OK = ((CEdit*)(GetDlgItem(IDC_EDIT_OK)))->GetLineCount();//é€‰ä¸­æœ€åä¸€è¡Œ
 					((CEdit*)(GetDlgItem(IDC_EDIT_OK)))->LineScroll(line_OK);
-					int line_NG = ((CEdit*)(GetDlgItem(IDC_EDIT_FAILED)))->GetLineCount();//Ñ¡ÖĞ×îºóÒ»ĞĞ
+					int line_NG = ((CEdit*)(GetDlgItem(IDC_EDIT_FAILED)))->GetLineCount();//é€‰ä¸­æœ€åä¸€è¡Œ
 					((CEdit*)(GetDlgItem(IDC_EDIT_FAILED)))->LineScroll(line_NG);
 					SerialsCheckBuffer(curretBufString_test);
 				}
 			}
 			else
 			{
-				//´®¿Ú¶ªÊ§,ÔİÊ±²»¹Ü			
+				//ä¸²å£ä¸¢å¤±,æš‚æ—¶ä¸ç®¡			
 			}
 		}
 	}
@@ -2567,12 +2567,12 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		}
 		else if (cCheckOtherCount_tmp == 1)				
 		{
-			if(colorTmpconfigFileLoadOk)   //ÅäÖÃÉ«ÎÂ
+			if(colorTmpconfigFileLoadOk)   //é…ç½®è‰²æ¸©
 			{	
 				cCheckOtherCount_tmp = 2;
-				OnBnClickedButtonShort_fun(33);  //<--Ğ´É«ÎÂnormal
+				OnBnClickedButtonShort_fun(33);  //<--å†™è‰²æ¸©normal
 				Sleep(200);
-				GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("Ğ´É«ÎÂNoraml");
+				GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("å†™è‰²æ¸©Noraml");
 			}
 			else
 				cCheckOtherCount_tmp = 14;
@@ -2601,8 +2601,8 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		else if (cCheckOtherCount_tmp == 5)
 		{
 			cCheckOtherCount_tmp = 6;
-			OnBnClickedButtonShort_fun(34);  //<--Ğ´É«ÎÂcool
-			GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("Ğ´É«ÎÂCool");
+			OnBnClickedButtonShort_fun(34);  //<--å†™è‰²æ¸©cool
+			GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("å†™è‰²æ¸©Cool");
 		}
 		else if (cCheckOtherCount_tmp == 6)
 		{
@@ -2625,8 +2625,8 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		else if (cCheckOtherCount_tmp == 9)
 		{
 			cCheckOtherCount_tmp = 10;
-			OnBnClickedButtonShort_fun(35);  //<--Ğ´É«ÎÂWarm
-			GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("Ğ´É«ÎÂWarm");
+			OnBnClickedButtonShort_fun(35);  //<--å†™è‰²æ¸©Warm
+			GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("å†™è‰²æ¸©Warm");
 		}
 		else if (cCheckOtherCount_tmp == 10)
 		{
@@ -2650,7 +2650,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		{
 			cCheckOtherCount_tmp = 14;
 			Sleep(100);	
-			OnBnClickedButtonShort_fun(40);				//<--Save_WhiteBlance(V510·½°¸ĞèÒª±£´æ°×Æ½ºâÖµ)
+			OnBnClickedButtonShort_fun(40);				//<--Save_WhiteBlance(V510æ–¹æ¡ˆéœ€è¦ä¿å­˜ç™½å¹³è¡¡å€¼)
 		}
 		else if (cCheckOtherCount_tmp == 14)
 		{
@@ -2666,7 +2666,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 			cCheckOtherCount_tmp = 20;
 			if (TestAddVoice)
 			{
-				OnBnClickedButtonShort_fun(31);		//<--ÉùÒô¼ÓÖÁ80
+				OnBnClickedButtonShort_fun(31);		//<--å£°éŸ³åŠ è‡³80
 				TestAddVoice = FALSE;
 			}
 		}
@@ -2676,7 +2676,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 			if (TestBlueBegin) 
 			{
 				TestBlueSend = TRUE;
-				OnBnClickedButtonShort_fun(39);		//<--À¶ÑÀ
+				OnBnClickedButtonShort_fun(39);		//<--è“ç‰™
 			}
 		}
 		else if (cCheckOtherCount_tmp == 21)
@@ -2699,7 +2699,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		}
 		//else if (cCheckOtherCount_tmp == 16)
 		//{
-		//	cCheckOtherCount_tmp = 17;			//<--Ô¤Áô
+		//	cCheckOtherCount_tmp = 17;			//<--é¢„ç•™
 		//	//TestMACSend = TRUE;
 		//	OnBnClickedButtonShort_fun(37);    //<--MAC
 		//}
@@ -2713,7 +2713,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 	{
 		if ((serial_isopen == TRUE) && bFactoryTestAutoStart)
 		{
-			//´®¿Ú´ò¿ª,¼ì²é´®¿Ú×´Ì¬
+			//ä¸²å£æ‰“å¼€,æ£€æŸ¥ä¸²å£çŠ¶æ€
 			if (sio_lstatus(com_port) >= 0)
 			{
 				int i = cCheckCout;
@@ -2722,7 +2722,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 				{
 					if (iTestSourceTimerCount >= 2*SourceConfig[i].btime)
 					{
-						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("È¡×´Ì¬...");
+						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("å–çŠ¶æ€...");
 						OnBnClickedButtonShort_fun(32);
 						//OnBnClickedButtonShort_fun(31);
 						//SetTimer(TIME_SHOW_MESSAGE_TEST_DELAY, 500, NULL);
@@ -2736,7 +2736,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 				}
 				else
 				{
-					if (SourceConfig[i].index == 0)//½áÊø²âÊÔ
+					if (SourceConfig[i].index == 0)//ç»“æŸæµ‹è¯•
 					{
 						bTestKeyPad_Source = FALSE;
 						bTestKeyPad_Menu = FALSE;
@@ -2824,19 +2824,19 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 						//}
 						else if (TestVoiceBegin)
 						{
-							m_psdinfo.SetWindowText(("»°Í²²âÊÔ¿ªÊ¼"));
-							OnBnClickedButtonShort_fun(20);   //<--»°Í²²âÊÔ
+							m_psdinfo.SetWindowText(("è¯ç­’æµ‹è¯•å¼€å§‹"));
+							OnBnClickedButtonShort_fun(20);   //<--è¯ç­’æµ‹è¯•
 															  //if (TestVoiceBegin)
 															  //	{
-															  //		m_psdinfo.SetWindowText(("»°Í²²âÊÔ¿ªÊ¼"));
-															  //		OnBnClickedButtonShort_fun(20);   //<--»°Í²²âÊÔ
+															  //		m_psdinfo.SetWindowText(("è¯ç­’æµ‹è¯•å¼€å§‹"));
+															  //		OnBnClickedButtonShort_fun(20);   //<--è¯ç­’æµ‹è¯•
 															  //	}
 						}
 						KillTimer(TIME_SHOW_MESSAGE_TEST_DELAY);
 						bKeypadStart = TRUE;
 						if (bKeypadStart)  //<--
 						{
-							//ShowMessage(RED, _T("°´¼ü²âÊÔ¿ªÊ¼£¬ÇëÔÚ5ÃëÄÚ²Ù×÷Íê"), 0);
+							//ShowMessage(RED, _T("æŒ‰é”®æµ‹è¯•å¼€å§‹ï¼Œè¯·åœ¨5ç§’å†…æ“ä½œå®Œ"), 0);
 							cCheckKEYPADCount_tmp = 0;
 							SetTimer(TIME_SHOW_MESSAGE_KEYPAY_TEST_OTHER, 300, NULL);
 						}
@@ -2844,7 +2844,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					if (SourceConfig[i].source.Find("ATV1") != -1)
 					{
 							TestATVbegin = TRUE;
-							GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔATV1");
+							GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•ATV1");
 							OnBnClickedButtonShort_fun(6);
 							bWaitFeedback = TRUE;
 							iCurretIndex = i;
@@ -2852,7 +2852,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					}
 					//else if (SourceConfig[i].source.Find("ATV2") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔATV2");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•ATV2");
 					//	OnBnClickedButtonShort_fun(7);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2865,7 +2865,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					else if (SourceConfig[i].source.Find("DTV1") != -1)
 					{
 						TestDTVbegin = TRUE;
-						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔDTV1");
+						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•DTV1");
 						OnBnClickedButtonShort_fun(2);
 						bWaitFeedback = TRUE;
 						iCurretIndex = i;
@@ -2873,7 +2873,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					}
 					//else if (SourceConfig[i].source.Find("DTV2") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔDTV2");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•DTV2");
 					//	OnBnClickedButtonShort_fun(3);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2884,7 +2884,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//}
 					//else if (SourceConfig[i].source.Find("DTV3") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔDTV3");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•DTV3");
 					//	OnBnClickedButtonShort_fun(4);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2896,7 +2896,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					else if (SourceConfig[i].source.Find("AV1") != -1)
 					{
 						TestAVbegin = TRUE;
-						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔAV1");
+						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•AV1");
 						OnBnClickedButtonShort_fun(10);
 						bWaitFeedback = TRUE;
 						iCurretIndex = i;
@@ -2904,7 +2904,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					}
 					/*else if (SourceConfig[i].source.Find("AV2") != -1)
 					{
-						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔAV2");
+						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•AV2");
 						OnBnClickedButtonShort_fun(11);
 						bWaitFeedback = TRUE;
 						iCurretIndex = i;
@@ -2913,7 +2913,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					else if (SourceConfig[i].source.Find("YPBPR") != -1)
 					{
 						TestYPBPRbegin = TRUE;
-						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔYPBPR");
+						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•YPBPR");
 						OnBnClickedButtonShort_fun(14);
 						bWaitFeedback = TRUE;
 						iCurretIndex = i;
@@ -2925,7 +2925,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					else if (SourceConfig[i].source.Find("HDMI1") != -1)
 					{
 						TestHDMI1begin = TRUE;
-						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔHDMI1");
+						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•HDMI1");
 						OnBnClickedButtonShort_fun(15);
 						bWaitFeedback = TRUE;
 						iCurretIndex = i;
@@ -2934,7 +2934,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					else if (SourceConfig[i].source.Find("HDMI2") != -1)
 					{
 						TestHDMI2begin = TRUE;
-						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔHDMI2");
+						GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•HDMI2");
 						OnBnClickedButtonShort_fun(16);
 						bWaitFeedback = TRUE;
 						iCurretIndex = i;
@@ -2943,7 +2943,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//else if (SourceConfig[i].source.Find("HDMI3") != -1)
 					//{
 					//	TestHDMI3begin = TRUE;
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔHDMI3");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•HDMI3");
 					//	OnBnClickedButtonShort_fun(17);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2951,7 +2951,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//}
 					//else if (SourceConfig[i].source.Find("HDMI4") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔHDMI4");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•HDMI4");
 					//	OnBnClickedButtonShort_fun(27);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2962,7 +2962,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//}
 					//else if (SourceConfig[i].source.Find("SCART") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔSCART");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•SCART");
 					//	OnBnClickedButtonShort_fun(26);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2973,7 +2973,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//}
 					//else if (SourceConfig[i].source.Find("USB") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔUSB");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•USB");
 					//	OnBnClickedButtonShort_fun(9);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2984,7 +2984,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//}
 					//else if (SourceConfig[i].source.Find("DVBS") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔDVBS");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•DVBS");
 					//	OnBnClickedButtonShort_fun(29);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -2995,7 +2995,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//}
 					//else if (SourceConfig[i].source.Find("PC") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔPC");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•PC");
 					//	OnBnClickedButtonShort_fun(13);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -3006,7 +3006,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					//}
 					//else if (SourceConfig[i].source.Find("NET") != -1)
 					//{
-					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("²âÊÔÍø¿Ú");
+					//	GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText("æµ‹è¯•ç½‘å£");
 					//	OnBnClickedButtonShort_fun(37);
 					//	bWaitFeedback = TRUE;
 					//	iCurretIndex = i;
@@ -3024,7 +3024,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 						bFactoryTestAutoStart = FALSE;
 						iTestSourceTimerCount = 0;
 						if (SourceConfig[i].index != 0)
-							MessageBox("ÎŞĞ§µÄÅäÖÃ¶Ë×Ó");
+							MessageBox("æ— æ•ˆçš„é…ç½®ç«¯å­");
 					}
 				}
 			}
@@ -3039,7 +3039,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		if (cCheckKEYPADCount_tmp == 0)
 		{
 			cCheckKEYPADCount_tmp = 1;
-			OnBnClickedButtonShort_fun(28);   //<--¼ÓËø°´¼ü
+			OnBnClickedButtonShort_fun(28);   //<--åŠ é”æŒ‰é”®
 			Sleep(100);
 			OnStartKeypadTimer();
 		}
@@ -3050,7 +3050,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 				cCheckKEYPADCount_tmp = 2;
 				OnStopKeypadTimer();
 				Sleep(100);
-				//OnBnClickedButtonShort_fun(29);   //<--¼ì²â°´¼ü
+				//OnBnClickedButtonShort_fun(29);   //<--æ£€æµ‹æŒ‰é”®
 			}
 			else if (bisSevenkey)
 			{
@@ -3079,30 +3079,30 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 			{
 				if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins&&bTestKeyPad_Menu&&bTestKeyPad_Source)
 				{
-					ShowMessage(BLUE, _T("°´¼ü²âÊÔ	OK"), 0);
+					ShowMessage(BLUE, _T("æŒ‰é”®æµ‹è¯•	OK"), 0);
 				}
 				else
 				{
-					ShowMessage(RED, _T("°´¼ü²âÊÔ	NG"), 0);
+					ShowMessage(RED, _T("æŒ‰é”®æµ‹è¯•	NG"), 0);
 				}
 			}
 			else
 			{
 				if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins)
 				{
-					ShowMessage(BLUE, _T("°´¼ü²âÊÔ	OK"), 0);
+					ShowMessage(BLUE, _T("æŒ‰é”®æµ‹è¯•	OK"), 0);
 				}
 				else
 				{
-					ShowMessage(RED, _T("°´¼ü²âÊÔ	NG"), 0);
+					ShowMessage(RED, _T("æŒ‰é”®æµ‹è¯•	NG"), 0);
 				}
 			}
-			OnBnClickedButtonShort_fun(30);	  //<--½âËø°´¼ü
+			OnBnClickedButtonShort_fun(30);	  //<--è§£é”æŒ‰é”®
 		}
 		else if (cCheckKEYPADCount_tmp == 3)
 		{
 			cCheckKEYPADCount_tmp = 4;
-			OnBnClickedButtonShort_fun(19);   //<--¹ØµÆ
+			OnBnClickedButtonShort_fun(19);   //<--å…³ç¯
 			OnStopTimer();
 		}
 		else if (cCheckKEYPADCount_tmp == 4)
@@ -3122,7 +3122,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		 if (cCheckMacCount_tmp == 0)    
 		{
 			cCheckMacCount_tmp = 1;
-			OnBnClickedButtonShort_fun(18);//<--¿ªÖ¸Ê¾µÆ
+			OnBnClickedButtonShort_fun(18);//<--å¼€æŒ‡ç¤ºç¯
 			m_cMfcButton_MENU.SetFaceColor(RGB(255, 255, 255));
 			m_cMfcButton_SOURCE.SetFaceColor(RGB(255, 255, 255));
 			m_cMfcButton_POWER.SetFaceColor(RGB(255, 255, 255));
@@ -3144,7 +3144,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		 else
 		 {
 			 KillTimer(TIME_SHOW_MESSAGE_TEST_MAC);
-			 SetTimer(TIME_SHOW_MESSAGE_TEST_DELAY_OTHER, 500, NULL);  //<-- iOtherTestDelay==500 ÎªÁËÂú×ãV510·½°¸Ğ´É«ÎÂ 
+			 SetTimer(TIME_SHOW_MESSAGE_TEST_DELAY_OTHER, 500, NULL);  //<-- iOtherTestDelay==500 ä¸ºäº†æ»¡è¶³V510æ–¹æ¡ˆå†™è‰²æ¸© 
 		 }
 	}
 	else if (TIMER_ORDER == nIDEvent)
@@ -3154,13 +3154,13 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 			m_userid.GetWindowText(strTemp);
 			if(strTemp.GetLength()==7)
 			{
-				//SetDlgItemText(IDC_STATIC1, _T("ÇëµÚÒ»´ÎÊäÈë12Î»ÓĞĞ§¶©µ¥ºÅ£¡"));
-				strShowMessage.Format(_T("ÇëµÚÒ»´ÎÊäÈë12Î»ÓĞĞ§¶©µ¥ºÅ£¡"));
+				//SetDlgItemText(IDC_STATIC1, _T("è¯·ç¬¬ä¸€æ¬¡è¾“å…¥12ä½æœ‰æ•ˆè®¢å•å·ï¼"));
+				strShowMessage.Format(_T("è¯·ç¬¬ä¸€æ¬¡è¾“å…¥12ä½æœ‰æ•ˆè®¢å•å·ï¼"));
 				ShowMessage(BLUE,strShowMessage,0);
 				m_userid.SetReadOnly(TRUE);
 				m_userid.GetWindowText(strTemp);
 				memset(UserName,0,32);
-				sprintf(UserName,"%S",strTemp);//»ñÈ¡ÓÃ»§Ãû
+				sprintf(UserName,"%S",strTemp);//è·å–ç”¨æˆ·å
 				GetDlgItem(IDC_EDIT_ORDER)->SetFocus();
 				Order_Flag=1;
 			}
@@ -3171,8 +3171,8 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 			{
 				cstrHelp="";
 				cstrHelp=strTemp;
-				//SetDlgItemText(IDC_STATIC1, _T("ÇëµÚ¶ş´ÎÊäÈë12Î»ÓĞĞ§¶©µ¥ºÅ£¡"));
-				strShowMessage.Format(_T("ÇëµÚ¶ş´ÎÊäÈë12Î»ÓĞĞ§¶©µ¥ºÅ£¡"));
+				//SetDlgItemText(IDC_STATIC1, _T("è¯·ç¬¬äºŒæ¬¡è¾“å…¥12ä½æœ‰æ•ˆè®¢å•å·ï¼"));
+				strShowMessage.Format(_T("è¯·ç¬¬äºŒæ¬¡è¾“å…¥12ä½æœ‰æ•ˆè®¢å•å·ï¼"));
 				ShowMessage(BLUE,strShowMessage,0);
 				m_orderid.SetWindowText(_T(""));
 				Order_Flag=2;
@@ -3184,7 +3184,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 			{
 				if(strTemp!=cstrHelp)
 				{	
-					strShowMessage.Format(_T("Á½´ÎÊäÈë¶©µ¥ºÅ²»Ò»ÖÂ£¡\nÇëÖØĞÂµÚÒ»´ÎÊäÈë12Î»¶©µ¥ºÅ£¡"));
+					strShowMessage.Format(_T("ä¸¤æ¬¡è¾“å…¥è®¢å•å·ä¸ä¸€è‡´ï¼\nè¯·é‡æ–°ç¬¬ä¸€æ¬¡è¾“å…¥12ä½è®¢å•å·ï¼"));
 					ShowMessage(RED,strShowMessage,0);
 					m_orderid.SetWindowText(_T(""));
 					Order_Flag=3;
@@ -3192,8 +3192,8 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 				else
 				{
 					memset(OrderID,0,16);
-					sprintf(OrderID,"%S",strTemp);//»ñÈ¡¶©µ¥ºÅ
-					strShowMessage.Format(_T("¶©µ¥ºÅÒÑÈ·ÈÏ£¡\nÇëÈ·ÈÏÆäËûÅäÖÃĞÅÏ¢£¡"));
+					sprintf(OrderID,"%S",strTemp);//è·å–è®¢å•å·
+					strShowMessage.Format(_T("è®¢å•å·å·²ç¡®è®¤ï¼\nè¯·ç¡®è®¤å…¶ä»–é…ç½®ä¿¡æ¯ï¼"));
 					ShowMessage(BLUE,strShowMessage,0);
 					m_orderid.SetReadOnly(TRUE);
 					//m_Button_in.EnableWindow(TRUE);
@@ -3211,7 +3211,7 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 				cstrHelp="";
 				cstrHelp=strTemp;
 				m_orderid.SetWindowText(_T(""));
-				SetDlgItemText(IDC_STATIC_SHOW_MESSAGE, _T("ÇëµÚ¶ş´ÎÊäÈë12Î»ÓĞĞ§¶©µ¥ºÅ£¡"));
+				SetDlgItemText(IDC_STATIC_SHOW_MESSAGE, _T("è¯·ç¬¬äºŒæ¬¡è¾“å…¥12ä½æœ‰æ•ˆè®¢å•å·ï¼"));
 				Order_Flag=2;
 			}
 		}
@@ -3255,7 +3255,7 @@ void CserialCommunicationDlg::ScanData()
 	}
 	else if((intSNLen > m_CutData.GetLength())||(intMACLen > m_CutData.GetLength()))
 	{
-		strShowMessage.Format(_T("NG\r\nÇëÉ¨ÃèÕıÈ·Êı¾İ\r\n"));
+		strShowMessage.Format(_T("NG\r\nè¯·æ‰«ææ­£ç¡®æ•°æ®\r\n"));
 		ShowMessage(RED,strShowMessage,0);
 		SetDlgItemText(IDC_EDIT_INTO_MESSAGE,_T(""));
 		return;
@@ -3263,7 +3263,7 @@ void CserialCommunicationDlg::ScanData()
 	else
 	{
 		m_CutData = "";
-		strShowMessage.Format(_T("NG\r\nÇëÉ¨ÃèÕıÈ·Êı¾İ\r\n"));
+		strShowMessage.Format(_T("NG\r\nè¯·æ‰«ææ­£ç¡®æ•°æ®\r\n"));
 		ShowMessage(RED,strShowMessage,0);
 		SetDlgItemText(IDC_EDIT_INTO_MESSAGE,_T(""));
 		return;
@@ -3275,7 +3275,7 @@ void CserialCommunicationDlg::ScanData()
 		if (boolSnScanDataOK)
 		{
 			KillTimer(TIMER_GET_DATA);
-			SetTimer(TIME_SHOW_MESSAGE_TEST_MAC,300,NULL);  //500->300 ÓÅ»¯Ê±¼ä
+			SetTimer(TIME_SHOW_MESSAGE_TEST_MAC,300,NULL);  //500->300 ä¼˜åŒ–æ—¶é—´
 		}
 	}
 	else if(intMACLen ==strGetData.GetLength()&&(BST_CHECKED == IsDlgButtonChecked(IDC_CHECK_MAC)))
@@ -3297,7 +3297,7 @@ BOOL CserialCommunicationDlg::DataVerification(CString strVerData, UINT intFlag)
 		sprintf(FieldName,"%s",strMainKey);
 		BOOL boolRev = ADCCheckLotSN("TEST",  LotSN,  FieldName);
 		//MessageBox(_T("ADCCheckLotSN"));
-		if(!boolRev) //<--ADCCheckLotSN Ê§°Ü
+		if(!boolRev) //<--ADCCheckLotSN å¤±è´¥
 		{
 			KillTimer(TIMER_GET_DATA);
 			OnStopTimer();
@@ -3308,11 +3308,11 @@ BOOL CserialCommunicationDlg::DataVerification(CString strVerData, UINT intFlag)
 		{
 			//MessageBox("ADCCheckLotSN is True");
 		}
-		CString strRev = mesCheckorSubmitMap[_T("ReturnResult")];//¼ì²é·µ»Ø½á¹û--CString ÖµÎª¡°1¡±»ò¡°0¡±
+		CString strRev = mesCheckorSubmitMap[_T("ReturnResult")];//æ£€æŸ¥è¿”å›ç»“æœ--CString å€¼ä¸ºâ€œ1â€æˆ–â€œ0â€
 		int intRev = _ttoi(strRev);
 		if(0 == intRev)   //0
 		{
-			CString strRevMeg = mesCheckorSubmitMap[_T("ReturnMessage")];//¼ì²é·µ»Ø½á¹ûÈçÊ§°Ü£¬ÕâÊÇÒ»¸öCStringµÄÊ§°ÜÔ­Òò
+			CString strRevMeg = mesCheckorSubmitMap[_T("ReturnMessage")];//æ£€æŸ¥è¿”å›ç»“æœå¦‚å¤±è´¥ï¼Œè¿™æ˜¯ä¸€ä¸ªCStringçš„å¤±è´¥åŸå› 
 			OnStopTimer();
 			if(0)
 			{
@@ -3320,10 +3320,10 @@ BOOL CserialCommunicationDlg::DataVerification(CString strVerData, UINT intFlag)
 			}
 			else
 			{
-				//MessageBox(_T("¼ì²é·µ»Ø½á¹ûÊ§°Ü"));
+				//MessageBox(_T("æ£€æŸ¥è¿”å›ç»“æœå¤±è´¥"));
 				boolCheckFail = true;
 				boolCheckRev = false;
-				strShowMessage.Format(_T("NG\r\nÇëÉ¨ÃèÕıÈ·Êı¾İ\r\n%s"),strRevMeg); //MES¼ì²â´íÎó,¼ÌĞø¼ì²â
+				strShowMessage.Format(_T("NG\r\nè¯·æ‰«ææ­£ç¡®æ•°æ®\r\n%s"),strRevMeg); //MESæ£€æµ‹é”™è¯¯,ç»§ç»­æ£€æµ‹
 				color = RED;
 				boolScanDataOK = false;
 				SetTimer(TIME_SHOW_MESSAGE_TEST_DELAY_OTHER, 500, NULL);  //<--zb
@@ -3338,12 +3338,12 @@ BOOL CserialCommunicationDlg::DataVerification(CString strVerData, UINT intFlag)
 		}
 		else 
 		{
-			ADCGetInterfaceParameter("GETDATE",  LotSN,  FieldName);//»ñÈ¡µ±Ç°Ê±¼ä
+			ADCGetInterfaceParameter("GETDATE",  LotSN,  FieldName);//è·å–å½“å‰æ—¶é—´
 			boolCheckFail = true;
 			CString strSNaMAC = (_T("SN/MAC"));
 			CString strGetMeg("");
 			BOOL boolDoulData = false;
-			boolRev =ADCGetInterfaceParameter("FieldData",  LotSN,  FieldName);//»ñÈ¡¶ÔÓ¦Ö÷¼üµÄÊı¾İ
+			boolRev =ADCGetInterfaceParameter("FieldData",  LotSN,  FieldName);//è·å–å¯¹åº”ä¸»é”®çš„æ•°æ®
 			if(!boolRev)
 			{
 				KillTimer(TIMER_GET_DATA);
@@ -3362,7 +3362,7 @@ BOOL CserialCommunicationDlg::DataVerification(CString strVerData, UINT intFlag)
 			}
 			//else
 			//{
-			//	MessageBox("Í¨¹ıSNÖµ»ñÈ¡µÃµ½SNÖµ,Ê§°Ü");
+			//	MessageBox("é€šè¿‡SNå€¼è·å–å¾—åˆ°SNå€¼,å¤±è´¥");
 			//}
 			number++;
 		}
@@ -3384,7 +3384,7 @@ void CserialCommunicationDlg::WriteResultMES(CString strVerData)
 	}
 	else
 	{
-		ADCSubmitTestData("TEST",  LotSN,  FieldName,0);//1´ú±íÒª½²MACµØÖ·Ğ´ÈëMES 0´ú±í·ñ
+		ADCSubmitTestData("TEST",  LotSN,  FieldName,0);//1ä»£è¡¨è¦è®²MACåœ°å€å†™å…¥MES 0ä»£è¡¨å¦
 	}
 	strRev = mesCheckorSubmitMap[_T("ReturnResult")];
 	int intRev = _ttoi(strRev);
@@ -3412,13 +3412,13 @@ void CserialCommunicationDlg::WriteResultMES(CString strVerData)
 		//m_strMACData.Format(_T(""));
 		//strShowMessage.Format(_T("OK"));
 		/*if("WF/BT" == strCheckMeg)
-			strShowMessage.Format(_T("wifiÑéÖ¤OK\r\nÀ¶ÑÀÑéÖ¤OK\r\n±àÒëĞÅÏ¢ÑéÖ¤³É¹¦\r\nÉÕÂ¼³É¹¦\r\nPASS\r\n"));
+			strShowMessage.Format(_T("wifiéªŒè¯OK\r\nè“ç‰™éªŒè¯OK\r\nç¼–è¯‘ä¿¡æ¯éªŒè¯æˆåŠŸ\r\nçƒ§å½•æˆåŠŸ\r\nPASS\r\n"));
 		else if("WIFI" == strCheckMeg)
-			strShowMessage.Format(_T("wifiÑéÖ¤OK\r\n±àÒëĞÅÏ¢ÑéÖ¤³É¹¦\r\nÉÕÂ¼³É¹¦\r\nPASS\r\n"));
-		else if("À¶ÑÀ" == strCheckMeg)
-			strShowMessage.Format(_T("À¶ÑÀÑéÖ¤OK\r\n±àÒëĞÅÏ¢ÑéÖ¤³É¹¦\r\nÉÕÂ¼³É¹¦\r\nPASS\r\n"));
+			strShowMessage.Format(_T("wifiéªŒè¯OK\r\nç¼–è¯‘ä¿¡æ¯éªŒè¯æˆåŠŸ\r\nçƒ§å½•æˆåŠŸ\r\nPASS\r\n"));
+		else if("è“ç‰™" == strCheckMeg)
+			strShowMessage.Format(_T("è“ç‰™éªŒè¯OK\r\nç¼–è¯‘ä¿¡æ¯éªŒè¯æˆåŠŸ\r\nçƒ§å½•æˆåŠŸ\r\nPASS\r\n"));
 		else
-			strShowMessage.Format(_T("±àÒëĞÅÏ¢ÑéÖ¤³É¹¦\r\nÉÕÂ¼³É¹¦\r\nPASS\r\n"));*/
+			strShowMessage.Format(_T("ç¼–è¯‘ä¿¡æ¯éªŒè¯æˆåŠŸ\r\nçƒ§å½•æˆåŠŸ\r\nPASS\r\n"));*/
 		//color = BLUE;
 	}
 	boolScanDataOK = false;
@@ -3429,7 +3429,7 @@ void CserialCommunicationDlg::WriteResultMES(CString strVerData)
 }
 void CserialCommunicationDlg::OnBnClickedButtonReceiveClear()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	showString.Empty();
 	((CEdit*)GetDlgItem(IDC_EDIT_RECEIVE))->SetWindowText("");
 	((CEdit*)GetDlgItem(IDC_EDIT_RECEIVE))->LineScroll(0);
@@ -3477,7 +3477,7 @@ void CserialCommunicationDlg::ReceiveSaveMacErrorFile(CString cMessage)
 }
 void CserialCommunicationDlg::OnBnClickedButtonReceiveSaveFile()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	//showString.Append("552627136281361283612372618");
 	//showString.Append("21312321321321321313aadsdad");;
 	if (1)
@@ -3502,15 +3502,15 @@ void CserialCommunicationDlg::OnBnClickedButtonReceiveSaveFile()
 }
 void CserialCommunicationDlg::OnBnClickedButtonSend()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	if(serial_isopen == TRUE)
 	{
-		//±äÁ¿´ò¿ªÁË,ÒªÈ¥²âÊÔ´®¿Ú×´Ì¬
+		//å˜é‡æ‰“å¼€äº†,è¦å»æµ‹è¯•ä¸²å£çŠ¶æ€
 		if(sio_lstatus(com_port)>= 0)
 		{
 			CString str1;
 			sendString.Empty();
-			//Ã»ÓĞ¶Ô\r\nÌØÊâ´¦Àí
+			//æ²¡æœ‰å¯¹\r\nç‰¹æ®Šå¤„ç†
 			((CEdit*)GetDlgItem(IDC_EDIT_SEND))->GetWindowText(str1);
 
 			if(sendStringConfig == false)sendString.AppendFormat("%s",str1);
@@ -3530,20 +3530,20 @@ void CserialCommunicationDlg::OnBnClickedButtonSend()
 		}
 		else
 		{
-			//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-			MessageBox("´®¿Ú¶ªÊ§,Çë¹Ø±ÕºóÖØĞÂ´ò¿ª","´íÎó",MB_OK);
+			//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+			MessageBox("ä¸²å£ä¸¢å¤±,è¯·å…³é—­åé‡æ–°æ‰“å¼€","é”™è¯¯",MB_OK);
 		}
 	}
 	else
 	{
-		//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-		MessageBox("ÇëÏÈ´ò¿ª´®¿Ú","´íÎó",MB_OK);
+		//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+		MessageBox("è¯·å…ˆæ‰“å¼€ä¸²å£","é”™è¯¯",MB_OK);
 	}
 }
 
 void CserialCommunicationDlg::OnBnClickedButtonSendClear()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	sendString.Empty();
 	((CEdit*)GetDlgItem(IDC_EDIT_SEND))->SetWindowText("");
 	((CEdit*)GetDlgItem(IDC_EDIT_SEND))->LineScroll(0);
@@ -3551,13 +3551,13 @@ void CserialCommunicationDlg::OnBnClickedButtonSendClear()
 
 void CserialCommunicationDlg::OnBnClickedButtonSendFile()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	if(serial_isopen == TRUE)
 	{
 		if(sio_lstatus(com_port) >= 0)
 		{
 			CFileDialog filedig(TRUE);
-			filedig.m_ofn.lpstrTitle = "´®¿Ú·¢ËÍÎÄ¼şÑ¡Ôñ";
+			filedig.m_ofn.lpstrTitle = "ä¸²å£å‘é€æ–‡ä»¶é€‰æ‹©";
 			filedig.m_ofn.lpstrFilter = "Text Files(*.txt)\0*.txt\0ALL Files(*.*)\0*.*\0\0";
 			filedig.m_ofn.lpstrDefExt = "txt";
 			if(IDOK == filedig.DoModal())
@@ -3576,12 +3576,12 @@ void CserialCommunicationDlg::OnBnClickedButtonSendFile()
 		}
 		else
 		{
-			MessageBox("´®¿Ú¶ªÊ§,Çë¹Ø±ÕºóÖØĞÂ´ò¿ª","´íÎó",MB_OK);
+			MessageBox("ä¸²å£ä¸¢å¤±,è¯·å…³é—­åé‡æ–°æ‰“å¼€","é”™è¯¯",MB_OK);
 		}
 	}
 	else
 	{
-		MessageBox("ÇëÏÈ´ò¿ª´®¿Ú","´íÎó",MB_OK);
+		MessageBox("è¯·å…ˆæ‰“å¼€ä¸²å£","é”™è¯¯",MB_OK);
 	}
 }
 
@@ -3589,7 +3589,7 @@ void CserialCommunicationDlg::OnBnClickedButtonSendFile()
 
 void CserialCommunicationDlg::OnCbnSetfocusComboConfigFileSelect()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	byte i =0,j = 0;
 	CFileFind ff;
 	BOOL ret = ff.FindFile("*.xml");
@@ -3610,12 +3610,12 @@ void CserialCommunicationDlg::OnCbnSetfocusComboConfigFileSelect()
 
 BOOL CserialCommunicationDlg::PreTranslateMessage(MSG* pMsg)
 {
-	// TODO: ÔÚ´ËÌí¼Ó×¨ÓÃ´úÂëºÍ/»òµ÷ÓÃ»ùÀà
+	// TODO: åœ¨æ­¤æ·»åŠ ä¸“ç”¨ä»£ç å’Œ/æˆ–è°ƒç”¨åŸºç±»
 	m_toolstip.RelayEvent(pMsg);
 	return CDialog::PreTranslateMessage(pMsg);
 }
 
-void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //¼ÓÔØconfig
+void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //åŠ è½½config
 {
 	CFileDialog dlg(TRUE, NULL, NULL, NULL, NULL);
 	CserialCommunicationApp *pApp = (CserialCommunicationApp *)AfxGetApp();
@@ -3653,17 +3653,17 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //¼ÓÔØconfig
 		str1.MakeLower();
 		if (str1.Find(".txt") == -1)
 		{
-			MessageBox("ÎŞĞ§ÎÄ¼ş");
+			MessageBox("æ— æ•ˆæ–‡ä»¶");
 			return;
 		}
-		if (str1.Find("É«ÎÂ") != -1)
+		if (str1.Find("è‰²æ¸©") != -1)
 		{
-			MessageBox("ÎŞĞ§ÎÄ¼ş");
+			MessageBox("æ— æ•ˆæ–‡ä»¶");
 			return;
 		}
 		if (str1.Find("rgb_value") != -1)
 		{
-			MessageBox("ÎŞĞ§ÎÄ¼ş");
+			MessageBox("æ— æ•ˆæ–‡ä»¶");
 			return;
 		}
 		long Filelen;
@@ -3671,15 +3671,15 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //¼ÓÔØconfig
 		FILE* fp;
 		errno_t err;
 		char *pBuff = str.GetBuffer(0);
-		if ((err = fopen_s(&fp, pBuff, "rb")) == 0)//(fp=fopen_s(pBuff,"rb"))       //strÊÇÎÒµÄ.bin ÎÄ¼şÂ·¾¶
+		if ((err = fopen_s(&fp, pBuff, "rb")) == 0)//(fp=fopen_s(pBuff,"rb"))       //stræ˜¯æˆ‘çš„.bin æ–‡ä»¶è·¯å¾„
 		{
 			fseek(fp, 0, SEEK_END);
 			Filelen = ftell(fp);
 			//m_lFilelen = Filelen;
-			//·ÖÅäÄÚ´æ
+			//åˆ†é…å†…å­˜
 			a_pData = (UCHAR*)malloc(Filelen);
 			//u_newData = (UCHAR*)malloc(Filelen);
-			//¶ÁÈ¡ÎÄ¼şµ½·ÖÅäµÄÄÚ´æ
+			//è¯»å–æ–‡ä»¶åˆ°åˆ†é…çš„å†…å­˜
 			fseek(fp, 0, SEEK_SET);
 			fread(a_pData, 1, Filelen, fp);
 			fclose(fp);
@@ -3892,8 +3892,8 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //¼ÓÔØconfig
 					//s.Format("%c", tmp);
 					//sVersion_config = s;
 				}
-				//s.Format("%c", a_pData[i]);//ºóÃæ¼Ó¸ö¿Õ¸ñ£¬°ÑÃ¿¸ö×Ö½Ú·Ö¿ª£¬¿ÉÒÔ¿´µÃÇå³şĞ© 
-				//sResult += s; //sResult¾ÍÊÇÒªµÄ16½øÖÆ×Ö·û´®ÁË
+				//s.Format("%c", a_pData[i]);//åé¢åŠ ä¸ªç©ºæ ¼ï¼ŒæŠŠæ¯ä¸ªå­—èŠ‚åˆ†å¼€ï¼Œå¯ä»¥çœ‹å¾—æ¸…æ¥šäº› 
+				//sResult += s; //sResultå°±æ˜¯è¦çš„16è¿›åˆ¶å­—ç¬¦ä¸²äº†
 				//m_file += a_pData[i];
 				//if (((i>16) && ((i + 1) % 16 == 0)) || (i == 15))
 					//sResult += "\r\n";
@@ -3903,46 +3903,46 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //¼ÓÔØconfig
 			}
 			configFileLoadOk = true;
 			GetDlgItem(IDC_BUTTON3)->EnableWindow(TRUE);
-			strTestItem = "²âÊÔÏîÄ¿ÈçÏÂ:\r\n";
+			strTestItem = "æµ‹è¯•é¡¹ç›®å¦‚ä¸‹:\r\n";
 			strTestItem += "===========================\r\n";
-			strTestItem += "ÅäÖÃ°æ±¾ºÅ£º\r\n";
+			strTestItem += "é…ç½®ç‰ˆæœ¬å·ï¼š\r\n";
 			if (TestWifiBegin)
 			{
-				strTestItem += "²âÊÔWIFI";
+				strTestItem += "æµ‹è¯•WIFI";
 				strTestItem += "\r\n";
 			}
 			if (TestBlueBegin)
 			{
-				strTestItem += "²âÊÔBLUE";
+				strTestItem += "æµ‹è¯•BLUE";
 				strTestItem += "\r\n";
 			}
 			if (TestUsbBegin)
 			{
-				strTestItem += "²âÊÔUSB";
+				strTestItem += "æµ‹è¯•USB";
 				strTestItem += "\r\n";
 			}
 			if (TestNetBegin)
 			{
-				strTestItem += "²âÊÔÍø¿Ú";
+				strTestItem += "æµ‹è¯•ç½‘å£";
 				strTestItem += "\r\n";
 			}
 			if (TestVoiceBegin)
 			{
-				strTestItem += "²âÊÔ»°Í²";
+				strTestItem += "æµ‹è¯•è¯ç­’";
 				strTestItem += "\r\n";
 			}
 			strTestItem += "-----------------------------------\r\n";
 			if (sMacAddr_config.Find("MAC")!=-1)
 			{
-				strTestItem += "ÅäÖÃMAC£º\r\n";
+				strTestItem += "é…ç½®MACï¼š\r\n";
 				strTestItem += sMacAddr_config + ')';
 				strTestItem += "\r\n";
 				strTestItem += "-----------------------------------\r\n";
 			}
 			if (!bisSevenkey)
-				strTestItem += "²âÊÔ5¼ü";
+				strTestItem += "æµ‹è¯•5é”®";
 			else
-				strTestItem += "²âÊÔ7¼ü";
+				strTestItem += "æµ‹è¯•7é”®";
 			strTestItem += "\r\n";
 			strTestItem += "-----------------------------------\r\n";
 			
@@ -3951,13 +3951,13 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //¼ÓÔØconfig
 				if (SourceConfig[j].index == 0)
 					break;
 				strTestItem += SourceConfig[j].source;
-				strTemp.Format("µÈ´ı%d S", SourceConfig[j].btime);
+				strTemp.Format("ç­‰å¾…%d S", SourceConfig[j].btime);
 				strTestItem += strTemp;
 				strTestItem += "\r\n";
 				pApp->app_strSource = strTestItem;
 			}
 			strTestItem += "-----------------------------------\r\n";
-			strTestItem += "SourceÍê³ÉºóÌø×ª£º";
+			strTestItem += "Sourceå®Œæˆåè·³è½¬ï¼š";
 			strTestItem += "\r\n";
 			strTestItem += strLastSource;
 			strTestItem += "\r\n";
@@ -3986,14 +3986,14 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //¼ÓÔØconfig
 
 void CserialCommunicationDlg::LoadConfigXMLFile()
 {
-	// ×°ÔØÅäÖÃÎÄ¼ş
-	//if(configFileLoadOk == false)//ÔØÈëÎÄ¼ş,ÔØÈëºó°´Å¥±ä³ÉĞ¶ÔØ,ÏÂÀ­ÁĞ±í¿ò±ä³É½ûÓÃ
+	// è£…è½½é…ç½®æ–‡ä»¶
+	//if(configFileLoadOk == false)//è½½å…¥æ–‡ä»¶,è½½å…¥åæŒ‰é’®å˜æˆå¸è½½,ä¸‹æ‹‰åˆ—è¡¨æ¡†å˜æˆç¦ç”¨
 	{
 		//int i = ((CComboBox*)(GetDlgItem(IDC_COMBO_CONFIG_FILE_SELECT)))->GetCurSel();
 		CString fileName;
 		/*if(i == -1)
 		{
-			MessageBox("ÇëÑ¡ÔñÓĞĞ§ÎÄ¼ş","ÌáÊ¾",MB_OK);
+			MessageBox("è¯·é€‰æ‹©æœ‰æ•ˆæ–‡ä»¶","æç¤º",MB_OK);
 			return;
 		}
 		else
@@ -4001,28 +4001,28 @@ void CserialCommunicationDlg::LoadConfigXMLFile()
 			fileName = strPath.GetAt(i);
 		}*/
 		fileName = "config1.xml";
-		//¼ÓÔØÎÄ¼ş
+		//åŠ è½½æ–‡ä»¶
 		XMLError load = configXmlFile.LoadFile(fileName);
 		if(load != XML_SUCCESS)
 		{
-			MessageBox("ÎÄ¼ş¼ÓÔØÊ§°Ü","ÌáÊ¾",MB_OK);
+			MessageBox("æ–‡ä»¶åŠ è½½å¤±è´¥","æç¤º",MB_OK);
 			//configFileLoadOk = false;
 			return;
 		}
-		//ÎÄ¼ş¼ÓÔØ³É¹¦
+		//æ–‡ä»¶åŠ è½½æˆåŠŸ
 		XMLElement* pElement;
 		XMLElement* hRoot;
-		//¼ÓÔØ¸ù½Úµã
+		//åŠ è½½æ ¹èŠ‚ç‚¹
 		hRoot = configXmlFile.RootElement();
 		if(!hRoot)
 		{
-			MessageBox("¸ù½Úµã´íÎó","ÌáÊ¾",MB_OK);
+			MessageBox("æ ¹èŠ‚ç‚¹é”™è¯¯","æç¤º",MB_OK);
 			return;
 		} 
-		//¸ù½Úµã¼ÓÔØ³É¹¦
+		//æ ¹èŠ‚ç‚¹åŠ è½½æˆåŠŸ
 		buttonSendString->RemoveAll();
-		//¼ÓÔØ¿ì½İ°´¼üĞÅÏ¢
-		pElement = hRoot->FirstChildElement("button_messages")->FirstChildElement("button");//Ñ°ÕÒÒ»¸ö×ÓÔªËØ
+		//åŠ è½½å¿«æ·æŒ‰é”®ä¿¡æ¯
+		pElement = hRoot->FirstChildElement("button_messages")->FirstChildElement("button");//å¯»æ‰¾ä¸€ä¸ªå­å…ƒç´ 
 		CString index ;
 		CString nameString ;
 		CString promptMessage;
@@ -4030,7 +4030,7 @@ void CserialCommunicationDlg::LoadConfigXMLFile()
 		CString enable;
 		bool enableFlag;
 		int indexValue;
-		//»ñÈ¡È«²¿buttonÊı¾İ
+		//è·å–å…¨éƒ¨buttonæ•°æ®
 		do 
 		{
 			index = pElement->FirstChildElement("index")->GetText();
@@ -4046,10 +4046,10 @@ void CserialCommunicationDlg::LoadConfigXMLFile()
 			pElement = pElement->NextSiblingElement();
 		} while (pElement);
 
-		//¼ÓÔØÁĞ±í¿òÑ¶Ï¢
+		//åŠ è½½åˆ—è¡¨æ¡†è®¯æ¯
 #if 0
 		listSendString->RemoveAll();
-		pElement = hRoot->FirstChildElement("list_messages")->FirstChildElement("list");//Ñ°ÕÒÒ»¸ö×ÓÔªËØ
+		pElement = hRoot->FirstChildElement("list_messages")->FirstChildElement("list");//å¯»æ‰¾ä¸€ä¸ªå­å…ƒç´ 
 		UINT32 num = 0;
 		do 
 		{
@@ -4066,7 +4066,7 @@ void CserialCommunicationDlg::LoadConfigXMLFile()
 				listSendString->Add(serialSendString);
 				CString show;
 				show.Empty();
-				show.AppendFormat("%d  ÃüÁîÃû: %s  ¹¦ÄÜ: %s",num,nameString,promptMessage);
+				show.AppendFormat("%d  å‘½ä»¤å: %s  åŠŸèƒ½: %s",num,nameString,promptMessage);
 				((CListBox*)GetDlgItem(IDC_LIST1))->AddString(show);
 				num++;
 			}
@@ -4085,7 +4085,7 @@ void CserialCommunicationDlg::LoadConfigXMLFile()
 		}
 #endif
 		//GetDlgItem(IDC_COMBO_CONFIG_FILE_SELECT)->EnableWindow(FALSE);
-		//GetDlgItem(IDC_BUTTON_LOAD_CONFIG_FILE)->SetWindowText("Ğ¶ÔØ");
+		//GetDlgItem(IDC_BUTTON_LOAD_CONFIG_FILE)->SetWindowText("å¸è½½");
 		//configFileLoadOk = true;
 	}
 	/*else
@@ -4117,7 +4117,7 @@ void CserialCommunicationDlg::LoadConfigXMLFile()
 		GetDlgItem(IDC_BUTTON_SHORT8)->EnableWindow(false);
 		m_toolstip.DelTool(GetDlgItem(IDC_BUTTON_SHORT8));
 		GetDlgItem(IDC_COMBO_CONFIG_FILE_SELECT)->EnableWindow(true);
-		GetDlgItem(IDC_BUTTON_LOAD_CONFIG_FILE)->SetWindowText("ÔØÈë");
+		GetDlgItem(IDC_BUTTON_LOAD_CONFIG_FILE)->SetWindowText("è½½å…¥");
 
 		GetDlgItem(IDC_BUTTON_SEND_SHORT_FUCTION)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_SEND_SELECT_SHORT)->EnableWindow(FALSE);
@@ -4131,21 +4131,21 @@ void CserialCommunicationDlg::LoadConfigXMLFile()
 #if 0
 void CserialCommunicationDlg::OnBnClickedButtonSendShortFuction()
 {
-	//»ñÈ¡µ±Ç°Ñ¡ÖĞ
+	//è·å–å½“å‰é€‰ä¸­
 	UINT32 i = ((CListBox*)GetDlgItem(IDC_LIST1))->GetCurSel();
 	if(i == -1)
 	{
-		MessageBox("ÇëÏÈÑ¡ÖĞÒ»ĞĞ","´íÎó",MB_OK);
+		MessageBox("è¯·å…ˆé€‰ä¸­ä¸€è¡Œ","é”™è¯¯",MB_OK);
 		return ;
 	}
 	else
 	{
 		if(serial_isopen == TRUE)
 		{
-			//±äÁ¿´ò¿ªÁË,ÒªÈ¥²âÊÔ´®¿Ú×´Ì¬
+			//å˜é‡æ‰“å¼€äº†,è¦å»æµ‹è¯•ä¸²å£çŠ¶æ€
 			if(sio_lstatus(com_port)>= 0)
 			{
-				//Ã»ÓĞ¶Ô\r\nÌØÊâ´¦Àí
+				//æ²¡æœ‰å¯¹\r\nç‰¹æ®Šå¤„ç†
 				sendString.Empty();
 				if(sendStringConfig == false)sendString.AppendFormat("%s",listSendString->GetAt(i));
 				else sendString.AppendFormat("%s\r\n",listSendString->GetAt(i));
@@ -4160,42 +4160,42 @@ void CserialCommunicationDlg::OnBnClickedButtonSendShortFuction()
 			}
 			else
 			{
-				//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-				MessageBox("´®¿Ú¶ªÊ§,Çë¹Ø±ÕºóÖØĞÂ´ò¿ª","´íÎó",MB_OK);
+				//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+				MessageBox("ä¸²å£ä¸¢å¤±,è¯·å…³é—­åé‡æ–°æ‰“å¼€","é”™è¯¯",MB_OK);
 			}
 		}
 		else
 		{
-			//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-			MessageBox("ÇëÏÈ´ò¿ª´®¿Ú","´íÎó",MB_OK);
+			//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+			MessageBox("è¯·å…ˆæ‰“å¼€ä¸²å£","é”™è¯¯",MB_OK);
 		}
 	}
 }
 
 void CserialCommunicationDlg::OnBnClickedButtonSendSelectShort()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CString num;
 	num.Empty();
 	((CEdit*)GetDlgItem(IDC_EDIT_FUNC_SEL))->GetWindowText(num);
 	int funcNum;
 	if(num.GetLength() <= 0)
 	{
-		MessageBox("ÇëĞ´ÈëÒ»¸öÖ¸ÁîĞòºÅ","ÌáÊ¾",MB_OK);
+		MessageBox("è¯·å†™å…¥ä¸€ä¸ªæŒ‡ä»¤åºå·","æç¤º",MB_OK);
 		return;
 	}
 	funcNum = atoi(num);
 	if(funcNum >= listSendString->GetCount())
 	{
-		MessageBox("Ö¸ÁîĞòºÅ³¬·¶Î§","ÌáÊ¾",MB_OK);
+		MessageBox("æŒ‡ä»¤åºå·è¶…èŒƒå›´","æç¤º",MB_OK);
 		return ;
 	}
 	if(serial_isopen == TRUE)
 	{
-		//±äÁ¿´ò¿ªÁË,ÒªÈ¥²âÊÔ´®¿Ú×´Ì¬
+		//å˜é‡æ‰“å¼€äº†,è¦å»æµ‹è¯•ä¸²å£çŠ¶æ€
 		if(sio_lstatus(com_port)>= 0)
 		{
-			//Ã»ÓĞ¶Ô\r\nÌØÊâ´¦Àí
+			//æ²¡æœ‰å¯¹\r\nç‰¹æ®Šå¤„ç†
 			sendString.Empty();
 			if(sendStringConfig == false)sendString.AppendFormat("%s",listSendString->GetAt(funcNum));
 			else sendString.AppendFormat("%s\r\n",listSendString->GetAt(funcNum));
@@ -4203,22 +4203,22 @@ void CserialCommunicationDlg::OnBnClickedButtonSendSelectShort()
 		}
 		else
 		{
-			//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-			MessageBox("´®¿Ú¶ªÊ§,Çë¹Ø±ÕºóÖØĞÂ´ò¿ª","´íÎó",MB_OK);
+			//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+			MessageBox("ä¸²å£ä¸¢å¤±,è¯·å…³é—­åé‡æ–°æ‰“å¼€","é”™è¯¯",MB_OK);
 		}
 	}
 	else
 	{
-		//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-		MessageBox("ÇëÏÈ´ò¿ª´®¿Ú","´íÎó",MB_OK);
+		//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+		MessageBox("è¯·å…ˆæ‰“å¼€ä¸²å£","é”™è¯¯",MB_OK);
 	}
 }
 #endif
 void CserialCommunicationDlg::OnCbnCloseupComboSendStringConfig()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int i = 0;
-	i = ((CComboBox*)GetDlgItem(IDC_COMBO_SEND_STRING_CONFIG))->GetCurSel();//»ñÈ¡µ±Ç°ÅäÖÃ
+	i = ((CComboBox*)GetDlgItem(IDC_COMBO_SEND_STRING_CONFIG))->GetCurSel();//è·å–å½“å‰é…ç½®
 	if(i == 0)
 	{
 		sendStringConfig = false;
@@ -4230,7 +4230,7 @@ void CserialCommunicationDlg::OnCbnCloseupComboSendStringConfig()
 }
 
 
-//String2HexµÄÔ´´úÂë
+//String2Hexçš„æºä»£ç 
 int CserialCommunicationDlg::String2Hex(char * str, char * hexdata)
 {
 #if 1
@@ -4242,7 +4242,7 @@ int CserialCommunicationDlg::String2Hex(char * str, char * hexdata)
 	{
 
 		singleResult = *str;
-		//¶ÔÃ¿¸ö×Ö·û½øĞĞ×ª»»
+		//å¯¹æ¯ä¸ªå­—ç¬¦è¿›è¡Œè½¬æ¢
 		if ((singleResult >= '0') && (singleResult <= '9'))
 		{
 			singleResult = (*str - '0');
@@ -4261,13 +4261,13 @@ int CserialCommunicationDlg::String2Hex(char * str, char * hexdata)
 				}
 				else
 				{
-					//Èç¹û×Ö·û²»Îª16½øÖÆÔò·ÅÆú´¦Àí´Ë×Ö·û´®
+					//å¦‚æœå­—ç¬¦ä¸ä¸º16è¿›åˆ¶åˆ™æ”¾å¼ƒå¤„ç†æ­¤å­—ç¬¦ä¸²
 					return 0;
 				}
 			}
 		}
 
-		//±£´æ16½øÖÆµÄÃ¿Ò»Î»
+		//ä¿å­˜16è¿›åˆ¶çš„æ¯ä¸€ä½
 		if (tmp == 1)
 		{
 			*hexdata = (*hexdata << 4) | singleResult;
@@ -4278,7 +4278,7 @@ int CserialCommunicationDlg::String2Hex(char * str, char * hexdata)
 
 		if (tmp++ >= 1)
 			tmp = 0;
-		//¼ÆËã×ÜµÄÊıÖµ
+		//è®¡ç®—æ€»çš„æ•°å€¼
 		//totalResult += singleResult;
 		str++;
 
@@ -4296,7 +4296,7 @@ int CserialCommunicationDlg::String2Hex(char * str, char * hexdata)
 	for (int i = 0; i<nlength; i++)
 	{
 		singleResult = str[i];
-		//¶ÔÃ¿¸ö×Ö·û½øĞĞ×ª»»
+		//å¯¹æ¯ä¸ªå­—ç¬¦è¿›è¡Œè½¬æ¢
 		if ((singleResult >= '0') && (singleResult <= '9'))
 		{
 			singleResult = (str[i] - '0');
@@ -4315,21 +4315,21 @@ int CserialCommunicationDlg::String2Hex(char * str, char * hexdata)
 				}
 				else
 				{
-					//Èç¹û×Ö·û²»Îª16½øÖÆÔò·ÅÆú´¦Àí´Ë×Ö·û´®
+					//å¦‚æœå­—ç¬¦ä¸ä¸º16è¿›åˆ¶åˆ™æ”¾å¼ƒå¤„ç†æ­¤å­—ç¬¦ä¸²
 					return 0;
 				}
 			}
 		}
 
-		//±£´æ16½øÖÆµÄÃ¿Ò»Î»
+		//ä¿å­˜16è¿›åˆ¶çš„æ¯ä¸€ä½
 		hexdata.Add(singleResult);
 
-		//¼ÆËãÃ¿¸ö×Ö·ûÎ»ÖÃµÄÊıÖµ
+		//è®¡ç®—æ¯ä¸ªå­—ç¬¦ä½ç½®çš„æ•°å€¼
 		for (int j = 0; j<(nlength - 1 - i); j++)
 		{
 			singleResult = singleResult * 16;
 		}
-		//¼ÆËã×ÜµÄÊıÖµ
+		//è®¡ç®—æ€»çš„æ•°å€¼
 		totalResult += singleResult;
 	}
 
@@ -4339,10 +4339,10 @@ int CserialCommunicationDlg::String2Hex(char * str, char * hexdata)
 
 void CserialCommunicationDlg::OnSendSetColorTmp(INT_PTR index, int value)
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	if (serial_isopen == TRUE)
 	{
-		//±äÁ¿´ò¿ªÁË,ÒªÈ¥²âÊÔ´®¿Ú×´Ì¬
+		//å˜é‡æ‰“å¼€äº†,è¦å»æµ‹è¯•ä¸²å£çŠ¶æ€
 		if (sio_lstatus(com_port) >= 0)
 		{
 			CString tmpstring("");
@@ -4391,23 +4391,23 @@ void CserialCommunicationDlg::OnSendSetColorTmp(INT_PTR index, int value)
 		}
 		else
 		{
-			//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-			MessageBox("´®¿Ú¶ªÊ§,Çë¹Ø±ÕºóÖØĞÂ´ò¿ª", "´íÎó", MB_OK);
+			//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+			MessageBox("ä¸²å£ä¸¢å¤±,è¯·å…³é—­åé‡æ–°æ‰“å¼€", "é”™è¯¯", MB_OK);
 		}
 	}
 	else
 	{
-		//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-		MessageBox("ÇëÏÈ´ò¿ª´®¿Ú", "´íÎó", MB_OK);
+		//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+		MessageBox("è¯·å…ˆæ‰“å¼€ä¸²å£", "é”™è¯¯", MB_OK);
 	}
 }
 
 void CserialCommunicationDlg::OnSendSaveColorTmp(INT_PTR index)
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	if (serial_isopen == TRUE)
 	{
-		//±äÁ¿´ò¿ªÁË,ÒªÈ¥²âÊÔ´®¿Ú×´Ì¬
+		//å˜é‡æ‰“å¼€äº†,è¦å»æµ‹è¯•ä¸²å£çŠ¶æ€
 		if (sio_lstatus(com_port) >= 0)
 		{
 			sendString.Empty();
@@ -4438,26 +4438,26 @@ void CserialCommunicationDlg::OnSendSaveColorTmp(INT_PTR index)
 		}
 		else
 		{
-			//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-			MessageBox("´®¿Ú¶ªÊ§,Çë¹Ø±ÕºóÖØĞÂ´ò¿ª", "´íÎó", MB_OK);
+			//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+			MessageBox("ä¸²å£ä¸¢å¤±,è¯·å…³é—­åé‡æ–°æ‰“å¼€", "é”™è¯¯", MB_OK);
 		}
 	}
 	else
 	{
-		//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-		MessageBox("ÇëÏÈ´ò¿ª´®¿Ú", "´íÎó", MB_OK);
+		//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+		MessageBox("è¯·å…ˆæ‰“å¼€ä¸²å£", "é”™è¯¯", MB_OK);
 	}
 }
 
 void CserialCommunicationDlg::OnBnClickedButtonShort_fun(INT_PTR index)
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	if (serial_isopen == TRUE)
 	{
-		//±äÁ¿´ò¿ªÁË,ÒªÈ¥²âÊÔ´®¿Ú×´Ì¬
+		//å˜é‡æ‰“å¼€äº†,è¦å»æµ‹è¯•ä¸²å£çŠ¶æ€
 		if (sio_lstatus(com_port) >= 0)
 		{
-			//Ã»ÓĞ¶Ô\r\nÌØÊâ´¦Àí
+			//æ²¡æœ‰å¯¹\r\nç‰¹æ®Šå¤„ç†
 			sendString.Empty();
 			if (sendStringConfig == false)sendString.AppendFormat("%s", buttonSendString->GetAt(index));
 			else sendString.AppendFormat("%s\r\n", buttonSendString->GetAt(index));
@@ -4472,22 +4472,22 @@ void CserialCommunicationDlg::OnBnClickedButtonShort_fun(INT_PTR index)
 		}
 		else
 		{
-			//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-			MessageBox("´®¿Ú¶ªÊ§,Çë¹Ø±ÕºóÖØĞÂ´ò¿ª", "´íÎó", MB_OK);
+			//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+			MessageBox("ä¸²å£ä¸¢å¤±,è¯·å…³é—­åé‡æ–°æ‰“å¼€", "é”™è¯¯", MB_OK);
 		}
 	}
 	else
 	{
-		//ËµÃ÷´®¿ÚÒÑ¾­¶ªÊ§
-		MessageBox("ÇëÏÈ´ò¿ª´®¿Ú", "´íÎó", MB_OK);
+		//è¯´æ˜ä¸²å£å·²ç»ä¸¢å¤±
+		MessageBox("è¯·å…ˆæ‰“å¼€ä¸²å£", "é”™è¯¯", MB_OK);
 	}
 }
 
 
 
-void CserialCommunicationDlg::OnBnClickedButton3()   //×Ô¶¯²âÊÔ
+void CserialCommunicationDlg::OnBnClickedButton3()   //è‡ªåŠ¨æµ‹è¯•
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	//<--
 	WriteConfigData();
 	UpdateControls();
@@ -4501,17 +4501,17 @@ void CserialCommunicationDlg::OnBnClickedButton3()   //×Ô¶¯²âÊÔ
 	{
 		GetDlgItem(IDC_BUTTON3)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_TEST_STOP)->EnableWindow(TRUE);
-		//MessageBox("¿ªÊ¼×Ô¶¯²âÊÔ");
+		//MessageBox("å¼€å§‹è‡ªåŠ¨æµ‹è¯•");
 
 		if (serial_isopen == FALSE)
 		{
-			MessageBox("´®¿ÚÎ´¿ª");
+			MessageBox("ä¸²å£æœªå¼€");
 			GetDlgItem(IDC_BUTTON3)->EnableWindow(TRUE);
 			return;
 		}
 		if(configFileLoadOk == FALSE)
 		{
-			MessageBox("ÅäÖÃÎÄ¼şÎ´¼ÓÔØ");
+			MessageBox("é…ç½®æ–‡ä»¶æœªåŠ è½½");
 			GetDlgItem(IDC_BUTTON3)->EnableWindow(TRUE);
 			return;
 		}
@@ -4519,7 +4519,7 @@ void CserialCommunicationDlg::OnBnClickedButton3()   //×Ô¶¯²âÊÔ
 		{
 			if (colorTmpconfigFileLoadOk == FALSE)
 			{
-				MessageBox("°×Æ½ºâÎÄ¼şÎ´¼ÓÔØ");
+				MessageBox("ç™½å¹³è¡¡æ–‡ä»¶æœªåŠ è½½");
 				GetDlgItem(IDC_BUTTON3)->EnableWindow(TRUE);
 				return;
 			}
@@ -4560,7 +4560,7 @@ void CserialCommunicationDlg::OnBnClickedButton3()   //×Ô¶¯²âÊÔ
 		SetTimer(TIMER_GET_DATA,300,NULL); //<--MES
 		//OnBnClickedButtonSend();
 		//SetTimer(TIME_SHOW_MESSAGE_TEST_MAC,500,NULL);
-		//SetTimer(TIME_SHOW_MESSAGE_TEST_DELAY_OTHER, iOtherTestDelay, NULL);  //<--²âÊÔÊ¹ÓÃ
+		//SetTimer(TIME_SHOW_MESSAGE_TEST_DELAY_OTHER, iOtherTestDelay, NULL);  //<--æµ‹è¯•ä½¿ç”¨
 		//KillTimer(TIME_SHOW_MESSAGE_TEST_DELAY);
 		//SetTimer(TIME_SHOW_MESSAGE_TEST_DELAY, 50, NULL);
 		showString = "";
@@ -4569,15 +4569,15 @@ void CserialCommunicationDlg::OnBnClickedButton3()   //×Ô¶¯²âÊÔ
 		curretBufString_test = "";
 		m_cEdit_value_use_NG = "";
 		m_cEdit_value_use_OK = "";
-		//´Ó×ÊÔ´ÖĞ¼ÓÔØÍ¼Æ¬
+		//ä»èµ„æºä¸­åŠ è½½å›¾ç‰‡
 		CBitmap bitmap;
-		//¼ÓÔØÖ¸¶¨Î»Í¼×ÊÔ´ BmpÍ¼Æ¬ID
+		//åŠ è½½æŒ‡å®šä½å›¾èµ„æº Bmpå›¾ç‰‡ID
 		bitmap.LoadBitmap(IDB_BITMAP_LOGO);
-		//»ñÈ¡¶Ô»°¿òÉÏµÄ¾ä±ú Í¼Æ¬¿Ø¼şID
+		//è·å–å¯¹è¯æ¡†ä¸Šçš„å¥æŸ„ å›¾ç‰‡æ§ä»¶ID
 		CStatic *p = (CStatic *)GetDlgItem(IDC_STATIC_PICTURE);
-		//ÉèÖÃ¾²Ì¬¿Ø¼ş´°¿Ú·ç¸ñÎªÎ»Í¼¾ÓÖĞÏÔÊ¾
+		//è®¾ç½®é™æ€æ§ä»¶çª—å£é£æ ¼ä¸ºä½å›¾å±…ä¸­æ˜¾ç¤º
 		p->ModifyStyle(0xf, SS_BITMAP | SS_CENTERIMAGE);
-		//½«Í¼Æ¬ÉèÖÃµ½Picture¿Ø¼şÉÏ
+		//å°†å›¾ç‰‡è®¾ç½®åˆ°Pictureæ§ä»¶ä¸Š
 		p->SetBitmap(bitmap);
 	}
 }
@@ -4638,16 +4638,16 @@ void CserialCommunicationDlg::ShowMessage(UINT iColor, CString cstrMessage, UINT
 	Sleep(idelay);
 }
 
-void CserialCommunicationDlg::OnStartTimer()//Æô¶¯¶¨Ê±Æ÷
+void CserialCommunicationDlg::OnStartTimer()//å¯åŠ¨å®šæ—¶å™¨
 {
 	mytimer = 0;
 	SetTimer(TIMER_TIME_RUN, 1000, 0);
 	ControlID_Flag = BLUE;
-	SetDlgItemText(IDC_STATIC_SHOW_TIMER,_T(" 0 Ãë"));
-	ShowMessage(BLUE,_T("¿ªÊ¼²âÊÔ!"),0);
+	SetDlgItemText(IDC_STATIC_SHOW_TIMER,_T(" 0 ç§’"));
+	ShowMessage(BLUE,_T("å¼€å§‹æµ‹è¯•!"),0);
 }
 
-void CserialCommunicationDlg::OnStopTimer()//Í£Ö¹¶¨Ê±Æ÷
+void CserialCommunicationDlg::OnStopTimer()//åœæ­¢å®šæ—¶å™¨
 {
 	KillTimer(TIMER_TIME_RUN);  
 }
@@ -4657,21 +4657,21 @@ void CserialCommunicationDlg::time_run()
 {
 	CString str;
 	mytimer++;
-	str.Format(_T("%dÃë"),mytimer);
+	str.Format(_T("%dç§’"),mytimer);
 	m_time.SetWindowText(str);
 }
 
-void CserialCommunicationDlg::OnStartKeypadTimer()//Æô¶¯¶¨Ê±Æ÷
+void CserialCommunicationDlg::OnStartKeypadTimer()//å¯åŠ¨å®šæ—¶å™¨
 {
 	CString str;
-	myKeypadtimer = 10;//<--Éè¼Æµ¹¼ÆÊ±
+	myKeypadtimer = 10;//<--è®¾è®¡å€’è®¡æ—¶
 	SetTimer(TIME_SHOW_MESSAGE_KEYPAD_TIME, 1000, 0);
 	ControlID_Flag = BLUE;
-	str.Format(_T("°´¼ü²âÊÔ¼´½«¿ªÊ¼£¬ÇëÔÚ%dÃëÄÚ°´¼ü£¡£¡"),myKeypadtimer);
+	str.Format(_T("æŒ‰é”®æµ‹è¯•å³å°†å¼€å§‹ï¼Œè¯·åœ¨%dç§’å†…æŒ‰é”®ï¼ï¼"),myKeypadtimer);
 	m_psdinfo.SetWindowText(str);
 }
 
-void CserialCommunicationDlg::OnStopKeypadTimer()//Í£Ö¹¶¨Ê±Æ÷
+void CserialCommunicationDlg::OnStopKeypadTimer()//åœæ­¢å®šæ—¶å™¨
 {
 	KillTimer(TIME_SHOW_MESSAGE_KEYPAD_TIME);  
 }
@@ -4680,7 +4680,7 @@ void CserialCommunicationDlg::Keypad_time_run()
 {
 	CString str;
 	myKeypadtimer--;
-	str.Format(_T("°´¼ü²âÊÔ»¹ÓĞ%dÃë½«½áÊø"),myKeypadtimer);
+	str.Format(_T("æŒ‰é”®æµ‹è¯•è¿˜æœ‰%dç§’å°†ç»“æŸ"),myKeypadtimer);
 	m_psdinfo.SetWindowText(str);
 }
 
@@ -4760,7 +4760,7 @@ void CserialCommunicationDlg::GetConfigData()
 
 void CserialCommunicationDlg::OnBnClickedButtonTestStop()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	cCheckCout = 0;
 	GetDlgItem(IDC_COMBO_MAINKEY)->EnableWindow(TRUE);
 	GetDlgItem(IDC_EDIT_JNUMBER)->EnableWindow(TRUE);
@@ -4792,18 +4792,18 @@ void CserialCommunicationDlg::OnBnClickedButtonTestStop()
 	KillTimer(TIMER_TIME_RUN);
 	GetDlgItem(IDC_BUTTON3)->EnableWindow(TRUE);
 	bFactoryTestAutoStart = FALSE;
-	MessageBox("×Ô¶¯²âÊÔ½áÊø");
+	MessageBox("è‡ªåŠ¨æµ‹è¯•ç»“æŸ");
 	GetDlgItem(IDC_BUTTON_TEST_STOP)->EnableWindow(FALSE);
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
-	//´Ó×ÊÔ´ÖĞ¼ÓÔØÍ¼Æ¬
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
+	//ä»èµ„æºä¸­åŠ è½½å›¾ç‰‡
 	CBitmap bitmap;
-	//¼ÓÔØÖ¸¶¨Î»Í¼×ÊÔ´ BmpÍ¼Æ¬ID
+	//åŠ è½½æŒ‡å®šä½å›¾èµ„æº Bmpå›¾ç‰‡ID
 	bitmap.LoadBitmap(IDB_BITMAP_LOGO);
-	//»ñÈ¡¶Ô»°¿òÉÏµÄ¾ä±ú Í¼Æ¬¿Ø¼şID
+	//è·å–å¯¹è¯æ¡†ä¸Šçš„å¥æŸ„ å›¾ç‰‡æ§ä»¶ID
 	CStatic *p = (CStatic *)GetDlgItem(IDC_STATIC_PICTURE);
-	//ÉèÖÃ¾²Ì¬¿Ø¼ş´°¿Ú·ç¸ñÎªÎ»Í¼¾ÓÖĞÏÔÊ¾
+	//è®¾ç½®é™æ€æ§ä»¶çª—å£é£æ ¼ä¸ºä½å›¾å±…ä¸­æ˜¾ç¤º
 	p->ModifyStyle(0xf, SS_BITMAP | SS_CENTERIMAGE);
-	//½«Í¼Æ¬ÉèÖÃµ½Picture¿Ø¼şÉÏ
+	//å°†å›¾ç‰‡è®¾ç½®åˆ°Pictureæ§ä»¶ä¸Š
 	p->SetBitmap(bitmap);
 }
 
@@ -4814,30 +4814,30 @@ HBRUSH CserialCommunicationDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 	
-	// TODO:  ÔÚ´Ë¸ü¸Ä DC µÄÈÎºÎÌØĞÔ
+	// TODO:  åœ¨æ­¤æ›´æ”¹ DC çš„ä»»ä½•ç‰¹æ€§
 
-	// TODO:  Èç¹ûÄ¬ÈÏµÄ²»ÊÇËùĞè»­±Ê£¬Ôò·µ»ØÁíÒ»¸ö»­±Ê.
+	// TODO:  å¦‚æœé»˜è®¤çš„ä¸æ˜¯æ‰€éœ€ç”»ç¬”ï¼Œåˆ™è¿”å›å¦ä¸€ä¸ªç”»ç¬”.
 
 	/*if (pWnd->GetDlgCtrlID() == IDC_TEST_RESUILT)
 	{
-		pDC->SetTextColor(RGB(0, 0, 255));//ĞŞ¸Ä×ÖÌåµÄÑÕÉ«
-		pDC->SetBkMode(TRANSPARENT);//°Ñ×ÖÌåµÄ±³¾°±ä³ÉÍ¸Ã÷µÄ
-		return m_brush;//·µ»Ø±³¾°É«
+		pDC->SetTextColor(RGB(0, 0, 255));//ä¿®æ”¹å­—ä½“çš„é¢œè‰²
+		pDC->SetBkMode(TRANSPARENT);//æŠŠå­—ä½“çš„èƒŒæ™¯å˜æˆé€æ˜çš„
+		return m_brush;//è¿”å›èƒŒæ™¯è‰²
 	}*/
 
 
-	//¶ÔÌØ¶¨µÄ¿Ø¼ş×öĞŞ¸Ä
+	//å¯¹ç‰¹å®šçš„æ§ä»¶åšä¿®æ”¹
 	switch (pWnd->GetDlgCtrlID())
 	{
-	/*	case IDC_TEST_RESUILT: //¶ÔËùÓĞ¾²Ì¬ÎÄ±¾¿Ø¼şµÄÉèÖÃ
+	/*	case IDC_TEST_RESUILT: //å¯¹æ‰€æœ‰é™æ€æ–‡æœ¬æ§ä»¶çš„è®¾ç½®
 		{
 			pDC->SetBkMode(TRANSPARENT);
-			//ÉèÖÃ±³¾°ÎªÍ¸Ã÷
-			pDC->SetTextColor(RGB(0, 0, 255)); //ÉèÖÃ×ÖÌåÑÕÉ«
-			pWnd->SetFont(cFont); //ÉèÖÃ×ÖÌå
+			//è®¾ç½®èƒŒæ™¯ä¸ºé€æ˜
+			pDC->SetTextColor(RGB(0, 0, 255)); //è®¾ç½®å­—ä½“é¢œè‰²
+			pWnd->SetFont(cFont); //è®¾ç½®å­—ä½“
 			HBRUSH B = CreateSolidBrush(RGB(255, 0, 255));
-			//´´½¨»­Ë¢
-			return (HBRUSH)B; //·µ»Ø»­Ë¢¾ä±ú
+			//åˆ›å»ºç”»åˆ·
+			return (HBRUSH)B; //è¿”å›ç”»åˆ·å¥æŸ„
 		}
 		case IDC_BUTTON3:
 		{
@@ -4847,7 +4847,7 @@ HBRUSH CserialCommunicationDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 			HBRUSH B = CreateSolidBrush(RGB(255, 0, 255));
 			return (HBRUSH)B;
 		}*/
-// 		case IDC_EDIT1: //¶ÔËùÓĞ±à¼­¿òµÄÉèÖÃ
+// 		case IDC_EDIT1: //å¯¹æ‰€æœ‰ç¼–è¾‘æ¡†çš„è®¾ç½®
 // 		{
 // 		//	pDC->SetBkMode(TRANSPARENT);
 // 			pDC->SetTextColor(RGB(0, 0, 0));
@@ -4857,7 +4857,7 @@ HBRUSH CserialCommunicationDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 // 		//	HBRUSH B = CreateSolidBrush(RGB(255, 0, 255));
 // 			return m_brush;
 // 		}
-		case IDC_EDIT_OK: //¶ÔËùÓĞ±à¼­¿òµÄÉèÖÃ
+		case IDC_EDIT_OK: //å¯¹æ‰€æœ‰ç¼–è¾‘æ¡†çš„è®¾ç½®
 		{
 		//	pDC->SetBkMode(TRANSPARENT);
 			pDC->SetTextColor(RGB(0, 255, 0));
@@ -4867,7 +4867,7 @@ HBRUSH CserialCommunicationDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 		//	HBRUSH B = CreateSolidBrush(RGB(255, 0, 255));
 			return m_brush;
 		}
-		case IDC_EDIT_FAILED: //¶ÔËùÓĞ±à¼­¿òµÄÉèÖÃ
+		case IDC_EDIT_FAILED: //å¯¹æ‰€æœ‰ç¼–è¾‘æ¡†çš„è®¾ç½®
 		{
 		//	pDC->SetBkMode(TRANSPARENT);
 			pDC->SetTextColor(RGB(255, 0, 0));
@@ -4877,7 +4877,7 @@ HBRUSH CserialCommunicationDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 		//	HBRUSH B = CreateSolidBrush(RGB(255, 0, 255));
 			return m_brush;
 		}
-		case IDC_EDIT_TESTING: //¶ÔËùÓĞ±à¼­¿òµÄÉèÖÃ
+		case IDC_EDIT_TESTING: //å¯¹æ‰€æœ‰ç¼–è¾‘æ¡†çš„è®¾ç½®
 		{
 			//	pDC->SetBkMode(TRANSPARENT);
 			pDC->SetTextColor(RGB(0, 0, 255));
@@ -4923,9 +4923,9 @@ HBRUSH CserialCommunicationDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 
 
-void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile2()//load É«ÎÂÅäÖÃ
+void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile2()//load è‰²æ¸©é…ç½®
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CFileDialog dlg(TRUE, NULL, NULL, NULL, NULL);
 	if (dlg.DoModal() == IDOK)//
 	{
@@ -4938,17 +4938,17 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile2()//load É«ÎÂÅäÖÃ
 		str1.MakeLower();
 		if (str1.Find(".txt") == -1)
 		{
-			MessageBox("ÎŞĞ§ÎÄ¼ş");
+			MessageBox("æ— æ•ˆæ–‡ä»¶");
 			return;
 		}
-		/*if (str1.Find("É«ÎÂ") == -1)//ÎÄ¼şÃûÒª´øÉ«ÎÂÁ½¸ö×Ö
+		/*if (str1.Find("è‰²æ¸©") == -1)//æ–‡ä»¶åè¦å¸¦è‰²æ¸©ä¸¤ä¸ªå­—
 		{
-			MessageBox("ÎŞĞ§ÎÄ¼ş");
+			MessageBox("æ— æ•ˆæ–‡ä»¶");
 			return;
 		}*/
-		if ((str1.Find("rgb_value") == -1) && (str1.Find("É«ÎÂ") == -1))//ÎÄ¼şÃûÒª´øÉ«ÎÂÁ½¸ö×Ö
+		if ((str1.Find("rgb_value") == -1) && (str1.Find("è‰²æ¸©") == -1))//æ–‡ä»¶åè¦å¸¦è‰²æ¸©ä¸¤ä¸ªå­—
 		{
-			MessageBox("ÎŞĞ§ÎÄ¼ş");
+			MessageBox("æ— æ•ˆæ–‡ä»¶");
 			return;
 		}
 		long Filelen;
@@ -4956,15 +4956,15 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile2()//load É«ÎÂÅäÖÃ
 		FILE* fp = NULL;
 		errno_t err;
 		char *pBuff = str.GetBuffer(0);
-		if ((err = fopen_s(&fp, pBuff, "rb")) == 0)//(fp=fopen_s(pBuff,"rb"))       //strÊÇÎÒµÄ.bin ÎÄ¼şÂ·¾¶
+		if ((err = fopen_s(&fp, pBuff, "rb")) == 0)//(fp=fopen_s(pBuff,"rb"))       //stræ˜¯æˆ‘çš„.bin æ–‡ä»¶è·¯å¾„
 		{
 			fseek(fp, 0, SEEK_END);
 			Filelen = ftell(fp);
 			//m_lFilelen = Filelen;
-			//·ÖÅäÄÚ´æ
+			//åˆ†é…å†…å­˜
 			a_pData = (UCHAR*)malloc(Filelen);
 			//u_newData = (UCHAR*)malloc(Filelen);
-			//¶ÁÈ¡ÎÄ¼şµ½·ÖÅäµÄÄÚ´æ
+			//è¯»å–æ–‡ä»¶åˆ°åˆ†é…çš„å†…å­˜
 			fseek(fp, 0, SEEK_SET);
 			fread(a_pData, 1, Filelen, fp);
 			fclose(fp);
@@ -5062,7 +5062,7 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile2()//load É«ÎÂÅäÖÃ
 
 void CserialCommunicationDlg::OnBnClickedWB()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	UpdateData();
 	if(m_checkwb)
 	{
@@ -5085,7 +5085,7 @@ void CserialCommunicationDlg::OCbnSetfocusComboDelay()
 }
 void CserialCommunicationDlg::OnCbnSelchangeComboDelay()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	int i = 0;
 	i = m_CComboBox_delay.GetCurSel();
 	switch (i)
@@ -5117,7 +5117,7 @@ void CserialCommunicationDlg::OnCbnSelchangeComboDelay()
 
 void CserialCommunicationDlg::OnBnClickedButtonSetup()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	//if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
 		CAboutDlg dlgAbout;
