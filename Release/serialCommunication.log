@@ -1,52 +1,14 @@
-﻿  stdafx.cpp
-C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\atlmfc\include\afx.h(38): warning C4996: 'MBCS_Support_Deprecated_In_MFC': MBCS support in MFC is deprecated and may be removed in a future version of MFC.
-  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\atlmfc\include\afx.h(33): note: 参见“MBCS_Support_Deprecated_In_MFC”的声明
-  CeXDib.cpp
-  PPDrawManager.cpp
-  PPHtmlDrawer.cpp
-  PPTooltip.cpp
-C:\Program Files (x86)\Windows Kits\8.1\Include\um\multimon.h(185): warning C4996: 'GetVersionExA': 被声明为已否决
-  C:\Program Files (x86)\Windows Kits\8.1\Include\um\sysinfoapi.h(433): note: 参见“GetVersionExA”的声明
-  Markup.cpp
-  Note: MBCS build (not UTF-8)
-  tinyxml2.cpp
-  WebService.cpp
+﻿  WebService.cpp
 res\WebService\WebService.cpp(50): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: 参见“fopen”的声明
 res\WebService\WebService.cpp(166): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
 res\WebService\WebService.cpp(171): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
-  serialCommunication.cpp
-  serialCommunicationDlg.cpp
-serialCommunicationDlg.cpp(104): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(122): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(143): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(146): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(350): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(362): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(1403): warning C4838: 从“int”转换到“const char”需要收缩转换
-serialCommunicationDlg.cpp(1403): warning C4309: “初始化”: 截断常量值
-serialCommunicationDlg.cpp(3163): warning C4477: “sprintf”: 格式字符串“%S”需要类型“wchar_t *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3195): warning C4477: “sprintf”: 格式字符串“%S”需要类型“wchar_t *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3256): warning C4018: “>”: 有符号/无符号不匹配
-serialCommunicationDlg.cpp(3296): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3297): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3382): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3452): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3454): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3472): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3474): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3496): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3497): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(3498): warning C4477: “fprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(4041): warning C4101: “util”: 未引用的局部变量
-serialCommunicationDlg.cpp(4691): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(4694): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
-serialCommunicationDlg.cpp(4696): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
   正在生成代码
-f:\localproject\amtc海尔串口自动化测试\serialcommunicationdlg.cpp(4338): warning C4715: “CserialCommunicationDlg::String2Hex”: 不是所有的控件路径都返回值
-  All 3048 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  5 of 3048 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    129 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
-  serialCommunication.vcxproj -> F:\localproject\AMTC海尔串口自动化测试\Release\serialCommunication.exe
-  serialCommunication.vcxproj -> F:\localproject\AMTC海尔串口自动化测试\Release\serialCommunication.pdb (Full PDB)
+  serialCommunication.vcxproj -> D:\外购板专区\localproject\AMTC海尔串口自动化测试_962\Release\serialCommunication.exe
+  serialCommunication.vcxproj -> D:\外购板专区\localproject\AMTC海尔串口自动化测试_962\Release\serialCommunication.pdb (Full PDB)

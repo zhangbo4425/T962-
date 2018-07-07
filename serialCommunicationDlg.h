@@ -118,6 +118,7 @@ private:
 	//<--
 	bool boolSnScanDataOK;
 	bool bisSevenkey;
+	bool bisOnekey;
 	char cCheckCout_tmp;
 	bool bStartCheckData;
 	char cCheckOtherCount_tmp;

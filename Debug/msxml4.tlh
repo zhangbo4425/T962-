@@ -1,9 +1,9 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (6d8617d5).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (f6789349).
 //
-// f:\localproject\amtc海尔串口自动化测试\debug\msxml4.tlh
+// d:\外购板专区\localproject\amtc海尔串口自动化测试_962\debug\msxml4.tlh
 //
 // C++ source equivalent of Win32 type library msxml4.dll
-// compiler-generated file created 01/09/18 at 11:37:22 - DO NOT EDIT!
+// compiler-generated file created 07/07/18 at 11:55:53 - DO NOT EDIT!
 
 #pragma once
 #pragma pack(push, 8)
@@ -1764,6 +1764,7 @@ enum _SOMITEMTYPE
     SOMITEM_ATTRIBUTE = 4097,
     SOMITEM_ATTRIBUTEGROUP = 4098,
     SOMITEM_NOTATION = 4099,
+    SOMITEM_ANNOTATION = 4100,
     SOMITEM_IDENTITYCONSTRAINT = 4352,
     SOMITEM_KEY = 4353,
     SOMITEM_KEYREF = 4354,
@@ -5101,7 +5102,7 @@ extern "C" const GUID __declspec(selectany) IID_ISchemaNotation =
 // Wrapper method implementations
 //
 
-#include "f:\localproject\amtc海尔串口自动化测试\debug\msxml4.tli"
+#include "d:\外购板专区\localproject\amtc海尔串口自动化测试_962\debug\msxml4.tli"
 
 } // namespace MSXML2
 

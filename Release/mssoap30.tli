@@ -1,9 +1,9 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (caec612e).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (7041e650).
 //
-// f:\localproject\amtc海尔串口自动化测试\release\mssoap30.tli
+// d:\外购板专区\localproject\amtc海尔串口自动化测试_962\release\mssoap30.tli
 //
 // Wrapper implementations for Win32 type library C:\Program Files (x86)\Common Files\MSSOAP\Binaries\MSSOAP30.dll
-// compiler-generated file created 01/15/18 at 16:19:07 - DO NOT EDIT!
+// compiler-generated file created 07/07/18 at 12:00:29 - DO NOT EDIT!
 
 #pragma once
 

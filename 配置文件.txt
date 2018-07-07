@@ -1,4 +1,4 @@
-按键板Keypad:5key//或者7 //SOURCE MENU CH+ CH- VOL+ VOL- POWER
+按键板Keypad:1key//或者7 //SOURCE MENU CH+ CH- VOL+ VOL- POWER
 VER(NOV 3 15:59:01)
 LAST(HDMI2)
 WIFI

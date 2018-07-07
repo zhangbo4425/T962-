@@ -3846,10 +3846,16 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //加载config
 				}
 				if ((a_pData[i] == 'K') && (a_pData[i + 1] == 'e') && (a_pData[i + 2] == 'y') && (a_pData[i + 3] == 'p') && (a_pData[i + 4] == 'a') && (a_pData[i + 5] == 'd'))
 				{
-					if (a_pData[i + 7] == '5')
-						bisSevenkey = FALSE;
-					else
-						bisSevenkey = TRUE;
+					if (a_pData[i + 7] == '1')
+					{
+						bisOnekey = TRUE;
+					}
+					else {
+						if (a_pData[i + 7] == '5')
+							bisSevenkey = FALSE;
+						else
+							bisSevenkey = TRUE;
+					}
 				}
 				if ((a_pData[i] == 'V') && (a_pData[i + 1] == 'E') && (a_pData[i + 2] == 'R'))
 				{
@@ -3939,10 +3945,16 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //加载config
 				strTestItem += "\r\n";
 				strTestItem += "-----------------------------------\r\n";
 			}
-			if (!bisSevenkey)
-				strTestItem += "测试5键";
-			else
-				strTestItem += "测试7键";
+			if (bisOnekey)
+			{
+				strTestItem += "测试1键";
+			}
+			else {
+				if (!bisSevenkey)
+					strTestItem += "测试5键";
+				else
+					strTestItem += "测试7键";
+			}
 			strTestItem += "\r\n";
 			strTestItem += "-----------------------------------\r\n";
 			
@@ -3963,15 +3975,26 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //加载config
 			strTestItem += "\r\n";
 			GetDlgItem(IDC_EDIT_TEST_ITEM)->SetWindowText(strTestItem);
 
-			if (bisSevenkey)
-			{
-				m_cMfcButton_MENU.ShowWindow(SW_SHOW);
-				m_cMfcButton_SOURCE.ShowWindow(SW_SHOW);
-			}
-			else
+			if (bisOnekey)
 			{
 				m_cMfcButton_MENU.ShowWindow(SW_HIDE);
 				m_cMfcButton_SOURCE.ShowWindow(SW_HIDE);
+				m_cMfcButton_CHM.ShowWindow(SW_HIDE);
+				m_cMfcButton_CHP.ShowWindow(SW_HIDE);
+				m_cMfcButton_VOLM.ShowWindow(SW_HIDE);
+				m_cMfcButton_VOLP.ShowWindow(SW_HIDE);
+			}
+			else {
+				if (bisSevenkey)
+				{
+					m_cMfcButton_MENU.ShowWindow(SW_SHOW);
+					m_cMfcButton_SOURCE.ShowWindow(SW_SHOW);
+				}
+				else
+				{
+					m_cMfcButton_MENU.ShowWindow(SW_HIDE);
+					m_cMfcButton_SOURCE.ShowWindow(SW_HIDE);
+				}
 			}
 			//UpdateData(FALSE);
 			//m_lFilelen = 256;

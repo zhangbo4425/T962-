@@ -12,11 +12,11 @@
 using namespace MSSOAPLib30;
 //char* mesServer = "http://172.16.9.53/ATSWebservice/MyService.asmx";
 
-//char* mesServer = "http://172.16.9.118/ATSWebservice_Test/MyService.asmx";//研发库
+char* mesServer = "http://172.16.9.118/ATSWebservice_Test/MyService.asmx";//研发库
 
 //char* mesServer = "http://172.16.82.127/ATSWebservice/MyService.asmx";//bisonpc
 
-char* mesServer = "http://172.16.9.118/ATSWebservice/MyService.asmx";//正式库
+//char* mesServer = "http://172.16.9.118/ATSWebservice/MyService.asmx";//正式库
 
 //char* mesServer = "http://172.16.82.142/ATSWebservice/MyService.asmx";
 char* mesNamespace = "http://tempuri.org/";
