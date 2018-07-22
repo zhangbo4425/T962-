@@ -1,9 +1,9 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (799e2dbc).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (640d338a).
 //
-// d:\外购板专区\localproject\amtc海尔串口自动化测试_962\release\msxml4.tlh
+// d:\自动化测试区\localproject\amtc海尔串口自动化测试_962\release\msxml4.tlh
 //
 // C++ source equivalent of Win32 type library msxml4.dll
-// compiler-generated file created 07/07/18 at 12:00:29 - DO NOT EDIT!
+// compiler-generated file created 07/21/18 at 14:46:18 - DO NOT EDIT!
 
 #pragma once
 #pragma pack(push, 8)
@@ -5102,7 +5102,7 @@ extern "C" const GUID __declspec(selectany) IID_ISchemaNotation =
 // Wrapper method implementations
 //
 
-#include "d:\外购板专区\localproject\amtc海尔串口自动化测试_962\release\msxml4.tli"
+#include "d:\自动化测试区\localproject\amtc海尔串口自动化测试_962\release\msxml4.tli"
 
 } // namespace MSXML2
 

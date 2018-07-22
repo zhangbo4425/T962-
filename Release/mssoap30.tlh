@@ -1,9 +1,9 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (7041e650).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.24215.1 (bac34884).
 //
-// d:\外购板专区\localproject\amtc海尔串口自动化测试_962\release\mssoap30.tlh
+// d:\自动化测试区\localproject\amtc海尔串口自动化测试_962\release\mssoap30.tlh
 //
 // C++ source equivalent of Win32 type library C:\Program Files (x86)\Common Files\MSSOAP\Binaries\MSSOAP30.dll
-// compiler-generated file created 07/07/18 at 12:00:29 - DO NOT EDIT!
+// compiler-generated file created 07/21/18 at 14:46:18 - DO NOT EDIT!
 
 //
 // Cross-referenced type libraries:
@@ -2620,7 +2620,7 @@ IWSDLReader : IUnknown
 // Wrapper method implementations
 //
 
-#include "d:\外购板专区\localproject\amtc海尔串口自动化测试_962\release\mssoap30.tli"
+#include "d:\自动化测试区\localproject\amtc海尔串口自动化测试_962\release\mssoap30.tli"
 
 } // namespace MSSOAPLib30
 

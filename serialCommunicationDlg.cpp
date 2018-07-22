@@ -1665,22 +1665,32 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 		//55 B2 07 00 00 00 00 00 00 01 46 FE 	//power
 		CString m_KeyPadPower = curretBufString.Mid(18,2);
 		mKeyPadPower = strtol(m_KeyPadPower,NULL,16);
-		if (bisSevenkey)
+		if (bisOnekey)
 		{
-			if (mKeyPadPower > 0)
+			if (mKeyPadMenu > 0)
 			{
-				bTestKeyPad_Power = TRUE;
+				bTestKeyPad_Menu = TRUE;
 				m_cMfcButton_POWER.EnableWindow(TRUE);
 				m_cMfcButton_POWER.SetFaceColor(RGB(0, 255, 0));
 			}
-			if (mKeypadSource > 0)
+		}
+		else {
+			if (bisSevenkey)
 			{
-				bTestKeyPad_Source = TRUE;
-				m_cMfcButton_SOURCE.EnableWindow(TRUE);
-				m_cMfcButton_SOURCE.SetFaceColor(RGB(0, 255, 0));
-			}
-			if (mKeyPadLeft > 0)
-			{
+				if (mKeyPadPower > 0)
+				{
+					bTestKeyPad_Power = TRUE;
+					m_cMfcButton_POWER.EnableWindow(TRUE);
+					m_cMfcButton_POWER.SetFaceColor(RGB(0, 255, 0));
+				}
+				if (mKeypadSource > 0)
+				{
+					bTestKeyPad_Source = TRUE;
+					m_cMfcButton_SOURCE.EnableWindow(TRUE);
+					m_cMfcButton_SOURCE.SetFaceColor(RGB(0, 255, 0));
+				}
+				if (mKeyPadLeft > 0)
+				{
 
 					if (strTestProject.Find("T962") != -1)
 					{
@@ -1712,147 +1722,148 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 						m_cMfcButton_VOLP.EnableWindow(TRUE);
 						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
 					}
-			}
-			if (mKeyPadRight > 0)
-			{
-				if (strTestProject.Find("T962") != -1)
-				{
-					bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
-					/*bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
 				}
-				else if (strTestProject.Find("T968") != -1)
+				if (mKeyPadRight > 0)
 				{
-					bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
-					/*bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
-				}
-				else if (strTestProject.Find("V510") != -1)
-				{
-					
-					bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
-				}
-				else if (strTestProject.Find("T966") != -1)
-				{
-					bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
-				}
-			}
-			if (mKeyPadUp > 0)
-			{
-				bTestKeyPad_CHmins = TRUE;
-				m_cMfcButton_CHM.EnableWindow(TRUE);
-				m_cMfcButton_CHM.SetFaceColor(RGB(0, 255, 0));
-			}
-			if (mKeyPadDown > 0)
-			{
-				bTestKeyPad_CHPlus = TRUE;
-				m_cMfcButton_CHP.EnableWindow(TRUE);
-				m_cMfcButton_CHP.SetFaceColor(RGB(0, 255, 0));
-			}
-			if (mKeyPadMenu > 0)
-			{
-				bTestKeyPad_Menu = TRUE;
-				m_cMfcButton_MENU.EnableWindow(TRUE);
-				m_cMfcButton_MENU.SetFaceColor(RGB(0, 255, 0));
-			}
-		}
-		else
-		{
-			if (mKeyPadLeft > 0)
-			{
+					if (strTestProject.Find("T962") != -1)
+					{
+						bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+						/*bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
+					}
+					else if (strTestProject.Find("T968") != -1)
+					{
+						bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+						/*bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
+					}
+					else if (strTestProject.Find("V510") != -1)
+					{
 
-				if (strTestProject.Find("T962") != -1)
-				{
-					bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
-					/*bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));*/
+						bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
+					}
+					else if (strTestProject.Find("T966") != -1)
+					{
+						bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+					}
 				}
-				else if (strTestProject.Find("T968") != -1)
+				if (mKeyPadUp > 0)
 				{
-					bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
-					/*bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));*/
+					bTestKeyPad_CHmins = TRUE;
+					m_cMfcButton_CHM.EnableWindow(TRUE);
+					m_cMfcButton_CHM.SetFaceColor(RGB(0, 255, 0));
 				}
-				else if (strTestProject.Find("V510") != -1)
+				if (mKeyPadDown > 0)
 				{
-					bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+					bTestKeyPad_CHPlus = TRUE;
+					m_cMfcButton_CHP.EnableWindow(TRUE);
+					m_cMfcButton_CHP.SetFaceColor(RGB(0, 255, 0));
 				}
-				else if (strTestProject.Find("T966") != -1)
+				if (mKeyPadMenu > 0)
 				{
-					bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
+					bTestKeyPad_Menu = TRUE;
+					m_cMfcButton_MENU.EnableWindow(TRUE);
+					m_cMfcButton_MENU.SetFaceColor(RGB(0, 255, 0));
 				}
 			}
-			if (mKeyPadRight > 0)
+			else
 			{
-				if (strTestProject.Find("T962") != -1)
-				{
-					bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
-					/*bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
-				}
-				else if (strTestProject.Find("T968") != -1)
-				{
-					bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
-					/*bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
-				}
-				else if (strTestProject.Find("V510") != -1)
+				if (mKeyPadLeft > 0)
 				{
 
-					bTestKeyPad_VolPlus = TRUE;
-					m_cMfcButton_VOLP.EnableWindow(TRUE);
-					m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
+					if (strTestProject.Find("T962") != -1)
+					{
+						bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
+						/*bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));*/
+					}
+					else if (strTestProject.Find("T968") != -1)
+					{
+						bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
+						/*bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));*/
+					}
+					else if (strTestProject.Find("V510") != -1)
+					{
+						bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+					}
+					else if (strTestProject.Find("T966") != -1)
+					{
+						bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
+					}
 				}
-				else if (strTestProject.Find("T966") != -1)
+				if (mKeyPadRight > 0)
 				{
-					bTestKeyPad_VolMins = TRUE;
-					GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
-					m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+					if (strTestProject.Find("T962") != -1)
+					{
+						bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+						/*bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
+					}
+					else if (strTestProject.Find("T968") != -1)
+					{
+						bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+						/*bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));*/
+					}
+					else if (strTestProject.Find("V510") != -1)
+					{
+
+						bTestKeyPad_VolPlus = TRUE;
+						m_cMfcButton_VOLP.EnableWindow(TRUE);
+						m_cMfcButton_VOLP.SetFaceColor(RGB(0, 255, 0));
+					}
+					else if (strTestProject.Find("T966") != -1)
+					{
+						bTestKeyPad_VolMins = TRUE;
+						GetDlgItem(IDC_MFCBUTTON_VOLM)->EnableWindow(TRUE);
+						m_cMfcButton_VOLM.SetFaceColor(RGB(0, 255, 0));
+					}
 				}
-			}
-			if (mKeyPadUp > 0)
-			{
-				bTestKeyPad_CHmins = TRUE;
-				m_cMfcButton_CHM.EnableWindow(TRUE);
-				m_cMfcButton_CHM.SetFaceColor(RGB(0, 255, 0));
-			}
-			if (mKeyPadDown > 0)
-			{
-				bTestKeyPad_CHPlus = TRUE;
-				m_cMfcButton_CHP.EnableWindow(TRUE);
-				m_cMfcButton_CHP.SetFaceColor(RGB(0, 255, 0));
-			}
-			if (mKeyPadMenu > 0)
-			{
-				bTestKeyPad_Power = TRUE;
-				m_cMfcButton_POWER.EnableWindow(TRUE);
-				m_cMfcButton_POWER.SetFaceColor(RGB(0, 255, 0));
+				if (mKeyPadUp > 0)
+				{
+					bTestKeyPad_CHmins = TRUE;
+					m_cMfcButton_CHM.EnableWindow(TRUE);
+					m_cMfcButton_CHM.SetFaceColor(RGB(0, 255, 0));
+				}
+				if (mKeyPadDown > 0)
+				{
+					bTestKeyPad_CHPlus = TRUE;
+					m_cMfcButton_CHP.EnableWindow(TRUE);
+					m_cMfcButton_CHP.SetFaceColor(RGB(0, 255, 0));
+				}
+				if (mKeyPadMenu > 0)
+				{
+					bTestKeyPad_Power = TRUE;
+					m_cMfcButton_POWER.EnableWindow(TRUE);
+					m_cMfcButton_POWER.SetFaceColor(RGB(0, 255, 0));
+				}
 			}
 		}
 		curretBufString_test = "";
@@ -3052,6 +3063,15 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 				Sleep(100);
 				//OnBnClickedButtonShort_fun(29);   //<--检测按键
 			}
+			else if (bisOnekey)
+			{
+				if (bTestKeyPad_Menu)
+				{
+					cCheckKEYPADCount_tmp = 2;
+					OnStopKeypadTimer();
+					Sleep(100);
+				}
+			}
 			else if (bisSevenkey)
 			{
 				if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins&&bTestKeyPad_Menu&&bTestKeyPad_Source)	
@@ -3075,9 +3095,9 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 		{
 			cCheckKEYPADCount_tmp = 3;
 			Sleep(100);
-			if (bisSevenkey)
+			if (bisOnekey)
 			{
-				if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins&&bTestKeyPad_Menu&&bTestKeyPad_Source)
+				if (bTestKeyPad_Menu)
 				{
 					ShowMessage(BLUE, _T("按键测试	OK"), 0);
 				}
@@ -3088,13 +3108,27 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 			}
 			else
 			{
-				if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins)
+				if (bisSevenkey)
 				{
-					ShowMessage(BLUE, _T("按键测试	OK"), 0);
+					if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins&&bTestKeyPad_Menu&&bTestKeyPad_Source)
+					{
+						ShowMessage(BLUE, _T("按键测试	OK"), 0);
+					}
+					else
+					{
+						ShowMessage(RED, _T("按键测试	NG"), 0);
+					}
 				}
 				else
 				{
-					ShowMessage(RED, _T("按键测试	NG"), 0);
+					if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins)
+					{
+						ShowMessage(BLUE, _T("按键测试	OK"), 0);
+					}
+					else
+					{
+						ShowMessage(RED, _T("按键测试	NG"), 0);
+					}
 				}
 			}
 			OnBnClickedButtonShort_fun(30);	  //<--解锁按键
