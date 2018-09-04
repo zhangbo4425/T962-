@@ -310,7 +310,7 @@ public: //<--add for MES
 	void CserialCommunicationDlg::InitData();
 	void CserialCommunicationDlg::OnStartTimer();
 	void CserialCommunicationDlg::OnStopTimer();
-	void CserialCommunicationDlg::WriteResultMES(CString strVerData);
+	void CserialCommunicationDlg::WriteResultMES(CString strVerData, int MacInput);
 	bool CserialCommunicationDlg::InforCheck(CString strTVMeg);
 	void CserialCommunicationDlg::FontSetting();
 	void CserialCommunicationDlg::ReSize(void);
