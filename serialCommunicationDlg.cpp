@@ -3706,6 +3706,15 @@ void CserialCommunicationDlg::OnBnClickedButtonLoadConfigFile()  //加载config
 	bFacWriteWB_Warm_Red = FALSE;
 	bFacWriteWB_Warm_Green = FALSE;
 	bFacWriteWB_Warm_Blue = FALSE;
+	m_cMfcButton_MENU.ShowWindow(SW_SHOW);
+	m_cMfcButton_SOURCE.ShowWindow(SW_SHOW);
+	m_cMfcButton_CHM.ShowWindow(SW_SHOW);
+	m_cMfcButton_CHP.ShowWindow(SW_SHOW);
+	m_cMfcButton_VOLM.ShowWindow(SW_SHOW);
+	m_cMfcButton_VOLP.ShowWindow(SW_SHOW);
+	m_cMfcButton_POWER.ShowWindow(SW_SHOW);
+	bisOnekey = FALSE;
+	bisSevenkey = FALSE;
 	boolSnScanDataOK = false ;
 	//pApp->app_strSource
 	if (dlg.DoModal() == IDOK)//
