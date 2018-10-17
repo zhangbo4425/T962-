@@ -1,0 +1,29 @@
+
+***************Receive Error Message At Time 2018_08_09-17:58:24***************
+
+VER	      NG
+
+55B2074A756C1E0A253996FE
+
+***************Receive Error Message At Time 2018_08_09-17:58:25***************
+
+VER	      NG
+BLUE	      NG
+
+55B201000000000000004DFE
+
+***************Receive Error Message At Time 2018_08_09-17:59:06***************
+
+VER	      NG
+BLUE	      NG
+DTV1	      NG
+Íø¿Ú	        NG
+
+55B201000000000000004DFE
+
+***************Receive Error Message At Time 2018_08_09-17:59:12***************
+
+DTV1	      NG
+BLUE	      NG
+
+55B201000000000000004DFE

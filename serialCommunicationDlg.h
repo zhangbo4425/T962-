@@ -208,6 +208,7 @@ public:
 	void OnBnClickedButtonShort_fun(INT_PTR index);
 	void ReceiveSaveMacSuccessFile(CString cMessage);
 	void ReceiveSaveMacErrorFile(CString cMessage);
+	void ReceiveSaveWifiTestResultFile(CString cMessage);
 	CString m_cEdit_value_use;
 	CString m_cEdit_value_use_OK;
 	CString m_cEdit_value_use_NG;
@@ -327,6 +328,7 @@ public: //<--add for MES
 	int countWifi;
 	int countBlue;
 	int countMacPass;
+	int countWifiTest;
 	//CStatic m_Keypadtime;// 显示跑秒，表示软件在运行中
 	//<--
 	CComboBox m_CComBoMainKey;

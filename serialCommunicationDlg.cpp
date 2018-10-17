@@ -901,6 +901,7 @@ BOOL CserialCommunicationDlg::OnInitDialog()
 	serial_isopen = FALSE;
 	com_port = 0;
 	countMacPass = 0;
+	countWifiTest = 0;
 	sendlrcr = FALSE;
 
 	showString.Empty();
@@ -2109,6 +2110,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 					 GetDlgItem(IDC_EDIT_OK)->SetWindowText(m_cEdit_value_use_OK);
 					 TestWifiSend = FALSE;
 					 curretBufString_test = "";
+					 ReceiveSaveWifiTestResultFile(m_Wifi);
 				 }
 				 else
 				 {
@@ -2124,7 +2126,8 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 						 m_cEdit_value_use_NG += "WIFI	      NG\r\n";
 						 GetDlgItem(IDC_EDIT_FAILED)->SetWindowText(m_cEdit_value_use_NG);
 						 TestWifiSend = FALSE;
-						 OnBnClickedButtonReceiveSaveFile();
+						// OnBnClickedButtonReceiveSaveFile();
+						 ReceiveSaveWifiTestResultFile(m_Wifi);
 						 curretBufString_test = "";
 					 }	 
 				 }
@@ -3360,9 +3363,6 @@ BOOL CserialCommunicationDlg::DataVerification(CString strVerData, UINT intFlag)
 		sprintf(LotSN,"%s",strVerData);
 		sprintf(FieldName,"%s",strMainKey);
 		BOOL boolRev = ADCCheckLotSN("TEST",  LotSN,  FieldName);
-		//for test
-		GetMacData = "b0:b1:b2:b3:b4:b5";
-		WriteResultMES(GetMacData, 1);
 		//MessageBox(_T("ADCCheckLotSN"));
 		if(!boolRev) //<--ADCCheckLotSN 失败
 		{
@@ -3522,6 +3522,37 @@ void CserialCommunicationDlg::ReceiveSaveMacSuccessFile(CString cMessage)
 		fclose(fp);
 	}
 }
+
+void CserialCommunicationDlg::ReceiveSaveWifiTestResultFile(CString cMessage)
+{
+	countWifiTest += 1;
+	int mWifi = strtol(cMessage, NULL, 16);
+	CTime tm = CTime::GetCurrentTime();
+	CString strtm = tm.Format("ReceiveWifiTestResultMessage_%Y_%m_%d");
+	strtm += _T(".txt");
+	char* cFileName = (LPSTR)(LPCTSTR)strtm;
+
+	CTime t = CTime::GetCurrentTime();
+	CString s = t.Format("\r\n***************Receive Wifi Test Result Message At Time %Y_%m_%d-%H:%M:%S***************\r\n");
+	FILE *fp;
+	fp = fopen(cFileName, "a+");
+	if (fp != NULL)
+	{
+		fprintf(fp, "%s\n", s);
+		if (mWifi > 0)
+		{
+			fprintf(fp, "WifiPass %d\n", countWifiTest);
+			fprintf(fp, "%s\n", cMessage);
+		}
+		else
+		{
+			fprintf(fp, "WifiNg %d\n", countWifiTest);
+			fprintf(fp, "%s\n", cMessage);
+		}
+		fclose(fp);
+	}
+}
+
 void CserialCommunicationDlg::ReceiveSaveMacErrorFile(CString cMessage)
 {	
 	countMacPass += 1;
