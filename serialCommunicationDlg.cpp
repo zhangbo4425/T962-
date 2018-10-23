@@ -54,9 +54,6 @@ char* charMesData = "Data";											//
 char* charMesWriteData = "WriteData";								//
 char* charMesWrite = "Write";										//
 CString cstrMesMacEth = _T("MAC");									//
-CString cstrTestResult = _T("Option1");								//
-CString cstrTestResultOK = _T("Pass");								//
-CString cstrTestResultNG = _T("NG");								//
 //////////////////////////////////////////////////////////////////////
 BOOL boolScanok = false;
 BOOL boolScanDataOK = false;
@@ -362,14 +359,8 @@ BOOL CserialCommunicationDlg::GenTestDate(int MacInput)
 	if(MacInput==1)
 	{
 		memset(test,0,100);
-		sprintf(test,"%s=%s,%s=%s",cstrMesMacEth,GetMacData, cstrTestResult, cstrTestResultOK);//cstrMesMacEth为要写进MES的MAC字段名，MacEth为MAC地址
+		sprintf(test,"%s=%s",cstrMesMacEth,MacEth);//cstrMesMacEth为要写进MES的MAC字段名，MacEth为MAC地址
 		vectorTestData.push_back(make_pair<string, string>(charMesWriteData,test));
-		multiMapTestData.insert(pair<string, vector<pair<string, string> > >(charMesWrite, vectorTestData));
-	}else if (MacInput==2)
-	{
-		memset(test, 0, 100);
-		sprintf(test, "%s=%s", cstrTestResult, MacEth);//cstrTestResult为要写进MES的测试结果字段名，MacEth为测试结果
-		vectorTestData.push_back(make_pair<string, string>(charMesWriteData, test));
 		multiMapTestData.insert(pair<string, vector<pair<string, string> > >(charMesWrite, vectorTestData));
 	}
 	multimap<string, vector<pair<string, string> > >::iterator multitr;
@@ -1914,7 +1905,7 @@ void CserialCommunicationDlg::SerialsCheckBuffer(CString curretBufString)
 					{
 						TestMACSend = FALSE;
 						Sleep(100);
-						WriteResultMES(GetMacData,1);
+						WriteResultMES(GetMacData);
 						stMac.Empty();
 					}
 					else
@@ -3112,17 +3103,10 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 				if (bTestKeyPad_Menu)
 				{
 					ShowMessage(BLUE, _T("按键测试	OK"), 0);
-					if (m_cEdit_value_use_NG.IsEmpty())
-					{
-						WriteResultMES(cstrTestResultOK, 2);
-						m_list.SetItemText(0, 2, (CString)_T("PASS"));
-					}
 				}
 				else
 				{
 					ShowMessage(RED, _T("按键测试	NG"), 0);
-					WriteResultMES(cstrTestResultNG, 2);
-					m_list.SetItemText(0, 2, (CString)_T("NG"));
 				}
 			}
 			else
@@ -3132,17 +3116,10 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins&&bTestKeyPad_Menu&&bTestKeyPad_Source)
 					{
 						ShowMessage(BLUE, _T("按键测试	OK"), 0);
-						if (m_cEdit_value_use_NG.IsEmpty())
-						{
-							WriteResultMES(cstrTestResultOK, 2);
-							m_list.SetItemText(0, 2, (CString)_T("PASS"));
-						}
 					}
 					else
 					{
 						ShowMessage(RED, _T("按键测试	NG"), 0);
-						WriteResultMES(cstrTestResultNG, 2);
-						m_list.SetItemText(0, 2, (CString)_T("NG"));
 					}
 				}
 				else
@@ -3150,17 +3127,10 @@ void CserialCommunicationDlg::OnTimer(UINT_PTR nIDEvent)
 					if (bTestKeyPad_Power&&bTestKeyPad_VolMins&&bTestKeyPad_VolPlus&&bTestKeyPad_CHPlus&&bTestKeyPad_CHmins)
 					{
 						ShowMessage(BLUE, _T("按键测试	OK"), 0);
-						if (m_cEdit_value_use_NG.IsEmpty())
-						{
-							WriteResultMES(cstrTestResultOK, 2);
-							m_list.SetItemText(0, 2, (CString)_T("PASS"));
-						}
 					}
 					else
 					{
 						ShowMessage(RED, _T("按键测试	NG"), 0);
-						WriteResultMES(cstrTestResultNG, 2);
-						m_list.SetItemText(0, 2, (CString)_T("NG"));
 					}
 				}
 			}
@@ -3438,7 +3408,7 @@ BOOL CserialCommunicationDlg::DataVerification(CString strVerData, UINT intFlag)
 	SetDlgItemText(IDC_EDIT_INTO_MESSAGE,_T(""));
 	return boolDVer;
 }
-void CserialCommunicationDlg::WriteResultMES(CString strVerData,int MacInput)
+void CserialCommunicationDlg::WriteResultMES(CString strVerData)
 {
 	CString strShowMessage("");
 	CString strRev("");
@@ -3447,7 +3417,7 @@ void CserialCommunicationDlg::WriteResultMES(CString strVerData,int MacInput)
 	if((BST_CHECKED == IsDlgButtonChecked(IDC_CHECK_SN)))
 	{
 		sprintf(MacEth,"%s",strVerData);
-		ADCSubmitTestData("TEST",  LotSN,  FieldName, MacInput);
+		ADCSubmitTestData("TEST",  LotSN,  FieldName,1);
 	}
 	else
 	{
@@ -3462,7 +3432,7 @@ void CserialCommunicationDlg::WriteResultMES(CString strVerData,int MacInput)
 			strShowMessage.Format(_T("NG\r\n%s"),mesCheckorSubmitMap[_T("ReturnMessage")]);
 			color = RED;
 			ShowMessage(RED,strShowMessage,0);
-			//m_list.SetItemText(0,2,(CString) _T("NG"));
+			m_list.SetItemText(0,2,(CString) _T("NG"));
 		}	
 		//m_list.SetItemText(0,2,(CString) _T("NG"));
 		//GetDlgItem(IDC_STATIC_SHOW_MESSAGE)->SetWindowText(strShowMessage);
@@ -3471,7 +3441,7 @@ void CserialCommunicationDlg::WriteResultMES(CString strVerData,int MacInput)
 	else
 	{
 		GetMacData = "";
-		//m_list.SetItemText(0,2,(CString) _T("PASS"));
+		m_list.SetItemText(0,2,(CString) _T("PASS"));
 		//m_list.SetTextColor();
 		m_list.SetItemText(0,3, (CString) strVerData);
 		WriteMesOK = true;
